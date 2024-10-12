@@ -253,106 +253,106 @@ function Projects() {
                   demoLink="https://live-chat-bay.vercel.app/"
               />
             </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={github}
-                  isBlog={false}
-                  title="GitHubExplorer: User Search Application"
-                  description="Developed a GitHub user search application that leverages the GitHub API. This project showcases my skills in working with external APIs and creating dynamic search functionalities."
-                  ghLink="https://github.com/Ahmed2398/github-user-search-app-main"
-                  demoLink="https://ahmed2398.github.io/github-user-search-app-main/github-user-search-app-main/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={bookcrud}
-                  isBlog={false}
-                  title="BookManager: JavaScript CRUD Application"
-                  description="Created a book management system with full CRUD functionality using vanilla JavaScript. This project demonstrates my ability to build interactive web applications with complex data operations."
-                  ghLink="https://github.com/Ahmed2398/book-crud"
-                  demoLink="https://ahmed2398.github.io/book-crud/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={calCImg}
-                  isBlog={false}
-                  title="CalcPro: Advanced Calculator Application"
-                  description="Developed a feature-rich calculator application capable of performing complex arithmetic operations. This project showcases my skills in creating intuitive user interfaces and implementing mathematical logic in web applications."
-                  ghLink="https://github.com/Ahmed2398/Calculator-app"
-                  demoLink="https://ahmed2398.github.io/Calculator-app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={netflixImg}
-                  isBlog={false}
-                  title="NetflixClone: Responsive Landing Page"
-                  description="Recreated the Netflix landing page with responsive design, demonstrating my frontend development skills and attention to detail in replicating complex user interfaces."
-                  ghLink="https://github.com/Ahmed2398/netflix"
-                  demoLink="https://ahmed2398.github.io/netflix/index.html"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={ProductFilter}
-                  isBlog={false}
-                  title="ProductFilter: Dynamic Product Search System"
-                  description="Engineered a responsive product filtering system with real-time search and category filtering capabilities. This project showcases my skills in creating dynamic, user-friendly interfaces for e-commerce applications."
-                  ghLink="https://github.com/Ahmed2398/product-filter"
-                  demoLink="https://products-filters.netlify.app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={Cyborg}
-                  isBlog={false}
-                  title="Cyborg: Responsive Gaming Platform Interface"
-                  description="Designed and developed a responsive website for a gaming platform, demonstrating my ability to create engaging, mobile-friendly interfaces for entertainment websites."
-                  ghLink="https://github.com/Ahmed2398/companyTech"
-                  demoLink="https://ahmed2398.github.io/companyTech/index.html"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={xo}
-                  isBlog={false}
-                  title="TicTacPro: Advanced Tic-Tac-Toe Game"
-                  description="Created an interactive Tic-Tac-Toe game with enhanced features and a user-friendly interface. This project demonstrates my skills in game logic implementation and interactive web application development."
-                  ghLink="https://github.com/Ahmed2398/Tic-Tac-Toe"
-                  demoLink="https://ahmed2398.github.io/Tic-Tac-Toe/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={cartLogic}
-                  isBlog={false}
-                  title="CartLogic: E-commerce Cart System"
-                  description="Developed a sophisticated shopping cart system with advanced logic for product management. This project showcases my ability to create complex e-commerce functionalities and responsive product pages."
-                  ghLink="https://github.com/Ahmed2398/Responsive-landing-page-For-products-sale"
-                  demoLink="https://ahmed2398.github.io/Responsive-landing-page-For-products-sale/ecommerce-product-page-main/index.html#"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={meal}
-                  isBlog={false}
-                  title="Mealify: Culinary Experience Landing Page"
-                  description="Designed and developed a visually appealing landing page for a meal service, demonstrating my skills in creating engaging, conversion-oriented web interfaces for the food industry."
-                  ghLink="https://github.com/Ahmed2398/Mealify"
-                  demoLink="https://ahmed2398.github.io/Mealify/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={taskmanager}
-                  isBlog={false}
-                  title="TaskMaster: Comprehensive Task Management System"
-                  description="Engineered a full-featured task management application with CRUD operations, showcasing my ability to create practical, user-friendly tools for productivity and organization."
-                  ghLink="https://github.com/Ahmed2398/Task-manager"
-                  demoLink="https://tasksmanagers.netlify.app/"
-              />
-            </Col>
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={github}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="GitHubExplorer: User Search Application"*/}
+            {/*      description="Developed a GitHub user search application that leverages the GitHub API. This project showcases my skills in working with external APIs and creating dynamic search functionalities."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/github-user-search-app-main"*/}
+            {/*      demoLink="https://ahmed2398.github.io/github-user-search-app-main/github-user-search-app-main/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={bookcrud}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="BookManager: JavaScript CRUD Application"*/}
+            {/*      description="Created a book management system with full CRUD functionality using vanilla JavaScript. This project demonstrates my ability to build interactive web applications with complex data operations."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/book-crud"*/}
+            {/*      demoLink="https://ahmed2398.github.io/book-crud/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={calCImg}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="CalcPro: Advanced Calculator Application"*/}
+            {/*      description="Developed a feature-rich calculator application capable of performing complex arithmetic operations. This project showcases my skills in creating intuitive user interfaces and implementing mathematical logic in web applications."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Calculator-app"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Calculator-app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={netflixImg}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="NetflixClone: Responsive Landing Page"*/}
+            {/*      description="Recreated the Netflix landing page with responsive design, demonstrating my frontend development skills and attention to detail in replicating complex user interfaces."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/netflix"*/}
+            {/*      demoLink="https://ahmed2398.github.io/netflix/index.html"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={ProductFilter}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="ProductFilter: Dynamic Product Search System"*/}
+            {/*      description="Engineered a responsive product filtering system with real-time search and category filtering capabilities. This project showcases my skills in creating dynamic, user-friendly interfaces for e-commerce applications."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/product-filter"*/}
+            {/*      demoLink="https://products-filters.netlify.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={Cyborg}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="Cyborg: Responsive Gaming Platform Interface"*/}
+            {/*      description="Designed and developed a responsive website for a gaming platform, demonstrating my ability to create engaging, mobile-friendly interfaces for entertainment websites."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/companyTech"*/}
+            {/*      demoLink="https://ahmed2398.github.io/companyTech/index.html"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={xo}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="TicTacPro: Advanced Tic-Tac-Toe Game"*/}
+            {/*      description="Created an interactive Tic-Tac-Toe game with enhanced features and a user-friendly interface. This project demonstrates my skills in game logic implementation and interactive web application development."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Tic-Tac-Toe"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Tic-Tac-Toe/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={cartLogic}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="CartLogic: E-commerce Cart System"*/}
+            {/*      description="Developed a sophisticated shopping cart system with advanced logic for product management. This project showcases my ability to create complex e-commerce functionalities and responsive product pages."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Responsive-landing-page-For-products-sale"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Responsive-landing-page-For-products-sale/ecommerce-product-page-main/index.html#"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={meal}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="Mealify: Culinary Experience Landing Page"*/}
+            {/*      description="Designed and developed a visually appealing landing page for a meal service, demonstrating my skills in creating engaging, conversion-oriented web interfaces for the food industry."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Mealify"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Mealify/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={taskmanager}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="TaskMaster: Comprehensive Task Management System"*/}
+            {/*      description="Engineered a full-featured task management application with CRUD operations, showcasing my ability to create practical, user-friendly tools for productivity and organization."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Task-manager"*/}
+            {/*      demoLink="https://tasksmanagers.netlify.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
           </Row>
         </Container>
       </Container>
