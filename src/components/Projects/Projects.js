@@ -39,6 +39,10 @@ import weathervue from "../../Assets/Projects/weatherapp.png";
 import clinic from "../../Assets/Projects/clinic.png"
 import jawwal from "../../Assets/Projects/jawwal.png"
 import haat from "../../Assets/Projects/haat.png"
+import luxe from "../../Assets/Projects/luxe.png"
+import fusion from "../../Assets/Projects/fusion.png"
+
+
 
 function Projects() {
   return (
@@ -70,6 +74,31 @@ function Projects() {
                   demoLink="https://bagisto.jawwal.io/"
               />
             </Col>
+
+            <Col md={4} className="project-card">
+              <ProjectCard
+                  imgPath={luxe}
+                  isBlog={false}
+                  title="Luxe Clinic: Unveiling Luxurious Beauty"
+                  description="Discover Timeless Beauty at Luxe Clinic – Where Excellence Meets Elegance"
+                  demoLink="https://luxeaestheticss.com/"
+              />
+            </Col>
+
+
+            <Col md={4} className="project-card">
+              <ProjectCard
+                  imgPath={fusion}
+                  isBlog={false}
+                  title="Fusion Architecture"
+                  description="Fusion Architecture is a design practice specializing in modern architecture, interior design, and landscaping. We create exceptional public and private spaces that are not only inspiring to inhabit but also harmoniously integrated with their surroundings. As a full-service firm, Fusion Architecture oversees projects from concept to completion, ensuring a seamless and cohesive design experience."
+                  demoLink="https://www.fusion-innovations.co/"
+              />
+            </Col>
+
+
+
+
             <Col md={4} className="project-card">
               <ProjectCard
                   imgPath={sport}
