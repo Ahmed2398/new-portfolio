@@ -172,116 +172,116 @@ function Projects() {
                   demoLink="https://ahmed2398.github.io/Doctor-Project/index.html"
               />
             </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={techno}
-                  isBlog={false}
-                  title="Techno: Corporate Visibility Enhancement Platform"
-                  description="Created a dynamic website for enhancing corporate visibility and control. This project showcases my ability to develop solutions that improve business processes and client engagement through intuitive web interfaces."
-                  ghLink="https://github.com/Ahmed2398/companyTech"
-                  demoLink="https://ahmed2398.github.io/companyTech/index.html"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={foodwebsite}
-                  isBlog={false}
-                  title="Foodera: React & Sanity CMS Integration"
-                  description="Engineered a modern food ordering platform using React and Sanity CMS, demonstrating my proficiency in creating dynamic, content-rich web applications. This project highlights my skills in frontend development and CMS integration."
-                  ghLink="https://github.com/Ahmed2398/food-app"
-                  demoLink="https://foodera-app.netlify.app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={courses}
-                  isBlog={false}
-                  title="EduBook: Advanced Course Reservation System"
-                  description="Developed a comprehensive frontend solution for online course and academic reservations. This project showcases my ability to create user-friendly interfaces for educational platforms, enhancing the learning experience."
-                  ghLink="https://github.com/Ahmed2398/Education"
-                  demoLink="https://ahmed2398.github.io/Education/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={gymapp}
-                  isBlog={false}
-                  title="FitLife: React-based Fitness Companion"
-                  description="Created a feature-rich gym application using React and RapidAPI, demonstrating my skills in building interactive fitness platforms. This project highlights my ability to integrate external APIs and create engaging user experiences."
-                  ghLink="https://github.com/Ahmed2398/gym-app"
-                  demoLink="https://gym98.netlify.app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={BankWebsite}
-                  isBlog={false}
-                  title="ModernBank: Next-Gen Banking Experience"
-                  description="Designed and developed a modern banking website that showcases advanced financial features and user-friendly interfaces. This project demonstrates my ability to create secure and intuitive platforms for the finance sector."
-                  ghLink="https://github.com/Ahmed2398/Bankist-webSite"
-                  demoLink="https://ahmed2398.github.io/Bankist-webSite/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={movie}
-                  isBlog={false}
-                  title="CineVue: Vue.js-powered Movie Information Hub"
-                  description="Developed a dynamic movie information application using Vue.js and external APIs. This project showcases my proficiency in creating interactive, data-driven web applications with modern frontend frameworks."
-                  ghLink="https://github.com/Ahmed2398/movie-app"
-                  demoLink="https://movie-app-ahmed2398.vercel.app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={mapApp}
-                  isBlog={false}
-                  title="MapExplorer: Interactive Mapping Solution"
-                  description="Created an advanced mapping application that allows users to interact with and navigate through digital maps. This project demonstrates my skills in geospatial web development and user interface design for location-based services."
-                  ghLink="https://github.com/Ahmed2398/MapApp"
-                  demoLink="https://ahmed2398.github.io/MapApp/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={musicCrud}
-                  isBlog={false}
-                  title="MeloManage: Music CRUD Application with Authentication"
-                  description="Developed a full-featured music management system with CRUD operations and user authentication. This project showcases my ability to create secure, database-driven web applications with complex user interactions."
-                  ghLink="https://github.com/Ahmed2398/muso-ninjas"
-                  demoLink="https://muso-ninjas-d7124.web.app/login"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={wather}
-                  isBlog={false}
-                  title="WeatherNow: JavaScript Weather API Integration"
-                  description="Engineered a responsive weather application using JavaScript and external weather APIs. This project demonstrates my proficiency in working with RESTful APIs and creating dynamic, data-driven web applications."
-                  ghLink="https://github.com/Ahmed2398/weatherJs"
-                  demoLink="https://ahmed2398.github.io/weatherJs/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={weathervue}
-                  isBlog={false}
-                  title="VueWeather: Vue.js Weather Application"
-                  description="Developed a sleek, user-friendly weather application using Vue.js and weather APIs. This project showcases my skills in creating responsive, real-time web applications with modern JavaScript frameworks."
-                  ghLink="https://github.com/Ahmed2398/weatherApp"
-                  demoLink="https://weatherapp-ahmed2398.vercel.app/"
-              />
-            </Col>
-            <Col md={4} className="project-card">
-              <ProjectCard
-                  imgPath={chatvue}
-                  isBlog={false}
-                  title="VueChat: Real-time Messaging Platform"
-                  description="Created a live chat application using Vue.js, featuring real-time messaging and room creation capabilities. This project demonstrates my proficiency in developing interactive, real-time web applications."
-                  ghLink="https://github.com/Ahmed2398/live-chat"
-                  demoLink="https://live-chat-bay.vercel.app/"
-              />
-            </Col>
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={techno}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="Techno: Corporate Visibility Enhancement Platform"*/}
+            {/*      description="Created a dynamic website for enhancing corporate visibility and control. This project showcases my ability to develop solutions that improve business processes and client engagement through intuitive web interfaces."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/companyTech"*/}
+            {/*      demoLink="https://ahmed2398.github.io/companyTech/index.html"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={foodwebsite}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="Foodera: React & Sanity CMS Integration"*/}
+            {/*      description="Engineered a modern food ordering platform using React and Sanity CMS, demonstrating my proficiency in creating dynamic, content-rich web applications. This project highlights my skills in frontend development and CMS integration."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/food-app"*/}
+            {/*      demoLink="https://foodera-app.netlify.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={courses}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="EduBook: Advanced Course Reservation System"*/}
+            {/*      description="Developed a comprehensive frontend solution for online course and academic reservations. This project showcases my ability to create user-friendly interfaces for educational platforms, enhancing the learning experience."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Education"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Education/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={gymapp}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="FitLife: React-based Fitness Companion"*/}
+            {/*      description="Created a feature-rich gym application using React and RapidAPI, demonstrating my skills in building interactive fitness platforms. This project highlights my ability to integrate external APIs and create engaging user experiences."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/gym-app"*/}
+            {/*      demoLink="https://gym98.netlify.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={BankWebsite}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="ModernBank: Next-Gen Banking Experience"*/}
+            {/*      description="Designed and developed a modern banking website that showcases advanced financial features and user-friendly interfaces. This project demonstrates my ability to create secure and intuitive platforms for the finance sector."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/Bankist-webSite"*/}
+            {/*      demoLink="https://ahmed2398.github.io/Bankist-webSite/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={movie}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="CineVue: Vue.js-powered Movie Information Hub"*/}
+            {/*      description="Developed a dynamic movie information application using Vue.js and external APIs. This project showcases my proficiency in creating interactive, data-driven web applications with modern frontend frameworks."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/movie-app"*/}
+            {/*      demoLink="https://movie-app-ahmed2398.vercel.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={mapApp}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="MapExplorer: Interactive Mapping Solution"*/}
+            {/*      description="Created an advanced mapping application that allows users to interact with and navigate through digital maps. This project demonstrates my skills in geospatial web development and user interface design for location-based services."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/MapApp"*/}
+            {/*      demoLink="https://ahmed2398.github.io/MapApp/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={musicCrud}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="MeloManage: Music CRUD Application with Authentication"*/}
+            {/*      description="Developed a full-featured music management system with CRUD operations and user authentication. This project showcases my ability to create secure, database-driven web applications with complex user interactions."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/muso-ninjas"*/}
+            {/*      demoLink="https://muso-ninjas-d7124.web.app/login"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={wather}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="WeatherNow: JavaScript Weather API Integration"*/}
+            {/*      description="Engineered a responsive weather application using JavaScript and external weather APIs. This project demonstrates my proficiency in working with RESTful APIs and creating dynamic, data-driven web applications."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/weatherJs"*/}
+            {/*      demoLink="https://ahmed2398.github.io/weatherJs/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={weathervue}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="VueWeather: Vue.js Weather Application"*/}
+            {/*      description="Developed a sleek, user-friendly weather application using Vue.js and weather APIs. This project showcases my skills in creating responsive, real-time web applications with modern JavaScript frameworks."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/weatherApp"*/}
+            {/*      demoLink="https://weatherapp-ahmed2398.vercel.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
+            {/*<Col md={4} className="project-card">*/}
+            {/*  <ProjectCard*/}
+            {/*      imgPath={chatvue}*/}
+            {/*      isBlog={false}*/}
+            {/*      title="VueChat: Real-time Messaging Platform"*/}
+            {/*      description="Created a live chat application using Vue.js, featuring real-time messaging and room creation capabilities. This project demonstrates my proficiency in developing interactive, real-time web applications."*/}
+            {/*      ghLink="https://github.com/Ahmed2398/live-chat"*/}
+            {/*      demoLink="https://live-chat-bay.vercel.app/"*/}
+            {/*  />*/}
+            {/*</Col>*/}
             {/*<Col md={4} className="project-card">*/}
             {/*  <ProjectCard*/}
             {/*      imgPath={github}*/}
