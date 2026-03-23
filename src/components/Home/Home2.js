@@ -1,91 +1,86 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
-import Tilt from "react-parallax-tilt";
-import {
-  AiFillGithub,
-  AiOutlineTwitter,
-  AiFillInstagram,
-} from "react-icons/ai";
-import { FaLinkedinIn } from "react-icons/fa";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { AiOutlineDownload } from "react-icons/ai";
+import { BsArrowRight } from "react-icons/bs";
+import ImpactStats from "./ImpactStats";
 
 function Home2() {
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
         <Row>
-          <Col md={8} className="home-about-description">
-            <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+          <Col md={12} className="home-about-header">
+            <h1 className="impact-heading">
+              Building High-Performance Frontend Systems
+              <br />
+              <span className="purple">With Real Business Impact</span>
             </h1>
-            <p className="home-about-body">
-              I am a passionate and dedicated software engineer with extensive experience in both frontend and backend
-              development. My expertise spans across various technologies and platforms, allowing me to build robust,
-              dynamic, and visually appealing websites and applications.
-              <br/>
-              <br/>
-              As a frontend developer, I specialize in creating engaging, responsive user interfaces using modern
-              frameworks and libraries such as <b className="purple"> React, Angular, and Vue, along with jQuery and
-              Bootstrap.</b> My proficiency in <b className="purple"> HTML, CSS, and JavaScript</b> ensures that I can
-              bring any design to life with
-              precision and creativity.
-
-              On the backend, I am skilled in server-side languages and frameworks such as <b
-                className="purple"> Node.js, Express.js,PHP, Laravel and Cake Php.</b>
-              I have a strong command of managing databases like <b className="purple"> MySQL, MongoDB, and
-              PostgreSQL,</b>
-              and I excel at creating
-              and consuming<b className="purple"> RESTful APIs</b> to ensure seamless communication between the frontend
-              and
-              backend of
-              applications.
-
-              In addition to my full-stack capabilities,
-              <br/>
-              <br/>
-              I am also an experienced WordPress developer. I have a solid
-              foundation in creating functional and visually appealing websites using WordPress. My experience includes
-              customizing themes, developing plugins, and optimizing websites for performance and SEO, enabling me to
-              deliver tailored solutions that meet clients' needs.
-
-              My commitment to continuous learning and staying updated with the latest industry trends ensures that I
-              can always provide the best solutions and maintain a high standard of quality in my work.
+            <p className="impact-subtitle">
+              Front-End Engineer focused on scalable architecture, performance optimization, and delivering production-grade solutions for SaaS & FinTech.
             </p>
-          </Col>
-          <Col md={4} className="myAvtar">
-            <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
-            </Tilt>
           </Col>
         </Row>
-        <Row>
-          <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
-            <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href="https://github.com/Ahmed2398"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/ahmed-ashraf-a9b62918b/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-            </ul>
+
+        <Row className="overview-content">
+          <Col lg={7} md={12} className="overview-text">
+            <div className="info-block">
+              <h2 className="block-title">What I Do</h2>
+              <ul className="capabilities-list">
+                <li className="capability-item">
+                  <span className="capability-icon">⚡</span>
+                  <span>Build real-time data-driven systems with React, Next.js & Vue</span>
+                </li>
+                <li className="capability-item">
+                  <span className="capability-icon">🚀</span>
+                  <span>Optimize performance using SSR, code splitting & lazy loading</span>
+                </li>
+                <li className="capability-item">
+                  <span className="capability-icon">🏗️</span>
+                  <span>Design scalable UI architectures with modern state management</span>
+                </li>
+                <li className="capability-item">
+                  <span className="capability-icon">🔧</span>
+                  <span>Full-stack delivery with Node.js, Laravel & REST APIs</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="info-block">
+              <h2 className="block-title">Core Stack</h2>
+              <div className="stack-grid">
+                <div className="stack-category">
+                  <h3 className="stack-category-title">Frontend</h3>
+                  <p className="stack-items">React • Next.js • Vue.js • TypeScript</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">State & Data</h3>
+                  <p className="stack-items">Redux Toolkit • React Query • Zustand</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">Styling</h3>
+                  <p className="stack-items">Tailwind CSS • Material UI • SASS</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">Backend Edge</h3>
+                  <p className="stack-items">Node.js • Laravel • WebSockets</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="cta-section">
+              <Button variant="primary" className="cta-button primary-cta" href="#projects">
+                View My Projects
+                <BsArrowRight className="cta-icon" />
+              </Button>
+              <Button variant="outline" className="cta-button secondary-cta">
+                <AiOutlineDownload className="cta-icon" />
+                Download Resume
+              </Button>
+            </div>
+          </Col>
+
+          <Col lg={5} md={12} className="overview-stats">
+            <ImpactStats />
           </Col>
         </Row>
       </Container>
