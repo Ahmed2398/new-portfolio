@@ -87,6 +87,7 @@ button:focus {
   transition: all 0.3s ease-out 0s !important;
   padding: 0.3rem 2rem !important;
   font-size: 1.2rem !important;
+  z-index: 1000 !important;
 }
 
 .navbar-toggler {
@@ -223,7 +224,19 @@ button:focus {
 
 @media (max-width: 767px) {
   .logo-text-animated {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+  }
+
+  .logo-tag {
+    font-size: 0.95rem;
+  }
+
+  .logo-name {
+    font-size: 1.1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 1rem;
   }
 }
 
@@ -240,6 +253,12 @@ button:focus {
 @media (max-width: 767px) {
   .nav-link {
     padding: 0.7rem 1rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  .nav-link svg {
+    font-size: 0.95rem !important;
+    margin-bottom: 2px !important;
   }
 }
 
@@ -686,36 +705,88 @@ button:focus {
 @media (max-width: 767px) {
   .home-section {
     min-height: auto;
+    padding: 0 !important;
+  }
+
+  .home-content {
+    padding-top: 100px !important;
+  }
+
+  .hero-left {
+    padding: 30px 20px !important;
+  }
+
+  .hero-right {
+    padding: 30px 20px !important;
   }
 
   .hero-name {
-    font-size: 2.8em;
+    font-size: 2.5em;
+    word-wrap: break-word;
   }
 
   .Typewriter__wrapper {
-    font-size: 1.3em !important;
+    font-size: 1.2em !important;
+    word-wrap: break-word;
   }
 
   .Typewriter__cursor {
-    font-size: 1.3em !important;
+    font-size: 1.2em !important;
   }
 
   .hero-description {
-    font-size: 1.1em;
+    font-size: 1em;
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-one-liner {
+    font-size: 1em;
+    padding: 15px 0;
+    padding-left: 15px;
+    margin: 20px 0;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-highlights {
+    gap: 12px;
+    margin: 25px 0;
+  }
+
+  .highlight-item {
+    font-size: 0.95em;
+    padding: 12px;
   }
 
   .hero-cta-section {
     flex-direction: column;
+    gap: 12px;
   }
 
   .hero-cta-primary,
   .hero-cta-secondary {
     width: 100%;
     justify-content: center !important;
+    font-size: 0.9em;
+    padding: 12px 18px !important;
+  }
+
+  .cta-arrow,
+  .cta-download-icon {
+    font-size: 1em !important;
   }
 
   .hero-social-proof {
     flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .social-proof-item {
+    font-size: 0.9em;
   }
 }
 
@@ -1458,28 +1529,40 @@ button:focus {
   .footer {
     padding-top: 40px !important;
     padding-bottom: 30px !important;
+    text-align: center !important;
+  }
+
+  .footer .row {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-copywright {
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    font-size: 0.85em;
   }
 
   .footer-body {
     gap: 20px;
+    order: -1;
+    margin-bottom: 10px;
   }
 
   .footer-icons {
-    gap: 15px;
+    gap: 20px;
+    justify-content: center !important;
   }
 
   .footer-icons .social-icons a {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2em;
+    width: 50px;
+    height: 50px;
+    font-size: 1.3em;
   }
 
   .footer h3 {
-    font-size: 0.95em;
-  }
-
-  .footer-copywright {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    line-height: 1.6;
   }
 }
 /* --------- */
@@ -3196,6 +3279,9 @@ button:focus {
   font-weight: 500;
   color: #e2e8f0;
   margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Availability Card Special Styling */
@@ -3403,5 +3489,19 @@ button:focus {
 
   .info-content {
     text-align: left;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .info-content h3 {
+    font-size: 0.9em;
+  }
+
+  .info-content p {
+    font-size: 0.95em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.5;
   }
 }
