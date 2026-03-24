@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { AiOutlineDownload, AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
@@ -18,7 +19,7 @@ function Home() {
           <Row className="hero-row">
             <Col lg={6} md={12} className="hero-left">
               <div className="hero-content">
-                <p className="hero-greeting">Frontend Engineer</p>
+                <p className="hero-greeting">Software Engineer</p>
                 <h1 className="hero-name">
                   <span className="name-text">Ahmed Ashraf</span>
                 </h1>
@@ -44,7 +45,7 @@ function Home() {
                   </div>
                   <div className="highlight-item">
                     <span className="highlight-icon">✓</span>
-                    <span className="highlight-text">10+ Projects Delivered</span>
+                    <span className="highlight-text">26 Projects Delivered</span>
                   </div>
                   <div className="highlight-item">
                     <span className="highlight-icon">✓</span>
@@ -57,11 +58,16 @@ function Home() {
                 </div>
 
                 <div className="hero-cta-section">
-                  <Button variant="primary" className="hero-cta-primary" href="#projects">
+                  <Button variant="primary" className="hero-cta-primary" as={Link} to="/project">
                     View Projects
                     <BsArrowRight className="cta-arrow" />
                   </Button>
-                  <Button variant="outline" className="hero-cta-secondary">
+                  <Button 
+                    variant="outline" 
+                    className="hero-cta-secondary"
+                    href={require("../../Assets/Ahmed Ashraf_fullstack.pdf")}
+                    download="Ahmed Ashraf_fullstack.pdf"
+                  >
                     <AiOutlineDownload className="cta-download-icon" />
                     Download CV
                   </Button>

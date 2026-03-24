@@ -1,7 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { AiOutlineDownload } from "react-icons/ai";
-import { BsArrowRight } from "react-icons/bs";
+import { Container, Row, Col } from "react-bootstrap";
 import ImpactStats from "./ImpactStats";
 
 function Home2() {
@@ -11,12 +9,12 @@ function Home2() {
         <Row>
           <Col md={12} className="home-about-header">
             <h1 className="impact-heading">
-              Building High-Performance Frontend Systems
+              Crafting Scalable Web Solutions
               <br />
-              <span className="purple">With Real Business Impact</span>
+              <span className="purple">That Drive Business Growth</span>
             </h1>
             <p className="impact-subtitle">
-              Front-End Engineer focused on scalable architecture, performance optimization, and delivering production-grade solutions for SaaS & FinTech.
+              Specialized in building enterprise-grade applications with modern technologies, delivering measurable results through clean code and optimal performance.
             </p>
           </Col>
         </Row>
@@ -28,19 +26,27 @@ function Home2() {
               <ul className="capabilities-list">
                 <li className="capability-item">
                   <span className="capability-icon">⚡</span>
-                  <span>Build real-time data-driven systems with React, Next.js & Vue</span>
+                  <span>Turn business ideas and requirements into clear, actionable product solutions — not just code</span>
                 </li>
                 <li className="capability-item">
                   <span className="capability-icon">🚀</span>
-                  <span>Optimize performance using SSR, code splitting & lazy loading</span>
+                  <span>Build fast, scalable web applications that improve user experience, engagement, and conversion</span>
+                </li>
+                <li className="capability-item">
+                  <span className="capability-icon">📊</span>
+                  <span>Use data and real-time systems to support product decisions and business growth</span>
                 </li>
                 <li className="capability-item">
                   <span className="capability-icon">🏗️</span>
-                  <span>Design scalable UI architectures with modern state management</span>
+                  <span>Design maintainable architectures that scale from early-stage startups to enterprise systems</span>
+                </li>
+                <li className="capability-item">
+                  <span className="capability-icon">🤝</span>
+                  <span>Collaborate across teams (product, design, backend) to deliver reliable, production-ready solutions</span>
                 </li>
                 <li className="capability-item">
                   <span className="capability-icon">🔧</span>
-                  <span>Full-stack delivery with Node.js, Laravel & REST APIs</span>
+                  <span>Own the full development lifecycle — from requirement validation to deployment and optimization</span>
                 </li>
               </ul>
             </div>
@@ -65,17 +71,6 @@ function Home2() {
                   <p className="stack-items">Node.js • Laravel • WebSockets</p>
                 </div>
               </div>
-            </div>
-
-            <div className="cta-section">
-              <Button variant="primary" className="cta-button primary-cta" href="#projects">
-                View My Projects
-                <BsArrowRight className="cta-icon" />
-              </Button>
-              <Button variant="outline" className="cta-button secondary-cta">
-                <AiOutlineDownload className="cta-icon" />
-                Download Resume
-              </Button>
             </div>
           </Col>
 

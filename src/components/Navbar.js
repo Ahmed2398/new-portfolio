@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import logo from "../Assets/logo.png";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
@@ -12,9 +11,11 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineDownload,
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
+import pdf from "../Assets/Ahmed Ashraf_fullstack.pdf";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
@@ -38,9 +39,13 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        <Navbar.Brand href="/" className="d-flex">
-          {/*<img src={logo} className="img-fluid logo" alt="brand" />*/}
-          <h1>Ahmed Ashraf</h1>
+        <Navbar.Brand href="/" className="d-flex align-items-center">
+          <h1 className="logo-text-animated">
+            <span className="logo-tag">&lt;</span>
+            <span className="logo-name">Ahmed</span>
+            <span className="logo-subtitle"> Ashraf</span>
+            <span className="logo-tag">/&gt;</span>
+          </h1>
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -91,6 +96,29 @@ function NavBar() {
               >
                 <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
+              <Nav.Link
+                as={Link}
+                to="/contact"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineUser style={{ marginBottom: "2px" }} /> Contact Me
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item className="download-cv-btn">
+              <Button
+                variant="primary"
+                href={pdf}
+                download="Ahmed_Ashraf_CV.pdf"
+                className="cv-download-button"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiOutlineDownload style={{ marginBottom: "2px" }} />
+                &nbsp;Download CV
+              </Button>
             </Nav.Item>
 
             {/*<Nav.Item>*/}

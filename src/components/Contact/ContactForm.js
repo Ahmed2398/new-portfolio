@@ -13,6 +13,7 @@ function ContactForm() {
   });
 
   const [status, setStatus] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,18 +22,41 @@ function ContactForm() {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("Message sent successfully!");
-    setTimeout(() => {
-      setStatus("");
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setStatus("");
+
+    const formDataToSend = new FormData(event.target);
+    formDataToSend.append("access_key", "998dce56-ab55-427a-8b2e-e9e275fc92f8");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend
       });
-    }, 3000);
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("✓ Message sent successfully! I'll get back to you soon.");
+        event.target.reset();
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        console.log("Form error:", data);
+        setStatus("✗ Failed to send message. Please try again or email me directly.");
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatus("✗ Failed to send message. Please try again or email me directly at ahmedashraf2398@gmail.com");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -61,7 +85,19 @@ function ContactForm() {
               </div>
               <div className="info-content">
                 <h3>Email</h3>
-                <p>ahmed.ashraf@example.com</p>
+                <p>ahmedashraf2398@gmail.com</p>
+              </div>
+            </div>
+
+            <div className="info-item glass-card">
+              <div className="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div className="info-content">
+                <h3>Phone</h3>
+                <p>+20 1147266169</p>
               </div>
             </div>
 
@@ -167,13 +203,27 @@ function ContactForm() {
                 />
               </Form.Group>
 
-              <Button variant="primary" type="submit" className="submit-btn-modern">
-                <span>Send Message</span>
-                <BsArrowRight className="btn-arrow" />
+              {/* Honeypot field for spam protection - must be hidden */}
+              <input 
+                type="checkbox" 
+                name="botcheck" 
+                style={{ display: 'none' }} 
+                tabIndex="-1"
+                autoComplete="off"
+              />
+
+              <Button 
+                variant="primary" 
+                type="submit" 
+                className="submit-btn-modern"
+                disabled={isSubmitting}
+              >
+                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                {!isSubmitting && <BsArrowRight className="btn-arrow" />}
               </Button>
 
               {status && (
-                <div className="status-message">
+                <div className={`status-message ${status.includes('✓') ? 'success' : 'error'}`}>
                   {status}
                 </div>
               )}

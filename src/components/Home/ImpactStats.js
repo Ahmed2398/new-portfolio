@@ -14,22 +14,22 @@ function ImpactStats() {
 
         <Card className="stat-card">
           <Card.Body>
-            <div className="stat-number">10+</div>
+            <div className="stat-number">26</div>
             <div className="stat-label">Projects Delivered</div>
           </Card.Body>
         </Card>
 
         <Card className="stat-card">
           <Card.Body>
-            <div className="stat-number">3+</div>
+            <div className="stat-number">23</div>
             <div className="stat-label">Production Systems</div>
           </Card.Body>
         </Card>
 
         <Card className="stat-card">
           <Card.Body>
-            <div className="stat-number">40%</div>
-            <div className="stat-label">Performance Gains</div>
+            <div className="stat-number">15+</div>
+            <div className="stat-label">Technologies Mastered</div>
           </Card.Body>
         </Card>
       </div>

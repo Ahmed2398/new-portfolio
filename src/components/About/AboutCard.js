@@ -7,13 +7,13 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify", lineHeight: "1.8" }}>
-            Full-Stack Developer with <span className="purple">4+ years of experience</span> building scalable SaaS, FinTech, and RegTech applications using modern web technologies.
+            Full-Stack Engineer with <span className="purple">4+ years of experience</span> delivering scalable SaaS, FinTech, and RegTech products, with a strong focus on translating business needs into high-impact technical solutions.
             <br />
             <br />
-            Specialized in building <span className="purple">end-to-end solutions</span> from frontend interfaces with React.js, Next.js, and Vue.js to backend APIs with Node.js and Laravel, focusing on real-time data systems and performance optimization.
+            Experienced in building <span className="purple">end-to-end systems</span> — from intuitive, high-performance frontend applications (React, Next.js, Vue) to robust backend services (Node.js, Laravel) — with an emphasis on real-time data, system reliability, and performance optimization.
             <br />
             <br />
-            Expert in delivering <span className="purple">complete features across the full stack</span> - from database design and API architecture to responsive UIs and deployment - ensuring seamless integration and optimal performance at every layer.
+            Proven ability to <span className="purple">own features across the full lifecycle</span>: validating requirements, designing architecture, implementing scalable solutions, and optimizing for user experience, performance, and business outcomes.
           </p>
 
           <h3 className="tech-skills-heading">Technical Skills</h3>

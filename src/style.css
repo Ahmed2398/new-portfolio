@@ -159,6 +159,74 @@ button:focus {
   width: 2.5em !important;
 }
 
+/* Animated Logo Text */
+.logo-text-animated {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.logo-tag {
+  color: #3b82f6;
+  font-weight: 700;
+  animation: fadeIn 1s ease-out both;
+}
+
+.logo-name {
+  color: #3b82f6;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  animation: fadeIn 1s ease-out 0.2s both;
+}
+
+.logo-subtitle {
+  color: #ffffff;
+  font-weight: 400;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-text-animated {
+    font-size: 1.4rem;
+  }
+}
+
 .navbar-nav .nav-link {
   color: white !important;
   padding-right: 1rem !important;
@@ -1693,6 +1761,331 @@ button:focus {
   }
 }
 
+/* MODERN FILTERS - ENHANCED DESIGN */
+/* ============================================ */
+
+.modern-filters-container {
+  margin: 40px 0 50px 0;
+  padding: 30px;
+  background: rgba(17, 24, 39, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.filter-group {
+  margin-bottom: 30px;
+}
+
+.filter-group:last-of-type {
+  margin-bottom: 20px;
+}
+
+.filter-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-label h3 {
+  color: #e2e8f0;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.filter-icon {
+  font-size: 1.3em;
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.technology-filters {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.technology-filters::-webkit-scrollbar {
+  width: 6px;
+}
+
+.technology-filters::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 10px;
+}
+
+.technology-filters::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.4);
+  border-radius: 10px;
+}
+
+.technology-filters::-webkit-scrollbar-thumb:hover {
+  background: rgba(96, 165, 250, 0.6);
+}
+
+.modern-filter-btn {
+  padding: 10px 20px;
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(96, 165, 250, 0.2);
+  border-radius: 12px;
+  color: #94a3b8;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+}
+
+.modern-filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.modern-filter-btn:hover::before {
+  left: 100%;
+}
+
+.modern-filter-btn:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(96, 165, 250, 0.5);
+  color: #60a5fa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
+}
+
+.modern-filter-btn.active {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-color: #60a5fa;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  transform: translateY(-2px);
+}
+
+.modern-filter-btn.active::after {
+  content: '✓';
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.modern-filter-btn.active:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.6);
+}
+
+.tech-badge {
+  font-size: 0.85em;
+  padding: 8px 16px;
+}
+
+.active-filters {
+  margin-top: 25px;
+  padding: 20px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.active-filters-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.active-label {
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.active-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+}
+
+.active-tag {
+  padding: 6px 14px;
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 20px;
+  color: #e2e8f0;
+  font-size: 0.85em;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reset-filters-btn {
+  padding: 8px 18px;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  border-radius: 8px;
+  color: #fca5a5;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.reset-filters-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+  border-color: rgba(239, 68, 68, 0.6);
+  color: #fef2f2;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.results-count {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 4px solid #10b981;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.results-count span {
+  color: #d1d5db;
+  font-size: 0.95em;
+}
+
+.results-count strong {
+  color: #10b981;
+  font-size: 1.2em;
+  margin: 0 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+  .modern-filters-container {
+    padding: 25px 20px;
+    margin: 30px 0 40px 0;
+  }
+
+  .filter-label h3 {
+    font-size: 1em;
+  }
+
+  .modern-filter-btn {
+    padding: 8px 16px;
+    font-size: 0.85em;
+  }
+
+  .tech-badge {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 767px) {
+  .modern-filters-container {
+    padding: 20px 15px;
+    margin: 25px 0 35px 0;
+    border-radius: 15px;
+  }
+
+  .filter-group {
+    margin-bottom: 25px;
+  }
+
+  .filter-label {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .filter-label h3 {
+    font-size: 0.95em;
+  }
+
+  .filter-icon {
+    font-size: 1.1em;
+  }
+
+  .filter-buttons {
+    gap: 8px;
+  }
+
+  .modern-filter-btn {
+    padding: 7px 14px;
+    font-size: 0.8em;
+  }
+
+  .tech-badge {
+    padding: 6px 10px;
+    font-size: 0.75em;
+  }
+
+  .technology-filters {
+    max-height: 150px;
+  }
+
+  .active-filters {
+    padding: 15px;
+  }
+
+  .active-filters-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .active-tags {
+    width: 100%;
+  }
+
+  .reset-filters-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .results-count {
+    padding: 12px;
+  }
+
+  .results-count span {
+    font-size: 0.85em;
+  }
+
+  .results-count strong {
+    font-size: 1.1em;
+  }
+}
+
 /* Ensure equal card heights */
 .project-card {
   display: flex !important;
@@ -2422,15 +2815,50 @@ button:focus {
 .resume-section {
   position: relative !important;
   padding-top: 110px !important;
-  padding-bottom: 30px !important;
-  background-image: var(--section-background-color) !important;
+  padding-bottom: 80px !important;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%) !important;
   color: white !important;
+  min-height: 100vh;
 }
 
 .resume {
   padding-top: 50px;
   padding-bottom: 50px;
   justify-content: center;
+  flex-direction: column !important;
+  align-items: center;
+}
+
+/* PDF Page Styling */
+.resume .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+.resume .react-pdf__Page {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 
+              0 0 0 1px rgba(59, 130, 246, 0.1) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: #ffffff;
+  margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resume .react-pdf__Page:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(59, 130, 246, 0.3) !important;
+}
+
+.resume .react-pdf__Page canvas {
+  border-radius: 12px;
 }
 
 .resume-left {
@@ -2537,6 +2965,33 @@ button:focus {
   }
 }
 
+.download-cv-btn {
+  font-size: 1em !important;
+  padding-top: 10px !important;
+  margin-left: 10px !important;
+}
+
+.cv-download-button {
+  line-height: 1.4em !important;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  padding: 0.4rem 1.2rem !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+.cv-download-button:hover {
+  transform: translateY(-2px) !important;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5) !important;
+}
+
+.cv-download-button::after {
+  display: none !important;
+}
+
 .fork-btn {
   font-size: 1.1em !important;
   padding-top: 10px !important;
@@ -2563,19 +3018,73 @@ button:focus {
 /* CONTACT SECTION - GLASSMORPHISM DESIGN */
 /* ============================================ */
 
+.contact-page {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 120px !important;
+  padding-bottom: 120px !important;
+  background: 
+    radial-gradient(ellipse at 30% 50%, rgba(199, 112, 240, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(205, 95, 248, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%);
+}
+
+.contact-intro-section {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.contact-intro h1 {
+  font-size: 3.5em;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.contact-intro-text {
+  font-size: 1.3em;
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-intro-subtext {
+  font-size: 1.1em;
+  color: #94a3b8;
+  line-height: 1.8;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .contact-section {
   position: relative;
   padding-top: 120px !important;
   padding-bottom: 120px !important;
   background: 
-    radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
     linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 70px;
+  margin-bottom: 40px;
   animation: fadeInUp 0.6s ease-out;
 }
 
@@ -2605,7 +3114,7 @@ button:focus {
 }
 
 .contact-content {
-  margin-top: 50px;
+  margin-top: 20px;
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -2618,14 +3127,18 @@ button:focus {
   gap: 20px;
   position: relative;
   z-index: 2;
+  /* background: rgba(15, 23, 42, 0.4); */
+  /* backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(59, 130, 246, 0.1); */
 }
 
 /* Glassmorphism Cards */
 .glass-card {
-  background: rgba(30, 41, 59, 0.4) !important;
+  background: rgba(30, 41, 59, 0.5) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
   border-radius: 16px !important;
   padding: 28px !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -2638,10 +3151,10 @@ button:focus {
 }
 
 .glass-card:hover {
-  background: rgba(30, 41, 59, 0.6) !important;
-  border-color: rgba(96, 165, 250, 0.3) !important;
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
   transform: translateY(-5px) !important;
-  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.2) !important;
+  box-shadow: 0 16px 48px rgba(59, 130, 246, 0.3) !important;
 }
 
 /* Circular Gradient Icons */
@@ -2666,6 +3179,7 @@ button:focus {
 
 .info-content {
   flex: 1;
+  text-align: left;
 }
 
 .info-content h3 {
