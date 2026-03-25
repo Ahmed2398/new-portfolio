@@ -1,15 +1,11 @@
 html {
-  --section-background-color: linear-gradient(
-    to bottom left,
-    rgba(15, 23, 42, 0.95),
-    rgba(7, 15, 28, 0.98)
-  );
+  --section-background-color: linear-gradient(to bottom left,
+      rgba(15, 23, 42, 0.95),
+      rgba(7, 15, 28, 0.98));
 
-  --image-gradient: linear-gradient(
-    to bottom left,
-    rgba(15, 23, 42, 0.85),
-    rgba(7, 15, 28, 0.92)
-  );
+  --image-gradient: linear-gradient(to bottom left,
+      rgba(15, 23, 42, 0.85),
+      rgba(7, 15, 28, 0.92));
 
   --imp-text-color: #3b82f6;
 }
@@ -147,10 +143,12 @@ button:focus {
     font-size: 1.4rem !important;
     background-color: #0f172a !important;
   }
+
   .navbar-nav .nav-item a::after {
     display: none !important;
   }
 }
+
 .navbar-brand {
   color: rgb(250, 250, 250) !important;
 }
@@ -194,9 +192,11 @@ button:focus {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -207,6 +207,7 @@ button:focus {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -217,6 +218,7 @@ button:focus {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -296,10 +298,14 @@ button:focus {
 /* Home section */
 /* --------- */
 .wave {
-  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.1s; /* Change to speed up or slow down */
-  animation-iteration-count: infinite; /* Never stop waving :) */
-  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  animation-name: wave-animation;
+  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.1s;
+  /* Change to speed up or slow down */
+  animation-iteration-count: infinite;
+  /* Never stop waving :) */
+  transform-origin: 70% 70%;
+  /* Pivot around the bottom-left palm */
   display: inline-block;
 }
 
@@ -307,28 +313,38 @@ button:focus {
   0% {
     transform: rotate(0deg);
   }
+
   10% {
     transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
+  }
+
+  /* The following five values can be played with to make the waving more or less extreme */
   20% {
     transform: rotate(-8deg);
   }
+
   30% {
     transform: rotate(14deg);
   }
+
   40% {
     transform: rotate(-4deg);
   }
+
   50% {
     transform: rotate(10deg);
   }
+
   60% {
     transform: rotate(0deg);
-  } /* Reset for the last half to pause */
+  }
+
+  /* Reset for the last half to pause */
   100% {
     transform: rotate(0deg);
   }
 }
+
 #tsparticles {
   position: fixed !important;
   background-repeat: no-repeat !important;
@@ -344,7 +360,7 @@ button:focus {
 .home-section {
   position: relative;
   min-height: 100vh;
-  background: 
+  background:
     radial-gradient(ellipse at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 90% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
     linear-gradient(135deg, #0f172a 0%, #020617 100%);
@@ -359,7 +375,7 @@ button:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: 
+  background-image:
     radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
     radial-gradient(circle at 75% 75%, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
@@ -368,8 +384,13 @@ button:focus {
 }
 
 @keyframes backgroundMove {
-  0% { background-position: 0 0, 25px 25px; }
-  100% { background-position: 50px 50px, 75px 75px; }
+  0% {
+    background-position: 0 0, 25px 25px;
+  }
+
+  100% {
+    background-position: 50px 50px, 75px 75px;
+  }
 }
 
 .home-content {
@@ -631,13 +652,25 @@ button:focus {
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInLeft {
@@ -645,6 +678,7 @@ button:focus {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -656,6 +690,7 @@ button:focus {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -676,6 +711,7 @@ button:focus {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -802,8 +838,15 @@ button:focus {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 .preview-card {
@@ -984,9 +1027,12 @@ button:focus {
 }
 
 @keyframes floatBadge {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(2deg);
   }
@@ -1016,7 +1062,7 @@ button:focus {
   position: relative;
   padding-bottom: 120px !important;
   padding-top: 120px !important;
-  background: 
+  background:
     radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
     linear-gradient(135deg, rgba(15, 23, 42, 0.98) 0%, rgba(7, 15, 28, 1) 100%);
@@ -1030,7 +1076,7 @@ button:focus {
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
+  background:
     repeating-linear-gradient(90deg, rgba(59, 130, 246, 0.03) 0px, transparent 1px, transparent 80px, rgba(59, 130, 246, 0.03) 81px),
     repeating-linear-gradient(0deg, rgba(59, 130, 246, 0.03) 0px, transparent 1px, transparent 80px, rgba(59, 130, 246, 0.03) 81px);
   pointer-events: none;
@@ -1225,6 +1271,7 @@ button:focus {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1565,6 +1612,7 @@ button:focus {
     line-height: 1.6;
   }
 }
+
 /* --------- */
 /* Projects */
 /* --------- */
@@ -1592,16 +1640,16 @@ button:focus {
   background: rgba(15, 23, 42, 0.5) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
-  
+
   /* Edge lighting - gradient borders (top & left) */
   border: none !important;
   border-top: 1px solid rgba(96, 165, 250, 0.3) !important;
   border-left: 1px solid rgba(96, 165, 250, 0.2) !important;
   border-radius: 16px !important;
-  
+
   /* Soft black shadow for depth (not blue glow) */
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-  
+
   color: white !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
   height: 100% !important;
@@ -1613,8 +1661,8 @@ button:focus {
 .project-card-view:hover {
   /* Deeper shadow on hover */
   transform: translateY(-8px) !important;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 
-              0 0 40px rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(59, 130, 246, 0.15) !important;
   border-top-color: rgba(96, 165, 250, 0.5) !important;
   border-left-color: rgba(96, 165, 250, 0.4) !important;
   background: rgba(15, 23, 42, 0.65) !important;
@@ -1708,10 +1756,10 @@ button:focus {
   font-size: 0.95em !important;
   color: #cbd5e1 !important;
   line-height: 1.6 !important;
-  text-align: justify !important;
+  text-align: left !important;
   margin-bottom: 20px !important;
   flex: 1 !important;
-  
+
   /* Limit to 3-4 lines */
   display: -webkit-box !important;
   -webkit-line-clamp: 4 !important;
@@ -1750,7 +1798,7 @@ button:focus {
   color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5),
-              0 0 20px rgba(255, 255, 255, 0.2);
+    0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* GitHub Button - Secondary (Ghost/outlined style) */
@@ -1994,6 +2042,7 @@ button:focus {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2175,7 +2224,7 @@ button:focus {
   margin-bottom: 30px !important;
 }
 
-.project-card > div {
+.project-card>div {
   width: 100% !important;
 }
 
@@ -2281,10 +2330,12 @@ button:focus {
   background-color: #1d4ed8 !important;
   border-color: #1d4ed8 !important;
 }
+
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+
 .project-heading {
   color: white !important;
   font-size: 2.3em !important;
@@ -2330,6 +2381,7 @@ button:focus {
   overflow: hidden !important;
   border: 2.2px solid rgba(59, 130, 246, 0.8) !important;
 }
+
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
@@ -2498,17 +2550,42 @@ button:focus {
 }
 
 /* Code lines typing effect */
-.code-line-1 { animation: typing 2s ease-in-out infinite; }
-.code-line-2 { animation: typing 2s ease-in-out 0.2s infinite; }
-.code-line-3 { animation: typing 2s ease-in-out 0.4s infinite; }
-.code-line-4 { animation: typing 2s ease-in-out 0.6s infinite; }
-.code-line-5 { animation: typing 2s ease-in-out 0.8s infinite; }
+.code-line-1 {
+  animation: typing 2s ease-in-out infinite;
+}
+
+.code-line-2 {
+  animation: typing 2s ease-in-out 0.2s infinite;
+}
+
+.code-line-3 {
+  animation: typing 2s ease-in-out 0.4s infinite;
+}
+
+.code-line-4 {
+  animation: typing 2s ease-in-out 0.6s infinite;
+}
+
+.code-line-5 {
+  animation: typing 2s ease-in-out 0.8s infinite;
+}
 
 /* Badges float */
-.frontend-badge { animation: badgeFloat 3s ease-in-out infinite; }
-.backend-badge { animation: badgeFloat 3s ease-in-out 0.5s infinite; }
-.database-badge { animation: badgeFloat 3s ease-in-out 1s infinite; }
-.api-badge { animation: badgeFloat 3s ease-in-out 1.5s infinite; }
+.frontend-badge {
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.backend-badge {
+  animation: badgeFloat 3s ease-in-out 0.5s infinite;
+}
+
+.database-badge {
+  animation: badgeFloat 3s ease-in-out 1s infinite;
+}
+
+.api-badge {
+  animation: badgeFloat 3s ease-in-out 1.5s infinite;
+}
 
 /* Pulse dots */
 .pulse-dot {
@@ -2516,77 +2593,169 @@ button:focus {
 }
 
 /* Data flow lines */
-.flow-line-1 { animation: flowDash 3s linear infinite; }
-.flow-line-2 { animation: flowDash 3s linear 0.5s infinite; }
-.flow-line-3 { animation: flowDash 3s linear 1s infinite; }
-.flow-line-4 { animation: flowDash 3s linear 1.5s infinite; }
+.flow-line-1 {
+  animation: flowDash 3s linear infinite;
+}
+
+.flow-line-2 {
+  animation: flowDash 3s linear 0.5s infinite;
+}
+
+.flow-line-3 {
+  animation: flowDash 3s linear 1s infinite;
+}
+
+.flow-line-4 {
+  animation: flowDash 3s linear 1.5s infinite;
+}
 
 /* Floating particles */
 .particle {
   animation: particleFloat 4s ease-in-out infinite;
 }
 
-.particle-1 { animation-delay: 0s; }
-.particle-2 { animation-delay: 1s; }
-.particle-3 { animation-delay: 2s; }
-.particle-4 { animation-delay: 3s; }
+.particle-1 {
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  animation-delay: 1s;
+}
+
+.particle-3 {
+  animation-delay: 2s;
+}
+
+.particle-4 {
+  animation-delay: 3s;
+}
 
 /* Tech icons bounce */
-.tech-icon-1 { animation: iconBounce 2s ease-in-out infinite; }
-.tech-icon-2 { animation: iconBounce 2s ease-in-out 0.5s infinite; }
-.tech-icon-3 { animation: iconBounce 2s ease-in-out 1s infinite; }
-.tech-icon-4 { animation: iconBounce 2s ease-in-out 1.5s infinite; }
+.tech-icon-1 {
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+.tech-icon-2 {
+  animation: iconBounce 2s ease-in-out 0.5s infinite;
+}
+
+.tech-icon-3 {
+  animation: iconBounce 2s ease-in-out 1s infinite;
+}
+
+.tech-icon-4 {
+  animation: iconBounce 2s ease-in-out 1.5s infinite;
+}
 
 /* Keyframe Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 @keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes glow {
-  0%, 100% { filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5)); }
-  50% { filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8)); }
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+  }
 }
 
 @keyframes typing {
-  0%, 100% { opacity: 0.3; stroke-width: 1; }
-  50% { opacity: 1; stroke-width: 2.5; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+    stroke-width: 1;
+  }
+
+  50% {
+    opacity: 1;
+    stroke-width: 2.5;
+  }
 }
 
 @keyframes badgeFloat {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; r: 3; }
-  50% { opacity: 0.5; r: 5; }
+
+  0%,
+  100% {
+    opacity: 1;
+    r: 3;
+  }
+
+  50% {
+    opacity: 0.5;
+    r: 5;
+  }
 }
 
 @keyframes flowDash {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 20; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 20;
+  }
 }
 
 @keyframes particleFloat {
-  0%, 100% { 
+
+  0%,
+  100% {
     opacity: 0.3;
     transform: translate(0, 0) scale(1);
   }
-  50% { 
+
+  50% {
     opacity: 1;
     transform: translate(10px, -10px) scale(1.5);
   }
 }
 
 @keyframes iconBounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 991px) {
@@ -2891,6 +3060,7 @@ button:focus {
     font-size: 11px;
   }
 }
+
 /* --------- */
 /* Resume */
 /* --------- */
@@ -2899,7 +3069,7 @@ button:focus {
   position: relative !important;
   padding-top: 110px !important;
   padding-bottom: 80px !important;
-  background: 
+  background:
     radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
     linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%) !important;
@@ -2925,8 +3095,8 @@ button:focus {
 }
 
 .resume .react-pdf__Page {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 
-              0 0 0 1px rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.1) !important;
   border-radius: 12px !important;
   overflow: hidden;
   background: #ffffff;
@@ -2937,7 +3107,7 @@ button:focus {
 .resume .react-pdf__Page:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
-              0 0 0 1px rgba(59, 130, 246, 0.3) !important;
+    0 0 0 1px rgba(59, 130, 246, 0.3) !important;
 }
 
 .resume .react-pdf__Page canvas {
@@ -2963,6 +3133,7 @@ button:focus {
     padding-left: 15px !important;
   }
 }
+
 .resume .resume-title {
   font-size: 2em;
   font-weight: 700;
@@ -3039,10 +3210,12 @@ button:focus {
   animation-fill-mode: forwards;
   animation-duration: 0.85s;
 }
+
 @keyframes likeAnimation {
   0% {
     transform: scale(1.5);
   }
+
   100% {
     transform: scale(1);
   }
@@ -3093,6 +3266,7 @@ button:focus {
   background-color: rgba(59, 130, 246, 0.4) !important;
   border-color: rgba(59, 130, 246, 0.4) !important;
 }
+
 .fork-btn-inner::after {
   display: none !important;
 }
@@ -3106,7 +3280,7 @@ button:focus {
   min-height: 100vh;
   padding-top: 120px !important;
   padding-bottom: 120px !important;
-  background: 
+  background:
     radial-gradient(ellipse at 30% 50%, rgba(199, 112, 240, 0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 70% 50%, rgba(205, 95, 248, 0.08) 0%, transparent 50%),
     linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%);
@@ -3148,7 +3322,7 @@ button:focus {
   position: relative;
   padding-top: 120px !important;
   padding-bottom: 120px !important;
-  background: 
+  background:
     radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 50%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
     linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(7, 15, 28, 1) 100%);
@@ -3159,6 +3333,7 @@ button:focus {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -3439,6 +3614,7 @@ button:focus {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

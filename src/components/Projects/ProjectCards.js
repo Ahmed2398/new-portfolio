@@ -21,7 +21,7 @@ function ProjectCards(props) {
         )}
 
         <Card.Title className="project-title">{props.title}</Card.Title>
-        
+
         <Card.Text className="project-description">
           {props.description}
         </Card.Text>
@@ -36,7 +36,7 @@ function ProjectCards(props) {
               className="btn-demo"
             >
               <CgWebsite className="btn-icon" />
-              <span>Live Demo</span>
+              <span>Live</span>
             </a>
           )}
 

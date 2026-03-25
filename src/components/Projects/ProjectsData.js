@@ -15,7 +15,7 @@ const SCREENSHOT_API_KEY = process.env.REACT_APP_SCREENSHOT_API_KEY || "DEMO_KEY
 // Screenshot API URL generator
 const getScreenshot = (url) => {
   if (!url) return clinic; // Fallback to placeholder if no URL
-  
+
   // ScreenshotOne API with optimized settings for portfolio cards
   return `https://api.screenshotone.com/take?access_key=${SCREENSHOT_API_KEY}&url=${encodeURIComponent(url)}&viewport_width=1920&viewport_height=1080&device_scale_factor=1&format=webp&image_quality=80&block_ads=true&block_cookie_banners=true&block_trackers=true&cache=true&cache_ttl=2592000&full_page=false`;
 };
@@ -23,7 +23,7 @@ const getScreenshot = (url) => {
 // Mobile screenshot for mobile apps/responsive sites
 const getMobileScreenshot = (url) => {
   if (!url) return clinic;
-  
+
   // Mobile viewport (iPhone 12 Pro dimensions)
   return `https://api.screenshotone.com/take?access_key=${SCREENSHOT_API_KEY}&url=${encodeURIComponent(url)}&viewport_width=390&viewport_height=844&device_scale_factor=2&format=webp&image_quality=80&block_ads=true&block_cookie_banners=true&block_trackers=true&cache=true&cache_ttl=2592000&full_page=false`;
 };
@@ -129,7 +129,7 @@ export const projectsData = [
     imgPath: getMobileScreenshot("https://water-valley.net/"),
     title: "Water Valley – Mobile Lab App",
     description: "Built a React Native mobile app for lab test scheduling and result tracking. Designed a clean and simple mobile-first interface for patient use.",
-    techStack: ["React Native", "Mobile", "Healthcare", "iOS/Android"],
+    techStack: ["React Native", "Mobile", "iOS/Android"],
     demoLink: "https://water-valley.net/",
     category: "Frontend"
   },
@@ -205,16 +205,6 @@ export const projectsData = [
     techStack: ["WordPress", "WooCommerce", "E-commerce", "Medical"],
     demoLink: "https://deebotrade.com/en/",
     category: "WordPress"
-  },
-  {
-    id: 20,
-    imgPath: getScreenshot("https://ahmed2398.github.io/Doctor-Project/index.html"),
-    title: "DocConnect: Streamlined Medical Appointment System",
-    description: "Developed an intuitive online platform for doctor's appointments, featuring easy scheduling, doctor profiles, and area-based search. This project demonstrates my skills in creating user-centric healthcare solutions that improve patient experiences.",
-    techStack: ["JavaScript", "HTML/CSS", "Healthcare", "Booking"],
-    ghLink: "https://github.com/Ahmed2398/Doctor-Project",
-    demoLink: "https://ahmed2398.github.io/Doctor-Project/index.html",
-    category: "Frontend"
   },
   {
     id: 21,

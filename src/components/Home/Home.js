@@ -23,19 +23,17 @@ function Home() {
                 <h1 className="hero-name">
                   <span className="name-text">Ahmed Ashraf</span>
                 </h1>
-                
+
                 <div className="hero-typewriter">
                   <Type />
                 </div>
 
                 <p className="hero-description">
-                  I build high-performance SaaS and FinTech applications with focus on <strong>scalability</strong>, <strong>performance</strong>, and <strong>real business impact</strong>.
-                </p>
+                  Focused on building high-performance systems across the stack — from backend architecture and APIs to scalable frontend applications.                </p>
 
                 <div className="hero-one-liner">
                   <span className="quote-icon">"</span>
-                  I don't just build UI — I design scalable frontend systems.
-                  <span className="quote-icon">"</span>
+                  I care about clean architecture, efficient data flow, and delivering products that perform under real-world scale.                  <span className="quote-icon">"</span>
                 </div>
 
                 <div className="hero-highlights">
@@ -62,8 +60,8 @@ function Home() {
                     View Projects
                     <BsArrowRight className="cta-arrow" />
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="hero-cta-secondary"
                     href={require("../../Assets/Ahmed Ashraf_fullstack.pdf")}
                     download="Ahmed Ashraf_fullstack.pdf"

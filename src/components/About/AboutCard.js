@@ -17,6 +17,21 @@ function AboutCard() {
           </p>
 
           <h3 className="tech-skills-heading">Technical Skills</h3>
+          <div className="skills-section">
+            <h4 className="skill-category-title">Backend</h4>
+            <p className="skill-items">
+              <span className="skill-tag">Node.js</span>
+              <span className="skill-tag">Express</span>
+              <span className="skill-tag">PHP</span>
+              <span className="skill-tag">CakePHP</span>
+              <span className="skill-tag">Laravel</span>
+              <span className="skill-tag">FilamentPHP</span>
+              <span className="skill-tag">MySQL</span>
+              <span className="skill-tag">Supabase</span>
+              <span className="skill-tag">Firebase</span>
+              <span className="skill-tag">MongoDB</span>
+            </p>
+          </div>
 
           <div className="skills-section">
             <h4 className="skill-category-title">Frontend</h4>
@@ -42,7 +57,7 @@ function AboutCard() {
             <h4 className="skill-category-title">Styling & UI</h4>
             <p className="skill-items">
               <span className="skill-tag">Tailwind CSS</span>
-              <span className="skill-tag">SASS</span>
+              <span className="skill-tag">Shadcn UI</span>
               <span className="skill-tag">Material UI</span>
               <span className="skill-tag">Bootstrap</span>
               <span className="skill-tag">Responsive Design</span>
@@ -80,17 +95,6 @@ function AboutCard() {
             </p>
           </div>
 
-          <div className="skills-section">
-            <h4 className="skill-category-title">Backend</h4>
-            <p className="skill-items">
-              <span className="skill-tag">Node.js</span>
-              <span className="skill-tag">Express</span>
-              <span className="skill-tag">PHP (Laravel)</span>
-              <span className="skill-tag">MySQL</span>
-              <span className="skill-tag">Firebase</span>
-              <span className="skill-tag">MongoDB</span>
-            </p>
-          </div>
 
           <div className="about-quote">
             <p className="quote-text">

@@ -24,7 +24,8 @@ import {
     SiTailwindcss,
     SiBootstrap,
     SiLaravel,
-    SiCakephp
+    SiCakephp,
+    SiSupabase
 } from "react-icons/si";
 import { TbBrandGolang, TbBrandCakephp } from "react-icons/tb";
 import { FaVuejs } from "react-icons/fa";
@@ -93,6 +94,9 @@ function Techstack() {
                 </Col>
                 <Col xs={4} md={2} className="tech-icons">
                     <TbBrandGolang />
+                </Col>
+                <Col xs={4} md={2} className="tech-icons">
+                    <SiSupabase />
                 </Col>
             </Row>
 
