@@ -5,7 +5,7 @@ import ImpactStats from "./ImpactStats";
 function Home2() {
   return (
     <Container fluid className="home-about-section" id="about">
-      <Container>
+      <Container fluid>
         <Row>
           <Col md={12} className="home-about-header">
             <h1 className="impact-heading">
@@ -56,19 +56,31 @@ function Home2() {
               <div className="stack-grid">
                 <div className="stack-category">
                   <h3 className="stack-category-title">Frontend</h3>
-                  <p className="stack-items">React • Next.js • Vue.js • TypeScript</p>
+                  <p className="stack-items">React.js • Next.js • Vue.js • TypeScript • JavaScript (ES6+)</p>
                 </div>
                 <div className="stack-category">
-                  <h3 className="stack-category-title">State & Data</h3>
+                  <h3 className="stack-category-title">State Management</h3>
                   <p className="stack-items">Redux Toolkit • React Query • Zustand</p>
                 </div>
                 <div className="stack-category">
-                  <h3 className="stack-category-title">Styling</h3>
-                  <p className="stack-items">Tailwind CSS • Material UI • SASS</p>
+                  <h3 className="stack-category-title">Styling & UI</h3>
+                  <p className="stack-items">Tailwind CSS • SASS • Material UI • Bootstrap • Responsive Design</p>
                 </div>
                 <div className="stack-category">
-                  <h3 className="stack-category-title">Backend Edge</h3>
-                  <p className="stack-items">Node.js • Laravel • WebSockets</p>
+                  <h3 className="stack-category-title">Performance Optimization</h3>
+                  <p className="stack-items">SSR • Code Splitting • Lazy Loading</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">APIs & Data Handling</h3>
+                  <p className="stack-items">REST APIs • WebSockets • Real-time Data</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">Tools & Workflow</h3>
+                  <p className="stack-items">Git • GitHub • GitLab • Bitbucket • Agile • Figma • Adobe XD</p>
+                </div>
+                <div className="stack-category">
+                  <h3 className="stack-category-title">Backend</h3>
+                  <p className="stack-items">Node.js • Express • PHP (Laravel) • MySQL • Firebase • MongoDB</p>
                 </div>
               </div>
             </div>

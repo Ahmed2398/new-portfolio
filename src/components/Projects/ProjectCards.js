@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import { FaBookOpen } from "react-icons/fa";
 
 function ProjectCards(props) {
   return (
@@ -27,6 +28,17 @@ function ProjectCards(props) {
         </Card.Text>
 
         <div className="project-btns">
+          {/* Read More Button */}
+          {props.onReadMore && (
+            <button
+              onClick={props.onReadMore}
+              className="btn-read-more"
+            >
+              <FaBookOpen className="btn-icon" />
+              <span>Read More</span>
+            </button>
+          )}
+
           {/* Demo Button - Primary */}
           {!props.isBlog && props.demoLink && (
             <a

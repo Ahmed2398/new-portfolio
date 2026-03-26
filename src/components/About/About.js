@@ -9,24 +9,24 @@ function About() {
   return (
     <Container fluid className="about-section">
       <Particle />
-      <Container>
+      <Container fluid>
         <Row style={{ justifyContent: "center", padding: "10px" }}>
           <Col
             md={7}
             style={{
               justifyContent: "center",
-              paddingTop: "30px",
-              paddingBottom: "50px",
+              paddingTop: "10px",
+              paddingBottom: "20px",
             }}
           >
-            <h1 style={{ fontSize: "2.1em", paddingBottom: "20px" }}>
+            <h1 style={{ fontSize: "2.1em", paddingBottom: "15px" }}>
               Know Who <strong className="purple">I'M</strong>
             </h1>
             <Aboutcard />
           </Col>
           <Col
             md={5}
-            style={{ paddingTop: "120px", paddingBottom: "50px" }}
+            style={{ paddingTop: "40px", paddingBottom: "20px" }}
             className="about-img"
           >
             <AnimatedIllustration />

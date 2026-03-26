@@ -61,7 +61,7 @@ function ContactForm() {
 
   return (
     <Container fluid className="contact-section" id="contact">
-      <Container>
+      <Container fluid>
         <Row>
           <Col md={12} className="contact-header">
             <h1 className="contact-heading-gradient">

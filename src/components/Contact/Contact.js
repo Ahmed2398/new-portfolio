@@ -7,7 +7,7 @@ function Contact() {
   return (
     <Container fluid className="contact-page">
       <Particle />
-      <Container>
+      <Container fluid>
         <Row className="contact-intro-section">
           <Col md={12} className="contact-intro">
             <h1 className="project-heading">

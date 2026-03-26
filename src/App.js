@@ -7,6 +7,7 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact";
+import QuickLinksDropdown from "./components/QuickLinksDropdown";
 import {
   BrowserRouter as Router,
   Route,
@@ -32,6 +33,7 @@ function App() {
   return (
     <Router>
       <Preloader load={load} />
+      <QuickLinksDropdown />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />

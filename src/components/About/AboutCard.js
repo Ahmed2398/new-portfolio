@@ -6,33 +6,36 @@ function AboutCard() {
     <Card className="quote-card-view">
       <Card.Body>
         <blockquote className="blockquote mb-0">
-          <p style={{ textAlign: "justify", lineHeight: "1.8" }}>
-            Full-Stack Engineer with <span className="purple">4+ years of experience</span> delivering scalable SaaS, FinTech, and RegTech products, with a strong focus on translating business needs into high-impact technical solutions.
+          <p style={{ textAlign: "left", lineHeight: "1.8" }}>
+            <strong className="purple">Who I Am</strong>
+            <br />
+            I'm a Full-Stack Engineer with experience building complex digital systems across fintech, e-commerce, logistics, healthcare, and RegTech industries.
+            <br />
+             <br />
+            Over the years, I've worked on:
+            <br />
+            • FinTech platforms for trading, analytics, and financial data processing
+            <br />
+            • Enterprise ERP systems handling logistics and invoicing workflows
+            <br />
+            • Real-time dashboards and analytics platforms
+            <br />
+            • Multi-vendor e-commerce systems
+            <br />
+            • Healthcare and medical platforms
+            <br />
+            • Compliance and regulatory systems (AML / CMA / CTF)
             <br />
             <br />
-            Experienced in building <span className="purple">end-to-end systems</span> — from intuitive, high-performance frontend applications (React, Next.js, Vue) to robust backend services (Node.js, Laravel) — with an emphasis on real-time data, system reliability, and performance optimization.
-            <br />
-            <br />
-            Proven ability to <span className="purple">own features across the full lifecycle</span>: validating requirements, designing architecture, implementing scalable solutions, and optimizing for user experience, performance, and business outcomes.
+            I focus on clean architecture, performance optimization, and scalable system design, ensuring every product can grow without breaking.
+          </p>
+
+          <p style={{ textAlign: "center", marginTop: "30px", marginBottom: "20px", fontSize: "1.1em", fontWeight: "600", color: "#60a5fa" }}>
+            🚀 I don't build "websites" — I build systems that process data, automate operations, and scale businesses.
           </p>
 
           <h3 className="tech-skills-heading">Technical Skills</h3>
-          <div className="skills-section">
-            <h4 className="skill-category-title">Backend</h4>
-            <p className="skill-items">
-              <span className="skill-tag">Node.js</span>
-              <span className="skill-tag">Express</span>
-              <span className="skill-tag">PHP</span>
-              <span className="skill-tag">CakePHP</span>
-              <span className="skill-tag">Laravel</span>
-              <span className="skill-tag">FilamentPHP</span>
-              <span className="skill-tag">MySQL</span>
-              <span className="skill-tag">Supabase</span>
-              <span className="skill-tag">Firebase</span>
-              <span className="skill-tag">MongoDB</span>
-            </p>
-          </div>
-
+          
           <div className="skills-section">
             <h4 className="skill-category-title">Frontend</h4>
             <p className="skill-items">
@@ -57,7 +60,7 @@ function AboutCard() {
             <h4 className="skill-category-title">Styling & UI</h4>
             <p className="skill-items">
               <span className="skill-tag">Tailwind CSS</span>
-              <span className="skill-tag">Shadcn UI</span>
+              <span className="skill-tag">SASS</span>
               <span className="skill-tag">Material UI</span>
               <span className="skill-tag">Bootstrap</span>
               <span className="skill-tag">Responsive Design</span>
@@ -92,6 +95,21 @@ function AboutCard() {
               <span className="skill-tag">Agile</span>
               <span className="skill-tag">Figma</span>
               <span className="skill-tag">Adobe XD</span>
+            </p>
+          </div>
+
+          <div className="skills-section">
+            <h4 className="skill-category-title">Backend</h4>
+            <p className="skill-items">
+              <span className="skill-tag">Node.js</span>
+              <span className="skill-tag">Express</span>
+              <span className="skill-tag">PHP</span>
+              <span className="skill-tag">Laravel</span>
+              <span className="skill-tag">MySQL</span>
+              <span className="skill-tag">Firebase</span>
+              <span className="skill-tag">MongoDB</span>
+              <span className="skill-tag">CakePHP</span>
+              <span className="skill-tag">Filament</span>
             </p>
           </div>
 

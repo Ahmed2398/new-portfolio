@@ -15,7 +15,7 @@ function Home() {
     <section>
       <Container fluid className="home-section" id="home">
         <Particle />
-        <Container className="home-content">
+        <Container fluid className="home-content">
           <Row className="hero-row">
             <Col lg={6} md={12} className="hero-left">
               <div className="hero-content">
