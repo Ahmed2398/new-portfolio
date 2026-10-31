@@ -568,3 +568,8 @@ body.modal-open .sticky-quick-links {
     letter-spacing: 1.8px;
   }
 }
+
+/* Placeholder while a lazily-loaded page chunk downloads (keeps the footer down) */
+.route-loading {
+  min-height: 100vh;
+}

@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
-import Resume from "./components/Resume/ResumeNew";
-import Contact from "./components/Contact/Contact";
-import Services from "./components/Services/Services";
-import Journey from "./components/Journey/Journey";
-import NotFound from "./components/NotFound/NotFound";
 import QuickLinksDropdown from "./components/QuickLinksDropdown";
 import WelcomeAudio from "./components/WelcomeAudio";
 import Chatbot from "./components/Chatbot/Chatbot";
@@ -19,6 +12,8 @@ import {
   Routes
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import Seo from "./seo/Seo";
+import { pageSeo } from "./seo/pages";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,6 +21,15 @@ import "./responsive.css";
 import "./rtl.css";
 import "./theme-light.css";
 import "./theme-light-fixes.css";
+
+// Pages load on demand so the first visit downloads less
+const About = lazy(() => import("./components/About/About"));
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Resume = lazy(() => import("./components/Resume/ResumeNew"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+const Services = lazy(() => import("./components/Services/Services"));
+const Journey = lazy(() => import("./components/Journey/Journey"));
+const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 
 function App() {
@@ -47,16 +51,18 @@ function App() {
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />
+        <Suspense fallback={<div className="route-loading" aria-hidden="true" />}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/journey" element={<Journey />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<><Seo path="/" {...pageSeo["/"]} /><Home /></>} />
+          <Route path="/project" element={<><Seo path="/project" {...pageSeo["/project"]} /><Projects /></>} />
+          <Route path="/about" element={<><Seo path="/about" {...pageSeo["/about"]} /><About /></>} />
+          <Route path="/services" element={<><Seo path="/services" {...pageSeo["/services"]} /><Services /></>} />
+          <Route path="/journey" element={<><Seo path="/journey" {...pageSeo["/journey"]} /><Journey /></>} />
+          <Route path="/resume" element={<><Seo path="/resume" {...pageSeo["/resume"]} /><Resume /></>} />
+          <Route path="/contact" element={<><Seo path="/contact" {...pageSeo["/contact"]} /><Contact /></>} />
+          <Route path="*" element={<><Seo path="/" noindex {...pageSeo.notFound} /><NotFound /></>} />
         </Routes>
+        </Suspense>
         <Footer />
         <Chatbot />
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiFolder, FiLayers, FiMail, FiArrowRight } from "react-icons/fi";
 import { useLang } from "../../i18n/LanguageContext";
@@ -14,13 +14,6 @@ function NotFound() {
   const { pathname } = useLocation();
   const { t, pick } = useLang();
 
-  useEffect(() => {
-    const previous = document.title;
-    document.title = t("Page not found | Ahmed Ashraf", "الصفحة مش موجودة | أحمد أشرف");
-    return () => {
-      document.title = previous;
-    };
-  }, [t]);
 
   return (
     <main className="nf">

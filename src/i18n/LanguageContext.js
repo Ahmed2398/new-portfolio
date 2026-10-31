@@ -7,6 +7,11 @@ const STORAGE_KEY = "site-lang";
 const LanguageContext = createContext(null);
 
 function initialLang() {
+  // ?lang=ar / ?lang=en in the URL wins (used by search engines via hreflang)
+  if (typeof window !== "undefined") {
+    const param = new URLSearchParams(window.location.search).get("lang");
+    if (param === "ar" || param === "en") return param;
+  }
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === "ar" || saved === "en") return saved;

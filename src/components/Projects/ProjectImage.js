@@ -26,6 +26,9 @@ function ProjectImage({ src, title, className = "" }) {
       alt={`${title} screenshot`}
       className={`pp-img ${className}`}
       loading="lazy"
+      decoding="async"
+      width={1200}
+      height={750}
       onError={() => setFailed(true)}
     />
   );

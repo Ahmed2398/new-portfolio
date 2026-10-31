@@ -70,11 +70,11 @@ function Home2() {
         <Row>
           <Col md={12} className="home-about-header">
             <span className="h2-eyebrow">{t("What I bring", "اللي بقدمه")}</span>
-            <h1 className="impact-heading">
+            <h2 className="impact-heading">
               {t("Complex requirements in,", "متطلبات معقدة تدخل،")}
               <br />
               <span className="purple">{t("fast, reliable products out", "منتجات سريعة وموثوقة تطلع")}</span>
-            </h1>
+            </h2>
             <p className="impact-subtitle">
               {t(
                 "For 5+ years I've built and led web platforms across FinTech, RegTech, HR and healthcare SaaS — owning the architecture, the code and the people who ship it.",

@@ -31,6 +31,7 @@ function ResumeNew() {
   return (
     <div>
       <Container fluid className="resume-section">
+        <h1 className="visually-hidden">{t("Resume — Ahmed Ashraf", "السيرة الذاتية — أحمد أشرف")}</h1>
         <Particle />
         <Row style={{ justifyContent: "center", position: "relative" }}>
           <Button

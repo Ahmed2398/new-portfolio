@@ -79,10 +79,10 @@ function ContactForm() {
       <Container fluid>
         <Row>
           <Col md={12} className="contact-header">
-            <h1 className="contact-heading-gradient">
+            <h2 className="contact-heading-gradient">
               {t("Get In ", "خلينا ")}
               <span className="gradient-text">{t("Touch", "نتكلم")}</span>
-            </h1>
+            </h2>
             <p className="contact-description">
               {t(
                 "I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to discuss how we can work together.",
