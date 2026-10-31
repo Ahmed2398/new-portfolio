@@ -6,7 +6,7 @@ function QuickLinksDropdown() {
     <div className="sticky-quick-links">
       <div className="quick-links-container">
         <a 
-          href="https://wa.me/01147266169" 
+          href="https://wa.me/201147266169" 
           target="_blank" 
           rel="noreferrer" 
           className="quick-link-btn whatsapp"

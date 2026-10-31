@@ -1,0 +1,327 @@
+/* ============================================ */
+/* HERO CONSOLE                                 */
+/* ============================================ */
+
+.hc {
+  position: relative;
+  text-align: left;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(10, 15, 30, 0.92);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(59, 130, 246, 0.08),
+    0 0 60px rgba(59, 130, 246, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+/* Animated gradient edge */
+.hc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  padding: 1px;
+  background: linear-gradient(120deg, transparent 20%, rgba(96, 165, 250, 0.9), rgba(167, 139, 250, 0.9), transparent 80%);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: hcBorder 6s linear infinite;
+  pointer-events: none;
+}
+
+.hc-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 14px;
+  background: rgba(30, 41, 59, 0.85);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+}
+
+.hc-dots {
+  display: flex;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.hc-dots span {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+
+.hc-dots .red { background: #ef4444; }
+.hc-dots .yellow { background: #f59e0b; }
+.hc-dots .green { background: #10b981; }
+
+.hc-tabs {
+  display: flex;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.hc-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.hc-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 14px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: #64748b;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.hc-tab:hover {
+  color: #cbd5e1;
+}
+
+.hc-tab.active {
+  color: #e2e8f0;
+  border-bottom-color: #3b82f6;
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.hc-ts {
+  font-size: 0.6rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: #3178c6;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+}
+
+/* ---------- Code ---------- */
+.hc-code {
+  padding: 18px 0 14px;
+  min-height: 290px;
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.86rem;
+  line-height: 1.85;
+  overflow-x: auto;
+}
+
+.hc-line {
+  display: flex;
+  white-space: pre;
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: hcType 0.35s ease-out forwards;
+}
+
+.hc-ln {
+  width: 40px;
+  flex-shrink: 0;
+  padding-right: 14px;
+  text-align: right;
+  color: #334155;
+  user-select: none;
+}
+
+.hc-src {
+  padding-right: 18px;
+}
+
+.tk-k { color: #f472b6; font-weight: 600; }
+.tk-v { color: #60a5fa; }
+.tk-p { color: #93c5fd; }
+.tk-s { color: #34d399; }
+.tk-n { color: #fbbf24; }
+.tk-c { color: #64748b; font-style: italic; }
+.tk-x { color: #cbd5e1; }
+
+.hc-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  margin-top: 0.35em;
+  background: #60a5fa;
+  animation: hcBlink 1s steps(1) infinite;
+}
+
+/* ---------- Pipeline ---------- */
+.hc-pipeline {
+  padding: 14px 18px 16px;
+  border-top: 1px solid rgba(96, 165, 250, 0.12);
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.hc-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hc-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: "Courier New", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  animation: hcStepDone 0.3s ease-out forwards;
+  animation-play-state: running;
+}
+
+.hc-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  color: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.hc-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.15);
+  overflow: hidden;
+}
+
+.hc-progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #3b82f6, #a78bfa, #10b981);
+  animation: hcProgress 3.4s ease-in-out 0.6s forwards;
+}
+
+.hc-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #10b981;
+  opacity: 0;
+  animation: hcFade 0.4s ease-out 3.9s forwards;
+}
+
+.hc-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  animation: hcPing 1.6s ease-out infinite;
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes hcType {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hcBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes hcProgress {
+  to { width: 100%; }
+}
+
+@keyframes hcFade {
+  to { opacity: 1; }
+}
+
+@keyframes hcStepDone {
+  to {
+    color: #a7f3d0;
+    border-color: rgba(16, 185, 129, 0.45);
+    background: rgba(16, 185, 129, 0.1);
+  }
+}
+
+.hc-step .hc-check {
+  animation: hcCheck 0.3s ease-out forwards;
+  animation-delay: inherit;
+}
+
+@keyframes hcCheck {
+  to {
+    color: #0f172a;
+    background: #10b981;
+    border-color: #10b981;
+  }
+}
+
+@keyframes hcPing {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  100% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+@keyframes hcBorder {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767px) {
+  .hc-code {
+    min-height: 0;
+    font-size: 0.72rem;
+    line-height: 1.75;
+    padding: 14px 0 10px;
+  }
+
+  .hc-ln {
+    width: 30px;
+    padding-right: 10px;
+  }
+
+  .hc-tab {
+    padding: 10px 10px;
+    font-size: 0.72rem;
+  }
+
+  .hc-bar {
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .hc-pipeline {
+    padding: 12px 14px 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hc::before,
+  .hc-line,
+  .hc-step,
+  .hc-check,
+  .hc-progress span,
+  .hc-status,
+  .hc-live-dot,
+  .hc-cursor {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

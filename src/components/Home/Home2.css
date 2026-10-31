@@ -1,0 +1,220 @@
+/* ============================================ */
+/* HOME — "WHAT I BRING" SECTION                */
+/* ============================================ */
+
+.h2-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #60a5fa;
+}
+
+/* ---------- Capability cards ---------- */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.cap-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cap-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cap-icon {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  border-radius: 11px;
+  font-size: 1.2rem;
+  color: #93c5fd;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.2));
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.cap-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.cap-text {
+  margin: 0 0 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.cap-proof {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #60a5fa;
+}
+
+/* ---------- Core stack chips ---------- */
+.stack-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.stack-chips span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+/* ---------- Side column ---------- */
+@media (min-width: 992px) {
+  .overview-stats .impact-stats-container {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.side-card {
+  margin-top: 16px;
+  padding: 18px 20px;
+  border-radius: 16px;
+  text-align: left;
+  background: rgba(30, 41, 59, 0.45);
+  border: 1px solid rgba(96, 165, 250, 0.14);
+}
+
+.side-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #60a5fa;
+}
+
+.now-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 55%),
+    rgba(30, 41, 59, 0.5);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.now-card .side-label {
+  color: #34d399;
+}
+
+.now-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: nowPing 1.8s ease-out infinite;
+}
+
+@keyframes nowPing {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  100% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+.now-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.now-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.now-text strong {
+  color: #e2e8f0;
+}
+
+.industry-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.industry-chips span {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #93c5fd;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.principles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.principles li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+.principles li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .cap-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cap-card {
+    padding: 16px;
+  }
+
+  .side-card {
+    padding: 16px;
+  }
+}
+
+/* `overflow: hidden` on the section would disable the sticky side column */
+.home-about-section {
+  overflow: clip !important;
+}

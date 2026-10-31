@@ -1,72 +1,50 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
-import { CgWebsite } from "react-icons/cg";
-import { BsGithub } from "react-icons/bs";
-import { FaBookOpen } from "react-icons/fa";
+import { BsArrowRight, BsBoxArrowUpRight } from "react-icons/bs";
+import ProjectImage from "./ProjectImage";
 
-function ProjectCards(props) {
+const MAX_TAGS = 4;
+
+function ProjectCards({ project, onOpen }) {
+  const { title, description, techStack = [], demoLink, category, imgPath } = project;
+  const visibleTags = techStack.slice(0, MAX_TAGS);
+  const hiddenCount = techStack.length - visibleTags.length;
+
   return (
-    <Card className="project-card-view">
-      <div className="project-img-container">
-        <Card.Img variant="top" src={props.imgPath} alt="card-img" className="project-img" />
-        <div className="project-img-overlay"></div>
-      </div>
-      <Card.Body className="project-card-body">
-        {/* Technology Badges */}
-        {props.techStack && props.techStack.length > 0 && (
-          <div className="tech-badges">
-            {props.techStack.map((tech, index) => (
-              <span key={index} className="tech-badge">{tech}</span>
-            ))}
-          </div>
-        )}
+    <article className="pp-card">
+      <button type="button" className="pp-card-media" onClick={onOpen} aria-label={`Open ${title} details`}>
+        <ProjectImage src={imgPath} title={title} />
+        <span className="pp-card-category">{category}</span>
+      </button>
 
-        <Card.Title className="project-title">{props.title}</Card.Title>
+      <div className="pp-card-body">
+        <h3 className="pp-card-title">
+          <button type="button" onClick={onOpen}>
+            {title}
+          </button>
+        </h3>
+        <p className="pp-card-desc">{description}</p>
 
-        <Card.Text className="project-description">
-          {props.description}
-        </Card.Text>
+        <div className="pp-tags">
+          {visibleTags.map((tech) => (
+            <span key={tech} className="pp-tag">
+              {tech}
+            </span>
+          ))}
+          {hiddenCount > 0 && <span className="pp-tag pp-tag-more">+{hiddenCount}</span>}
+        </div>
 
-        <div className="project-btns">
-          {/* Read More Button */}
-          {props.onReadMore && (
-            <button
-              onClick={props.onReadMore}
-              className="btn-read-more"
-            >
-              <FaBookOpen className="btn-icon" />
-              <span>Read More</span>
-            </button>
-          )}
-
-          {/* Demo Button - Primary */}
-          {!props.isBlog && props.demoLink && (
-            <a
-              href={props.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-demo"
-            >
-              <CgWebsite className="btn-icon" />
-              <span>Live</span>
-            </a>
-          )}
-
-          {/* GitHub Button - Secondary */}
-          {props.ghLink && (
-            <a
-              href={props.ghLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-github"
-            >
-              <BsGithub className="btn-icon" />
-              <span>{props.isBlog ? "Blog" : "GitHub"}</span>
+        <div className="pp-card-actions">
+          <button type="button" className="pp-link-btn" onClick={onOpen}>
+            Case study <BsArrowRight />
+          </button>
+          {demoLink && (
+            <a href={demoLink} target="_blank" rel="noopener noreferrer" className="pp-live-btn">
+              Live site <BsBoxArrowUpRight />
             </a>
           )}
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </article>
   );
 }
 

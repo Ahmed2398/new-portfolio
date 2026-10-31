@@ -6,14 +6,16 @@ function Type() {
     <Typewriter
       options={{
         strings: [
-          "Building Scalable SaaS Systems",
-          "Performance & Architecture Focused",
-          "Real-time Web Applications Expert",
-          "System Design & Optimization",
+          "FinTech platforms",
+          "RegTech & compliance",
+          "real-time dashboards",
+          "SaaS products",
+          "team leadership",
         ],
         autoStart: true,
         loop: true,
-        deleteSpeed: 50,
+        delay: 55,
+        deleteSpeed: 35,
       }}
     />
   );

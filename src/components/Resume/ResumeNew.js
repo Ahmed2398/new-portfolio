@@ -2,19 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Particle from "../Particle";
-import pdf from "../../Assets/Ahmed Ashraf_fullstack.pdf";
+import pdf from "../../Assets/Ahmed_Ashraf_Ramadan.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
   const [width, setWidth] = useState(1200);
   const [numPages, setNumPages] = useState(null);
 
   useEffect(() => {
-    setWidth(window.innerWidth);
+    const handleResize = () => setWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Fit the page to the viewport, minus the side gutters, capped for large screens
+  const pageWidth = Math.min(width - 32, 900);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
@@ -28,8 +34,8 @@ function ResumeNew() {
           <Button
             variant="primary"
             href={pdf}
-            target="_blank"
-            style={{ maxWidth: "250px" }}
+            download="Ahmed_Ashraf_Ramadan_CV.pdf"
+            className="resume-download-btn"
           >
             <AiOutlineDownload />
             &nbsp;Download CV
@@ -45,7 +51,7 @@ function ResumeNew() {
               <Page
                 key={`page_${index + 1}`}
                 pageNumber={index + 1}
-                scale={width > 786 ? 1.5 : 0.6}
+                width={pageWidth}
               />
             ))}
           </Document>

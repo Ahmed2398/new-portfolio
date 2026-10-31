@@ -6,6 +6,7 @@ import goldendeal from "../../Assets/Projects/goldendeal.png";
 import medicalsass from "../../Assets/Projects/medicalsass.png";
 import foodbank from "../../Assets/Projects/foodbank.png";
 import rinku from "../../Assets/Projects/rinku.png";
+import kyc360 from "../../Assets/Projects/kyc360.webp";
 
 // Screenshot API Configuration
 // Get your FREE API key from: https://screenshotone.com/
@@ -30,9 +31,33 @@ const getMobileScreenshot = (url) => {
 
 export const projectsData = [
   {
+    id: 26,
+    imgPath: kyc360,
+    title: "KYC360 – Unified Verification & Compliance Platform",
+    featured: true,
+    role: "Frontend Team Lead · EON Tech",
+    description: "Leading a frontend team of 6 on a KYC/KYB and RegTech compliance platform — from verification requests and dynamic forms to screening, risk scoring, review workflows and audit trails, across admin, tenant and investor apps.",
+    fullDescription: "KYC360 – Unified KYC/KYB & RegTech Compliance Platform (Frontend Team Lead)\n\nKYC360 lets organizations send verification requests to clients and investors, track the completion of data and documents, run screening, reviews and risk assessments, and reach documented decisions — all in one RegTech platform that supports compliance with CMA and AML requirements.\n\nMy role: I lead a frontend team of 6 engineers. I gather requirements from business stakeholders, define the frontend architecture, and own a shared design system used across the platform's three services — the admin platform, the tenant platform and the investor platform.\n\nThe platform covers two end-to-end journeys: the Verification Management Journey (create, send and manage requests through review and final decision) and the Client / Investor Journey (complete the required data and documents, then track the request until a decision is issued).",
+    features: [
+      { title: "Digital Identity & Entity Verification", text: "Improve data quality and accelerate verification procedures for individuals and entities." },
+      { title: "Dynamic Forms", text: "Customize forms, fields and required documents by client type, classification and request status." },
+      { title: "KYC & KYB Request Management", text: "Create and send requests, and track their completion through decision-making." },
+      { title: "Risk Assessment Engine", text: "Generate clear risk scores and classifications, with documented rationale." },
+      { title: "Investor Suitability & Classification", text: "Assess investor suitability based on their data, objectives and financial capacity." },
+      { title: "Sanctions & PEP Screening", text: "Run unified screening and link the results within the client profile." },
+      { title: "Review & Approval Workflows", text: "Manage reviews, escalations and approvals based on assigned permissions." },
+      { title: "Ongoing Monitoring & Alerts", text: "Get alerts for renewals, updates and changes that require review." },
+      { title: "Reports, Analytics & Audit Trail", text: "Reports, dashboards and a chronological audit trail of every action." },
+    ],
+    techStack: ["React.js", "Design System", "Dynamic Forms", "RegTech", "KYC / KYB", "Multi-tenant", "Team Lead"],
+    demoLink: "https://kyc360.app/",
+    category: "Frontend"
+  },
+  {
     id: 1,
     imgPath: getScreenshot("https://kwealth.sa/"),
     title: "Kwealth – FinTech Trading Platform",
+    featured: true,
     description: "Engineered and scaled a high-performance financial platform using React.js, handling complex, real-time market data and delivering responsive, data-intensive user experiences with advanced trading tools and AI integration.",
     fullDescription: "Kwealth Platform – Frontend Engineer (React.js)\n\nEngineered and scaled a high-performance financial platform using React.js, handling complex, real-time market data and delivering responsive, data-intensive user experiences.\n\nArchitected modular and reusable frontend systems to support advanced financial tools such as market analytics, stock screening, portfolio tracking, and trading simulation, ensuring maintainability and scalability across the platform.\n\nOptimized rendering performance for large datasets and real-time updates (charts, market feeds, signals) by applying techniques such as memoization, lazy loading, and efficient state management patterns.\n\nBuilt advanced data-driven features including:\n\nReal-time market dashboards (TASI, stocks, sectors) with high-frequency updates\nCustom stock screener & filters with complex query logic\nInteractive charting systems optimized for performance\nAlerting system & watchlists with reactive state handling\nStrategy builder & trading simulator for user-driven financial modeling\n\nImproved application performance and UX by reducing unnecessary re-renders, structuring state effectively, and ensuring smooth interaction even under heavy data load.\n\nCollaborated closely with backend teams to design efficient API contracts, minimize network overhead, and ensure accurate financial data representation.\n\nApplied best practices in component architecture, code splitting, and performance tuning, building a frontend capable of scaling with increasing users and data complexity.",
     techStack: ["React.js", "WebSocket", "Real-time Data", "Trading Platform", "AI Integration"],
@@ -54,6 +79,7 @@ export const projectsData = [
     id: 3,
     imgPath: getScreenshot("http://www.aramhrm.net/"),
     title: "Aram – HR Management System",
+    featured: true,
     description: "Developed and scaled a comprehensive HR management platform using React.js, delivering a data-intensive system that handles the full employee lifecycle from recruitment to payroll and performance tracking with modular architecture.",
     fullDescription: "ARAM – HR & Employee Management System (Frontend Engineer – React.js)\n\nDeveloped and scaled a comprehensive HR management platform using React.js, delivering a data-intensive system that handles the full employee lifecycle from recruitment to payroll and performance tracking.\n\nBuilt modular, reusable frontend architecture to support complex HR workflows, ensuring maintainability and scalability across multiple business domains.\n\nEngineered advanced system modules including:\n\nEmployee Management System with full lifecycle tracking (hiring → onboarding → termination) and digital document management\nPayroll & Benefits Engine with dynamic calculations for salaries, allowances, deductions, and social insurance\nAttendance Tracking System integrated with biometric devices (fingerprint, facial recognition) and GPS-based validation\nRecruitment Platform for managing job postings, applicants, and interview pipelines\nEmployee Self-Service Portal enabling leave requests, profile updates, and real-time request tracking\nReports & Analytics Dashboards with interactive visualizations for operational and strategic insights\n\nOptimized frontend performance for handling large datasets and complex state flows, applying techniques such as memoization, lazy loading, and efficient state management.\n\nDesigned responsive and user-centric interfaces to simplify complex HR operations while maintaining high performance and usability.\n\nCollaborated with backend teams to integrate APIs, ensure data consistency, and streamline workflows across payroll, attendance, and employee records.\n\nFocused on building scalable frontend systems, enabling the platform to support growing organizational needs and high user concurrency.",
     techStack: ["React.js", "HR Management", "Payroll", "Attendance", "Biometric", "Analytics"],
@@ -85,6 +111,7 @@ export const projectsData = [
     id: 6,
     imgPath: getScreenshot("https://landing-dev.tarh.com.sa/"),
     title: "Tarh Platform – Real Estate Investment",
+    featured: true,
     description: "Developed a serverless real estate investment platform using Next.js and Supabase, implementing secure investor dashboards for managing real estate contributions and co-ownership with optimal performance and SEO best practices.",
     fullDescription: "Developed a serverless real estate investment platform using Next.js and Supabase. Implemented secure investor dashboards for managing real estate contributions and co-ownership. Leveraged Next.js SSR for optimal performance and SEO best practices.",
     techStack: ["Next.js", "Supabase", "Serverless", "Real Estate", "Investment", "SSR"],

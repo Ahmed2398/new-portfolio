@@ -1,143 +1,112 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
-  AiOutlineHome,
-  AiOutlineFundProjectionScreen,
-  AiOutlineUser,
-  AiOutlineDownload,
-} from "react-icons/ai";
-import { CgFileDocument } from "react-icons/cg";
-import pdf from "../Assets/Ahmed Ashraf_fullstack.pdf";
+  FiHome,
+  FiUser,
+  FiFolder,
+  FiLayers,
+  FiFileText,
+  FiMail,
+  FiDownload,
+  FiChevronRight,
+  FiGithub,
+  FiLinkedin,
+  FiMap,
+} from "react-icons/fi";
+import Logo from "./Logo";
+import pdf from "../Assets/Ahmed_Ashraf_Ramadan.pdf";
+import "./Navbar.css";
+
+const links = [
+  { to: "/", label: "Home", icon: FiHome, end: true },
+  { to: "/about", label: "About", icon: FiUser },
+  { to: "/project", label: "Projects", icon: FiFolder },
+  { to: "/services", label: "Services", icon: FiLayers },
+  { to: "/journey", label: "Journey", icon: FiMap },
+  { to: "/resume", label: "Resume", icon: FiFileText },
+  { to: "/contact", label: "Contact", icon: FiMail },
+];
 
 function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY >= 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  window.addEventListener("scroll", scrollHandler);
+  // Close the mobile menu whenever the route changes
+  useEffect(() => {
+    setExpanded(false);
+  }, [location.pathname]);
+
+  const close = () => setExpanded(false);
 
   return (
     <Navbar
-      expanded={expand}
+      id="site-nav"
+      expanded={expanded}
+      onToggle={setExpanded}
       fixed="top"
-      expand="md"
-      className={navColour ? "sticky" : "navbar"}
+      expand="xl"
+      className={`navbar ${scrolled || expanded ? "is-scrolled" : ""} ${expanded ? "is-open" : ""}`}
     >
       <Container fluid>
-        <Navbar.Brand href="/" className="d-flex align-items-center">
-          <h1 className="logo-text-animated">
-            <span className="logo-tag">&lt;</span>
-            <span className="logo-name">Ahmed</span>
-            <span className="logo-subtitle"> Ashraf</span>
-            <span className="logo-tag">/&gt;</span>
-          </h1>
+        <Navbar.Brand as={Link} to="/" onClick={close} aria-label="Ahmed Ashraf — home">
+          <Logo />
         </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          onClick={() => {
-            updateExpanded(expand ? false : "expanded");
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+
+        <Navbar.Toggle aria-controls="site-nav-menu" label={expanded ? "Close menu" : "Open menu"}>
+          <span />
+          <span />
+          <span />
         </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto" defaultActiveKey="#home">
-            <Nav.Item>
-              <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
-                <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
-              </Nav.Link>
-            </Nav.Item>
 
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/about"
-                onClick={() => updateExpanded(false)}
+        <Navbar.Collapse id="site-nav-menu">
+          <ul className="nav-links">
+            {links.map(({ to, label, icon: Icon, end }) => (
+              <li key={to}>
+                <NavLink
+                  to={to}
+                  end={end}
+                  onClick={close}
+                  className={({ isActive }) => `nav-pill ${isActive ? "active" : ""}`}
+                >
+                  <span className="nav-icon">
+                    <Icon />
+                  </span>
+                  <span className="nav-label">{label}</span>
+                  <FiChevronRight className="nav-chevron" aria-hidden="true" />
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+
+          <div className="nav-actions">
+            <div className="nav-socials">
+              <a href="https://github.com/Ahmed2398" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <FiGithub />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ahmed-ashraf-a9b62918b/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
               >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> About
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/project"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineFundProjectionScreen
-                  style={{ marginBottom: "2px" }}
-                />{" "}
-                Projects
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/resume"
-                onClick={() => updateExpanded(false)}
-              >
-                <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link
-                as={Link}
-                to="/contact"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineUser style={{ marginBottom: "2px" }} /> Contact Me
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item className="download-cv-btn">
-              <Button
-                variant="primary"
-                href={pdf}
-                download="Ahmed_Ashraf_CV.pdf"
-                className="cv-download-button"
-                onClick={() => updateExpanded(false)}
-              >
-                <AiOutlineDownload style={{ marginBottom: "2px" }} />
-                &nbsp;Download CV
-              </Button>
-            </Nav.Item>
-
-            {/*<Nav.Item>*/}
-            {/*  <Nav.Link*/}
-            {/*    href="https://soumyajitblogs.vercel.app/"*/}
-            {/*    target="_blank"*/}
-            {/*    rel="noreferrer"*/}
-            {/*  >*/}
-            {/*    <ImBlog style={{ marginBottom: "2px" }} /> Blogs*/}
-            {/*  </Nav.Link>*/}
-            {/*</Nav.Item>*/}
-
-            {/*<Nav.Item className="fork-btn">*/}
-            {/*  <Button*/}
-            {/*    href="https://github.com/soumyajit4419/Portfolio"*/}
-            {/*    target="_blank"*/}
-            {/*    className="fork-btn-inner"*/}
-            {/*  >*/}
-            {/*    <CgGitFork style={{ fontSize: "1.2em" }} />{" "}*/}
-            {/*    <AiFillStar style={{ fontSize: "1.1em" }} />*/}
-            {/*  </Button>*/}
-            {/*</Nav.Item>*/}
-          </Nav>
+                <FiLinkedin />
+              </a>
+            </div>
+            <a href={pdf} download="Ahmed_Ashraf_Ramadan_CV.pdf" className="nav-cv" onClick={close}>
+              <FiDownload />
+              <span>Download CV</span>
+            </a>
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

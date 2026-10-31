@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { useSearchParams } from "react-router-dom";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
@@ -14,6 +15,15 @@ function ContactForm() {
 
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [searchParams] = useSearchParams();
+  const requestedService = searchParams.get("service");
+
+  // Pre-fill the subject when arriving from a service card (/contact?service=...)
+  useEffect(() => {
+    if (requestedService) {
+      setFormData((prev) => ({ ...prev, subject: `Inquiry: ${requestedService}` }));
+    }
+  }, [requestedService]);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,6 +34,9 @@ function ContactForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+    // Bots fill the hidden honeypot — skip sending
+    if (event.target.botcheck && event.target.botcheck.checked) return;
     setIsSubmitting(true);
     setStatus("");
 
@@ -158,6 +171,7 @@ function ContactForm() {
                 <Form.Control
                   type="text"
                   name="name"
+                  maxLength={80}
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={handleChange}
@@ -170,6 +184,7 @@ function ContactForm() {
                 <Form.Control
                   type="email"
                   name="email"
+                  maxLength={254}
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={handleChange}
@@ -182,6 +197,7 @@ function ContactForm() {
                 <Form.Control
                   type="text"
                   name="subject"
+                  maxLength={150}
                   placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
@@ -194,6 +210,7 @@ function ContactForm() {
                 <Form.Control
                   as="textarea"
                   name="message"
+                  maxLength={3000}
                   rows={5}
                   placeholder="Your Message"
                   value={formData.message}

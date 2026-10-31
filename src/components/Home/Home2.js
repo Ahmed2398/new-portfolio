@@ -1,6 +1,59 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { FiLayers, FiActivity, FiSliders, FiBox, FiZap, FiUsers } from "react-icons/fi";
 import ImpactStats from "./ImpactStats";
+import "./Home2.css";
+
+const capabilities = [
+  {
+    icon: FiLayers,
+    title: "Architecture & Full-Stack Delivery",
+    text: "Design and build complex platforms end to end — data model, APIs, admin panels and a polished UI.",
+    proof: "Multi-tenant admin, tenant & investor apps",
+  },
+  {
+    icon: FiActivity,
+    title: "Real-time Data",
+    text: "Trading screens, live dashboards and analytics fed by WebSockets that stay smooth under heavy load.",
+    proof: "Market dashboards, screeners & alerts",
+  },
+  {
+    icon: FiSliders,
+    title: "No-code Builders",
+    text: "Schema-driven form, page and workflow builders so business teams ship without waiting on developers.",
+    proof: "16 field types · drag-and-drop workflows",
+  },
+  {
+    icon: FiBox,
+    title: "Shared Design Systems",
+    text: "Component libraries with typed APIs and usage guidelines, reused across products and teams.",
+    proof: "Adopted by 4 products · ~40–50% faster builds",
+  },
+  {
+    icon: FiZap,
+    title: "Performance",
+    text: "Fast interfaces with large, high-frequency data using memoization, lazy loading and structured state.",
+    proof: "Fewer re-renders, smooth under load",
+  },
+  {
+    icon: FiUsers,
+    title: "Team Leadership",
+    text: "Lead engineers, gather requirements with stakeholders, and turn business needs into a clear plan.",
+    proof: "Led teams of 6 and 3 engineers",
+  },
+];
+
+const stack = [
+  { title: "Languages", items: ["JavaScript (ES6+)", "TypeScript", "PHP"] },
+  { title: "Frontend", items: ["React", "Next.js", "Angular", "Vue", "React Native"] },
+  { title: "Backend", items: ["Node.js", "Express", "Laravel", "CakePHP", "REST APIs"] },
+  { title: "State & Real-time", items: ["Redux Toolkit", "React Query", "WebSockets"] },
+  { title: "Databases & Cloud", items: ["MySQL", "MongoDB", "Firebase", "Supabase"] },
+  { title: "DevOps", items: ["Docker", "CI/CD", "Nginx", "AWS", "Vercel"] },
+  { title: "AI Tools", items: ["Claude Code", "OpenAI Codex", "Cursor", "Windsurf"] },
+  { title: "Styling & UI", items: ["Tailwind CSS", "SASS", "Material UI", "Bootstrap"] },
+  { title: "Architecture", items: ["Design Systems", "Schema-driven UIs", "SSR", "Multi-tenancy"] },
+];
 
 function Home2() {
   return (
@@ -8,13 +61,15 @@ function Home2() {
       <Container fluid>
         <Row>
           <Col md={12} className="home-about-header">
+            <span className="h2-eyebrow">What I bring</span>
             <h1 className="impact-heading">
-              Crafting Scalable Web Solutions
+              Complex requirements in,
               <br />
-              <span className="purple">That Drive Business Growth</span>
+              <span className="purple">fast, reliable products out</span>
             </h1>
             <p className="impact-subtitle">
-              Specialized in building enterprise-grade applications with modern technologies, delivering measurable results through clean code and optimal performance.
+              For 5+ years I've built and led web platforms across FinTech, RegTech, HR and healthcare SaaS —
+              owning the architecture, the code and the people who ship it.
             </p>
           </Col>
         </Row>
@@ -23,65 +78,33 @@ function Home2() {
           <Col lg={7} md={12} className="overview-text">
             <div className="info-block">
               <h2 className="block-title">What I Do</h2>
-              <ul className="capabilities-list">
-                <li className="capability-item">
-                  <span className="capability-icon">⚡</span>
-                  <span>Turn business ideas and requirements into clear, actionable product solutions — not just code</span>
-                </li>
-                <li className="capability-item">
-                  <span className="capability-icon">🚀</span>
-                  <span>Build fast, scalable web applications that improve user experience, engagement, and conversion</span>
-                </li>
-                <li className="capability-item">
-                  <span className="capability-icon">📊</span>
-                  <span>Use data and real-time systems to support product decisions and business growth</span>
-                </li>
-                <li className="capability-item">
-                  <span className="capability-icon">🏗️</span>
-                  <span>Design maintainable architectures that scale from early-stage startups to enterprise systems</span>
-                </li>
-                <li className="capability-item">
-                  <span className="capability-icon">🤝</span>
-                  <span>Collaborate across teams (product, design, backend) to deliver reliable, production-ready solutions</span>
-                </li>
-                <li className="capability-item">
-                  <span className="capability-icon">🔧</span>
-                  <span>Own the full development lifecycle — from requirement validation to deployment and optimization</span>
-                </li>
-              </ul>
+              <div className="cap-grid">
+                {capabilities.map(({ icon: Icon, title, text, proof }) => (
+                  <article className="cap-card" key={title}>
+                    <span className="cap-icon">
+                      <Icon />
+                    </span>
+                    <h3 className="cap-title">{title}</h3>
+                    <p className="cap-text">{text}</p>
+                    <span className="cap-proof">{proof}</span>
+                  </article>
+                ))}
+              </div>
             </div>
 
             <div className="info-block">
               <h2 className="block-title">Core Stack</h2>
               <div className="stack-grid">
-                <div className="stack-category">
-                  <h3 className="stack-category-title">Frontend</h3>
-                  <p className="stack-items">React.js • Next.js • Vue.js • TypeScript • JavaScript (ES6+)</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">State Management</h3>
-                  <p className="stack-items">Redux Toolkit • React Query • Zustand</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">Styling & UI</h3>
-                  <p className="stack-items">Tailwind CSS • SASS • Material UI • Bootstrap • Responsive Design</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">Performance Optimization</h3>
-                  <p className="stack-items">SSR • Code Splitting • Lazy Loading</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">APIs & Data Handling</h3>
-                  <p className="stack-items">REST APIs • WebSockets • Real-time Data</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">Tools & Workflow</h3>
-                  <p className="stack-items">Git • GitHub • GitLab • Bitbucket • Agile • Figma • Adobe XD</p>
-                </div>
-                <div className="stack-category">
-                  <h3 className="stack-category-title">Backend</h3>
-                  <p className="stack-items">Node.js • Express • PHP (Laravel) • MySQL • Firebase • MongoDB</p>
-                </div>
+                {stack.map((group) => (
+                  <div className="stack-category" key={group.title}>
+                    <h3 className="stack-category-title">{group.title}</h3>
+                    <div className="stack-chips">
+                      {group.items.map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </Col>

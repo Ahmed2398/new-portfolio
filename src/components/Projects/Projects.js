@@ -1,164 +1,211 @@
 import React, { useState, useMemo } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { BsArrowRight, BsBoxArrowUpRight, BsSearch } from "react-icons/bs";
 import ProjectCard from "./ProjectCards";
 import ProjectModal from "./ProjectModal";
+import ProjectImage from "./ProjectImage";
 import Particle from "../Particle";
 import { projectsData } from "./ProjectsData";
+import "./Projects.css";
+
+const ALL = "All";
 
 function Projects() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [modalShow, setModalShow] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState(ALL);
+  const [query, setQuery] = useState("");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Filter projects based on selected category
+  const featured = useMemo(() => projectsData.filter((p) => p.featured), []);
+
+  const categories = useMemo(() => {
+    const counts = projectsData.reduce((acc, p) => {
+      acc[p.category] = (acc[p.category] || 0) + 1;
+      return acc;
+    }, {});
+    return [{ name: ALL, count: projectsData.length }, ...Object.entries(counts).map(([name, count]) => ({ name, count }))];
+  }, []);
+
   const filteredProjects = useMemo(() => {
-    return selectedCategory === "All" 
-      ? projectsData 
-      : projectsData.filter(project => project.category === selectedCategory);
-  }, [selectedCategory]);
+    const q = query.trim().toLowerCase();
+    return projectsData.filter((project) => {
+      const inCategory = selectedCategory === ALL || project.category === selectedCategory;
+      const matchesQuery =
+        !q ||
+        project.title.toLowerCase().includes(q) ||
+        project.techStack.some((tech) => tech.toLowerCase().includes(q));
+      return inCategory && matchesQuery;
+    });
+  }, [selectedCategory, query]);
 
-  // Handle opening modal with project details
-  const handleReadMore = (project) => {
-    setSelectedProject(project);
-    setModalShow(true);
-  };
-
-  // Handle closing modal
-  const handleCloseModal = () => {
-    setModalShow(false);
-    setSelectedProject(null);
+  const resetFilters = () => {
+    setSelectedCategory(ALL);
+    setQuery("");
   };
 
   return (
     <Container fluid className="project-section">
       <Particle />
-      <Container fluid>
-        
-        {/* Hire Me Section - Redesigned */}
-        <div className="hire-me-redesigned">
-          <div className="hire-me-header">
-            <div className="hire-me-badge">
-              <span className="badge-icon">🚀</span>
-              <span className="badge-text">Available for Projects</span>
+      <Container fluid className="pp">
+        {/* Page header */}
+        <header className="pp-header">
+          <span className="pp-eyebrow">Selected work</span>
+          <h1 className="pp-title">
+            Products I've helped <span className="purple">ship</span>
+          </h1>
+          <p className="pp-subtitle">
+            FinTech, RegTech, HR, healthcare and e-commerce platforms — from real-time trading dashboards to
+            schema-driven builders and design systems.
+          </p>
+          <dl className="pp-stats">
+            <div>
+              <dt>{projectsData.length}</dt>
+              <dd>Projects</dd>
             </div>
-            <h2 className="hire-me-title">
-              Building <span className="purple">Scalable Solutions</span> for Your Business
-            </h2>
-            <p className="hire-me-subtitle">
-              Full-Stack Engineer | 4+ Years | 20+ Production Systems
-            </p>
-          </div>
+            <div>
+              <dt>5+</dt>
+              <dd>Years</dd>
+            </div>
+            <div>
+              <dt>{categories.length - 1}</dt>
+              <dd>Categories</dd>
+            </div>
+          </dl>
+        </header>
 
-          <div className="hire-me-grid">
-            <div className="hire-me-card expertise-card">
-              <div className="card-icon">⚡</div>
-              <h3>High-Performance Engineering</h3>
-              <p>Building fast, scalable applications with optimized architecture and real-time capabilities</p>
-            </div>
-
-            <div className="hire-me-card stack-card">
-              <div className="card-icon">🛠️</div>
-              <h3>Full-Stack Expertise</h3>
-              <p>React, Vue, Node.js, Laravel, WordPress - End-to-end development from database to UI</p>
-            </div>
-
-            <div className="hire-me-card impact-card">
-              <div className="card-icon">💎</div>
-              <h3>Business-Driven Results</h3>
-              <p>Focused on delivering solutions that drive growth, efficiency, and measurable business impact</p>
-            </div>
-          </div>
-
-          <div className="hire-me-cta">
-            <div className="cta-stats">
-              <div className="stat-item">
-                <span className="stat-number">20+</span>
-                <span className="stat-label">Production Systems</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">4+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">15+</span>
-                <span className="stat-label">Technologies</span>
-              </div>
-            </div>
-            
-            <div className="cta-buttons">
-              <a href="/contact" className="cta-btn primary">
-                <span className="btn-icon">🚀</span>
-                Start Your Project
-              </a>
-              <a href="/contact" className="cta-btn secondary">
-                <span className="btn-icon">💬</span>
-                Let's Talk
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <h1 className="project-heading">
-          My Professional <strong className="purple">Portfolio</strong>
-        </h1>
-        <p style={{ color: "white" }}>
-          Explore a selection of my most impactful and innovative projects.
-        </p>
-
-        {/* Category Filters */}
-        <div className="modern-filters-container">
-          <div className="filter-group">
-            <div className="filter-label">
-              <span className="filter-icon">📁</span>
-              <h3>Category</h3>
-            </div>
-            <div className="filter-buttons">
-              {["All", "Full Stack", "Frontend", "WordPress"].map((category) => (
+        {/* Featured */}
+        <section className="pp-featured" aria-labelledby="pp-featured-heading">
+          <h2 id="pp-featured-heading" className="pp-section-title">
+            Featured projects
+          </h2>
+          <div className="pp-featured-list">
+            {featured.map((project, index) => (
+              <article key={project.id} className={`pp-feature ${index % 2 ? "reverse" : ""}`}>
                 <button
-                  key={category}
-                  className={`modern-filter-btn ${selectedCategory === category ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(category)}
+                  type="button"
+                  className="pp-feature-media"
+                  onClick={() => setSelectedProject(project)}
+                  aria-label={`Open ${project.title} details`}
                 >
-                  {category}
+                  <ProjectImage src={project.imgPath} title={project.title} />
+                </button>
+                <div className="pp-feature-body">
+                  <span className="pp-eyebrow">
+                    {String(index + 1).padStart(2, "0")} · {project.category}
+                  </span>
+                  <h3 className="pp-feature-title">{project.title}</h3>
+                  {project.role && <p className="pp-role">{project.role}</p>}
+                  <p className="pp-feature-desc">{project.description}</p>
+                  {project.features && (
+                    <ul className="pp-feature-highlights">
+                      {project.features.slice(0, 4).map((feature) => (
+                        <li key={feature.title}>{feature.title}</li>
+                      ))}
+                      {project.features.length > 4 && (
+                        <li className="more">+{project.features.length - 4} more modules</li>
+                      )}
+                    </ul>
+                  )}
+                  <div className="pp-tags">
+                    {project.techStack.slice(0, 5).map((tech) => (
+                      <span key={tech} className="pp-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="pp-card-actions">
+                    <button type="button" className="pp-primary-btn" onClick={() => setSelectedProject(project)}>
+                      Read case study <BsArrowRight />
+                    </button>
+                    {project.demoLink && (
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="pp-live-btn">
+                        Live site <BsBoxArrowUpRight />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* All projects */}
+        <section className="pp-all" aria-labelledby="pp-all-heading">
+          <div className="pp-all-head">
+            <h2 id="pp-all-heading" className="pp-section-title">
+              All projects
+            </h2>
+            <span className="pp-count">
+              Showing <strong>{filteredProjects.length}</strong> of {projectsData.length}
+            </span>
+          </div>
+
+          <div className="pp-toolbar">
+            <div className="pp-filters" role="tablist" aria-label="Filter by category">
+              {categories.map(({ name, count }) => (
+                <button
+                  key={name}
+                  type="button"
+                  role="tab"
+                  aria-selected={selectedCategory === name}
+                  className={`pp-filter ${selectedCategory === name ? "active" : ""}`}
+                  onClick={() => setSelectedCategory(name)}
+                >
+                  {name}
+                  <span className="pp-filter-count">{count}</span>
                 </button>
               ))}
             </div>
-          </div>
 
-          {/* Results Count */}
-          <div className="results-count">
-            <span>Showing <strong>{filteredProjects.length}</strong> {filteredProjects.length === 1 ? 'project' : 'projects'}</span>
-          </div>
-        </div>
-
-        {/* Projects Grid */}
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
-          {filteredProjects.map((project) => (
-            <Col key={project.id} md={4} className="project-card">
-              <ProjectCard
-                imgPath={project.imgPath}
-                isBlog={false}
-                title={project.title}
-                description={project.description}
-                techStack={project.techStack}
-                ghLink={project.ghLink}
-                demoLink={project.demoLink}
-                onReadMore={() => handleReadMore(project)}
+            <label className="pp-search">
+              <BsSearch aria-hidden="true" />
+              <input
+                type="search"
+                placeholder="Search by name or tech…"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search projects"
               />
-            </Col>
-          ))}
-        </Row>
+            </label>
+          </div>
 
-        {/* Project Modal */}
-        {selectedProject && (
-          <ProjectModal
-            show={modalShow}
-            handleClose={handleCloseModal}
-            title={selectedProject.title}
-            fullDescription={selectedProject.fullDescription}
-            techStack={selectedProject.techStack}
-          />
-        )}
+          {filteredProjects.length ? (
+            <div className="pp-grid">
+              {filteredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} onOpen={() => setSelectedProject(project)} />
+              ))}
+            </div>
+          ) : (
+            <div className="pp-empty">
+              <p>No projects match “{query}”.</p>
+              <button type="button" className="pp-link-btn" onClick={resetFilters}>
+                Clear filters
+              </button>
+            </div>
+          )}
+        </section>
+
+        {/* Call to action */}
+        <section className="pp-cta">
+          <div>
+            <h2>Have a product that needs solid engineering?</h2>
+            <p>I'm open to senior and lead software engineering roles and selected freelance projects.</p>
+          </div>
+          <div className="pp-cta-actions">
+            <Link to="/contact" className="pp-primary-btn">
+              Let's talk <BsArrowRight />
+            </Link>
+            <Link to="/resume" className="pp-live-btn">
+              View resume
+            </Link>
+          </div>
+        </section>
+
+        <ProjectModal
+          show={Boolean(selectedProject)}
+          handleClose={() => setSelectedProject(null)}
+          project={selectedProject}
+        />
       </Container>
     </Container>
   );

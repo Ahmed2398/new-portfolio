@@ -1,0 +1,194 @@
+/* ============================================ */
+/* WELCOME AUDIO CARD                           */
+/* ============================================ */
+
+.welcome-card {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 340px;
+  max-width: calc(100vw - 100px);
+  padding: 14px 44px 14px 14px;
+  border-radius: 18px;
+  text-align: left;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(59, 130, 246, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: wcIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.welcome-card.is-playing {
+  border-color: rgba(139, 92, 246, 0.55);
+}
+
+.wc-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+}
+
+.wc-avatar svg {
+  position: relative;
+  z-index: 1;
+  border-radius: 12px;
+}
+
+.wc-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  animation: wcPulse 1.4s ease-out infinite;
+}
+
+.wc-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.wc-title {
+  margin: 0 0 2px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.wc-text {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #94a3b8;
+}
+
+.wc-tag {
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #c4b5fd;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  vertical-align: middle;
+}
+
+/* Animated sound bars while speaking */
+.wc-bars {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 18px;
+}
+
+.wc-bars span {
+  width: 3px;
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #60a5fa, #a78bfa);
+  transform-origin: center;
+  animation: wcBar 0.8s ease-in-out infinite;
+}
+
+.wc-play {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.wc-play:hover {
+  transform: scale(1.08);
+}
+
+.welcome-card:not(.is-playing) .wc-play {
+  animation: wcInvite 2s ease-in-out 1s infinite;
+}
+
+.wc-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wc-close:hover {
+  color: #ffffff;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+@keyframes wcIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes wcPulse {
+  0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(139, 92, 246, 0); }
+}
+
+@keyframes wcBar {
+  0%, 100% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+}
+
+@keyframes wcInvite {
+  0%, 100% { box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), 0 0 0 0 rgba(59, 130, 246, 0.5); }
+  50% { box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), 0 0 0 10px rgba(59, 130, 246, 0); }
+}
+
+@media (max-width: 767px) {
+  .welcome-card {
+    left: 12px;
+    bottom: 16px;
+    width: auto;
+    right: 76px;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-card,
+  .wc-pulse,
+  .wc-play {
+    animation: none !important;
+  }
+
+  .wc-bars span {
+    animation: none;
+    transform: scaleY(0.6);
+  }
+}
