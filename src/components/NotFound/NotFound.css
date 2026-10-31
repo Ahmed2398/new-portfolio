@@ -1,0 +1,252 @@
+/* ============================================ */
+/* 404 PAGE                                     */
+/* ============================================ */
+
+.nf {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px var(--container-gutter) 80px;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #111c36 0%, #070d1a 70%);
+}
+
+.nf-glow {
+  position: absolute;
+  top: 10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(139, 92, 246, 0.12) 45%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+.nf-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 640px;
+  text-align: center;
+}
+
+/* ---------- Terminal ---------- */
+.nf-terminal {
+  max-width: 460px;
+  margin: 0 auto 28px;
+  text-align: left;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(10, 15, 30, 0.92);
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.nf-terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: rgba(30, 41, 59, 0.85);
+}
+
+.nf-terminal-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.nf-terminal-bar .red { background: #ef4444; }
+.nf-terminal-bar .yellow { background: #f59e0b; }
+.nf-terminal-bar .green { background: #10b981; }
+
+.nf-terminal-bar em {
+  margin-left: 8px;
+  font-style: normal;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-family: "Courier New", monospace;
+}
+
+.nf-terminal pre {
+  margin: 0;
+  padding: 14px 16px;
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.nf-prompt { color: #10b981; font-weight: 700; }
+.nf-path { color: #fbbf24; }
+.nf-status { color: #f87171; font-weight: 700; }
+.nf-comment { color: #64748b; font-style: italic; }
+
+.nf-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  vertical-align: middle;
+  background: #60a5fa;
+  animation: nfBlink 1s steps(1) infinite;
+}
+
+/* ---------- Big 404 ---------- */
+.nf-code {
+  margin: 0;
+  font-size: clamp(5rem, 18vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -4px;
+  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 55%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* inline-block breaks the parent's background-clip, so the "0" gets its own */
+.nf-code span {
+  display: inline-block;
+  background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: nfSpin 6s ease-in-out infinite;
+}
+
+.nf-title {
+  margin: 10px 0 10px;
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.nf-text {
+  margin: 0 auto 26px;
+  max-width: 460px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.nf-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  box-shadow: 0 10px 26px rgba(59, 130, 246, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.nf-home:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ---------- Suggestions ---------- */
+.nf-suggestions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 36px;
+  text-align: left;
+}
+
+.nf-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.nf-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(96, 165, 250, 0.45);
+}
+
+.nf-card-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #93c5fd;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(139, 92, 246, 0.2));
+}
+
+.nf-card-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.nf-card-text strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.nf-card-text span {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+.nf-card-arrow {
+  margin-left: auto;
+  color: #475569;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nf-card:hover .nf-card-arrow {
+  color: #93c5fd;
+  transform: translateX(3px);
+}
+
+.nf-hint {
+  margin: 26px 0 0;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+@keyframes nfBlink {
+  50% { opacity: 0; }
+}
+
+@keyframes nfSpin {
+  0%, 70%, 100% { transform: rotate(0); }
+  80% { transform: rotate(-12deg); }
+  90% { transform: rotate(12deg); }
+}
+
+@media (max-width: 767px) {
+  .nf-suggestions {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-terminal pre {
+    font-size: 0.72rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-code span,
+  .nf-cursor {
+    animation: none;
+  }
+}

@@ -9,14 +9,14 @@ import Resume from "./components/Resume/ResumeNew";
 import Contact from "./components/Contact/Contact";
 import Services from "./components/Services/Services";
 import Journey from "./components/Journey/Journey";
+import NotFound from "./components/NotFound/NotFound";
 import QuickLinksDropdown from "./components/QuickLinksDropdown";
 import WelcomeAudio from "./components/WelcomeAudio";
 import Chatbot from "./components/Chatbot/Chatbot";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
-  Navigate
+  Routes
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
@@ -52,7 +52,7 @@ function App() {
           <Route path="/journey" element={<Journey />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
         <Chatbot />
