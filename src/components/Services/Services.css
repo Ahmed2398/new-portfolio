@@ -24,7 +24,7 @@
 .sv {
   position: relative;
   z-index: 1;
-  text-align: left;
+  text-align: start;
   color: #e2e8f0;
 }
 
@@ -328,7 +328,7 @@
   border-radius: 18px;
   overflow: hidden;
   color: #e2e8f0;
-  text-align: left;
+  text-align: start;
 }
 
 .sv-modal-head {
@@ -561,7 +561,7 @@
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
-  text-align: left;
+  text-align: start;
   cursor: pointer;
 }
 

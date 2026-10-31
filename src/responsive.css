@@ -71,7 +71,7 @@ canvas {
 
 .hero-left {
   padding: 40px 32px 40px 0;
-  text-align: left;
+  text-align: start;
 }
 
 .hero-right {
@@ -84,7 +84,7 @@ canvas {
 }
 
 .overview-text {
-  text-align: left;
+  text-align: start;
 }
 
 .timeline {
@@ -110,7 +110,7 @@ canvas {
 @media (max-width: 991px) {
   .hero-left,
   .hero-content {
-    text-align: left;
+    text-align: start;
   }
 
   .hero-left {
@@ -129,7 +129,7 @@ canvas {
   }
 
   .overview-text {
-    text-align: left;
+    text-align: start;
   }
 
 }
@@ -209,7 +209,7 @@ canvas {
     line-height: 1.7;
     overflow-x: auto;
     white-space: nowrap;
-    text-align: left;
+    text-align: start;
   }
 
   .code-line.indent {
@@ -437,7 +437,7 @@ canvas {
   overflow: hidden;
   border: 1px solid rgba(96, 165, 250, 0.25);
   background: rgba(15, 23, 42, 0.7);
-  text-align: left;
+  text-align: start;
 }
 
 .motto-code {
@@ -503,7 +503,7 @@ body.modal-open .sticky-quick-links {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  text-align: left;
+  text-align: start;
   animation: fadeInDown 0.8s ease-out;
 }
 

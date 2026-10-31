@@ -20,6 +20,14 @@ import {
   FiRefreshCw,
   FiZap,
 } from "react-icons/fi";
+import {
+  chaptersAr,
+  processStepsAr,
+  departmentsAr,
+  leadershipAr,
+  techSkillsAr,
+  softSkillsAr,
+} from "./journeyData.ar";
 
 // Story chapters — career milestones told as "what changed for me"
 export const chapters = [
@@ -192,3 +200,16 @@ export const softSkills = [
   { icon: FiClock, title: "Time management", text: "Balancing a full-time lead role with part-time projects." },
   { icon: FiRefreshCw, title: "Adaptability", text: "Moving between React, Angular, Vue and backend work as needed." },
 ];
+
+// Attach the Arabic copy (see journeyData.ar.js); components read it via `pick()`
+const attach = (list, arList) => list.forEach((item, i) => {
+  item.ar = arList[i];
+});
+attach(chapters, chaptersAr);
+attach(processSteps, processStepsAr);
+attach(departments, departmentsAr);
+attach(leadership, leadershipAr);
+attach(softSkills, softSkillsAr);
+techSkills.forEach((group, i) => {
+  group.ar = { title: techSkillsAr[i] };
+});

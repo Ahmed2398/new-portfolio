@@ -5,11 +5,15 @@ import { BsArrowRight, BsCheck2 } from "react-icons/bs";
 import { FiPlus, FiMinus, FiX, FiUsers, FiTrendingUp, FiStar } from "react-icons/fi";
 import Particle from "../Particle";
 import { servicesData, processSteps, engagementModels, faqs } from "./servicesData";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Services.css";
 
+// Always link with the English title — the contact form's topics are keyed by it
 export const contactLinkFor = (service) => `/contact?service=${encodeURIComponent(service.title)}`;
 
-export function ServiceCard({ service, compact = false, onShowDetails }) {
+export function ServiceCard({ service: raw, compact = false, onShowDetails }) {
+  const { t, pick } = useLang();
+  const service = pick(raw);
   const Icon = service.icon;
   return (
     <article className={`sv-card ${compact ? "compact" : ""}`}>
@@ -39,7 +43,7 @@ export function ServiceCard({ service, compact = false, onShowDetails }) {
       {!compact && service.idealFor && (
         <div className="sv-best-for">
           <span className="sv-best-for-label">
-            <FiUsers aria-hidden="true" /> Best for
+            <FiUsers aria-hidden="true" /> {t("Best for", "مناسب لـ")}
           </span>
           <p>{service.idealFor.join(" · ")}</p>
         </div>
@@ -48,15 +52,15 @@ export function ServiceCard({ service, compact = false, onShowDetails }) {
       <div className="sv-card-footer">
         {compact ? (
           <Link to="/services" className="sv-card-link">
-            Learn more <BsArrowRight />
+            {t("Learn more", "اعرف أكتر")} <BsArrowRight />
           </Link>
         ) : (
           <>
-            <button type="button" className="sv-details-btn" onClick={() => onShowDetails(service)}>
-              Show details
+            <button type="button" className="sv-details-btn" onClick={() => onShowDetails(raw)}>
+              {t("Show details", "التفاصيل")}
             </button>
-            <Link to={contactLinkFor(service)} className="sv-card-link">
-              Discuss this <BsArrowRight />
+            <Link to={contactLinkFor(raw)} className="sv-card-link">
+              {t("Discuss this", "اطلب الخدمة")} <BsArrowRight />
             </Link>
           </>
         )}
@@ -81,8 +85,10 @@ function DetailList({ title, items, icon: ItemIcon = BsCheck2 }) {
   );
 }
 
-function ServiceDetails({ service, onClose }) {
-  if (!service) return null;
+function ServiceDetails({ service: raw, onClose }) {
+  const { t, pick } = useLang();
+  if (!raw) return null;
+  const service = pick(raw);
   const Icon = service.icon;
 
   return (
@@ -92,10 +98,10 @@ function ServiceDetails({ service, onClose }) {
           <Icon />
         </div>
         <div>
-          <span className="sv-eyebrow">Service</span>
+          <span className="sv-eyebrow">{t("Service", "خدمة")}</span>
           <h2 className="sv-modal-title">{service.title}</h2>
         </div>
-        <button type="button" className="sv-modal-close" onClick={onClose} aria-label="Close">
+        <button type="button" className="sv-modal-close" onClick={onClose} aria-label={t("Close", "قفل")}>
           <FiX />
         </button>
       </div>
@@ -107,20 +113,20 @@ function ServiceDetails({ service, onClose }) {
           ))}
         </div>
 
-        <DetailList title="What's included" items={service.included} />
+        <DetailList title={t("What's included", "الخدمة بتشمل")} items={service.included} />
 
         <div className="sv-detail-columns">
-          <DetailList title="Ideal for" items={service.idealFor} icon={FiUsers} />
-          <DetailList title="What you get" items={service.outcomes} icon={FiTrendingUp} />
+          <DetailList title={t("Ideal for", "مناسبة لـ")} items={service.idealFor} icon={FiUsers} />
+          <DetailList title={t("What you get", "هتاخد إيه")} items={service.outcomes} icon={FiTrendingUp} />
         </div>
       </Modal.Body>
 
       <div className="sv-modal-footer">
         <button type="button" className="sv-btn-ghost" onClick={onClose}>
-          Close
+          {t("Close", "قفل")}
         </button>
-        <Link to={contactLinkFor(service)} className="sv-btn-primary" onClick={onClose}>
-          Discuss this service <BsArrowRight />
+        <Link to={contactLinkFor(raw)} className="sv-btn-primary" onClick={onClose}>
+          {t("Discuss this service", "اطلب الخدمة دي")} <BsArrowRight />
         </Link>
       </div>
     </Modal>
@@ -142,6 +148,7 @@ function FaqItem({ q, a }) {
 
 function Services() {
   const [selectedService, setSelectedService] = useState(null);
+  const { t, pick } = useLang();
 
   return (
     <Container fluid className="services-section">
@@ -149,21 +156,23 @@ function Services() {
       <Container fluid className="sv">
         {/* Header */}
         <header className="sv-header">
-          <span className="sv-eyebrow">Services</span>
+          <span className="sv-eyebrow">{t("Services", "الخدمات")}</span>
           <h1 className="sv-title">
-            How I can <span className="purple">help</span>
+            {t("How I can ", "إزاي أقدر ")}
+            <span className="purple">{t("help", "أساعدك")}</span>
           </h1>
           <p className="sv-subtitle">
-            From a first architecture sketch to production deployment — I build, ship and look after web platforms,
-            and help teams make the right technical decisions along the way. An AI-assisted workflow (Claude Code,
-            Codex, Cursor, Windsurf) means faster delivery without cutting corners.
+            {t(
+              "From a first architecture sketch to production deployment — I build, ship and look after web platforms, and help teams make the right technical decisions along the way. An AI-assisted workflow (Claude Code, Codex, Cursor, Windsurf) means faster delivery without cutting corners.",
+              "من أول رسمة للمعمارية لحد النشر على الإنتاج — ببني وبسلّم وبتابع منصات ويب، وبساعد الفرق تاخد القرارات التقنية الصح. وطريقة شغلي بأدوات الذكاء الاصطناعي (Claude Code و Codex و Cursor و Windsurf) معناها تسليم أسرع من غير ما الجودة تقل."
+            )}
           </p>
           <div className="sv-header-actions">
             <Link to="/contact" className="sv-btn-primary">
-              Start a project <BsArrowRight />
+              {t("Start a project", "ابدأ مشروعك")} <BsArrowRight />
             </Link>
             <Link to="/project" className="sv-btn-ghost">
-              See my work
+              {t("See my work", "شوف شغلي")}
             </Link>
           </div>
         </header>
@@ -171,7 +180,7 @@ function Services() {
         {/* Services grid */}
         <section aria-labelledby="sv-list-heading">
           <h2 id="sv-list-heading" className="sv-section-title">
-            What I offer
+            {t("What I offer", "الخدمات اللي بقدمها")}
           </h2>
           <div className="sv-grid">
             {servicesData.map((service) => (
@@ -185,10 +194,10 @@ function Services() {
         {/* Process */}
         <section className="sv-block" aria-labelledby="sv-process-heading">
           <h2 id="sv-process-heading" className="sv-section-title">
-            How I work
+            {t("How I work", "طريقة شغلي")}
           </h2>
           <ol className="sv-process">
-            {processSteps.map((step, index) => (
+            {processSteps.map(pick).map((step, index) => (
               <li key={step.title} className="sv-step">
                 <span className="sv-step-num">{String(index + 1).padStart(2, "0")}</span>
                 <h3>{step.title}</h3>
@@ -201,10 +210,10 @@ function Services() {
         {/* Engagement models */}
         <section className="sv-block" aria-labelledby="sv-engage-heading">
           <h2 id="sv-engage-heading" className="sv-section-title">
-            Ways to work together
+            {t("Ways to work together", "طرق نشتغل بيها مع بعض")}
           </h2>
           <div className="sv-engage">
-            {engagementModels.map((model) => (
+            {engagementModels.map(pick).map((model) => (
               <div key={model.title} className="sv-engage-card">
                 <h3>{model.title}</h3>
                 <p>{model.text}</p>
@@ -216,11 +225,11 @@ function Services() {
         {/* FAQ */}
         <section className="sv-block sv-faq" aria-labelledby="sv-faq-heading">
           <h2 id="sv-faq-heading" className="sv-section-title">
-            Common questions
+            {t("Common questions", "أسئلة شائعة")}
           </h2>
           <div className="sv-faq-list">
-            {faqs.map((item) => (
-              <FaqItem key={item.q} {...item} />
+            {faqs.map(pick).map((item) => (
+              <FaqItem key={item.q} q={item.q} a={item.a} />
             ))}
           </div>
         </section>
@@ -228,11 +237,16 @@ function Services() {
         {/* CTA */}
         <section className="sv-cta">
           <div>
-            <h2>Not sure which service you need?</h2>
-            <p>Tell me about your product — I'll suggest the simplest way to get it built, fixed or shipped.</p>
+            <h2>{t("Not sure which service you need?", "مش عارف محتاج أنهي خدمة؟")}</h2>
+            <p>
+              {t(
+                "Tell me about your product — I'll suggest the simplest way to get it built, fixed or shipped.",
+                "احكيلي عن منتجك — وأنا هقترح أبسط طريقة نبنيه أو نصلحه أو نطلقه بيها."
+              )}
+            </p>
           </div>
           <Link to="/contact" className="sv-btn-primary">
-            Let's talk <BsArrowRight />
+            {t("Let's talk", "يلا نتكلم")} <BsArrowRight />
           </Link>
         </section>
       </Container>

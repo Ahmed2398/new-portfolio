@@ -1,24 +1,26 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FiHome, FiFolder, FiLayers, FiMail, FiArrowRight } from "react-icons/fi";
+import { useLang } from "../../i18n/LanguageContext";
 import "./NotFound.css";
 
 const suggestions = [
-  { to: "/project", label: "Projects", text: "See what I've built", icon: FiFolder },
-  { to: "/services", label: "Services", text: "How I can help", icon: FiLayers },
-  { to: "/contact", label: "Contact", text: "Start a conversation", icon: FiMail },
+  { to: "/project", label: "Projects", text: "See what I've built", ar: { label: "المشاريع", text: "شوف أنا بنيت إيه" }, icon: FiFolder },
+  { to: "/services", label: "Services", text: "How I can help", ar: { label: "الخدمات", text: "إزاي أقدر أساعدك" }, icon: FiLayers },
+  { to: "/contact", label: "Contact", text: "Start a conversation", ar: { label: "تواصل", text: "ابدأ محادثة" }, icon: FiMail },
 ];
 
 function NotFound() {
   const { pathname } = useLocation();
+  const { t, pick } = useLang();
 
   useEffect(() => {
     const previous = document.title;
-    document.title = "Page not found | Ahmed Ashraf";
+    document.title = t("Page not found | Ahmed Ashraf", "الصفحة مش موجودة | أحمد أشرف");
     return () => {
       document.title = previous;
     };
-  }, []);
+  }, [t]);
 
   return (
     <main className="nf">
@@ -47,17 +49,20 @@ function NotFound() {
         <h1 className="nf-code">
           4<span>0</span>4
         </h1>
-        <h2 className="nf-title">This page took a wrong turn</h2>
+        <h2 className="nf-title">{t("This page took a wrong turn", "الصفحة دي تاهت في السكة")}</h2>
         <p className="nf-text">
-          The page you're looking for doesn't exist or has been moved. Let's get you back on track.
+          {t(
+            "The page you're looking for doesn't exist or has been moved. Let's get you back on track.",
+            "الصفحة اللي بتدور عليها مش موجودة أو اتنقلت. تعالى نرجعك للطريق الصح."
+          )}
         </p>
 
         <Link to="/" className="nf-home">
-          <FiHome /> Back to home
+          <FiHome /> {t("Back to home", "ارجع للرئيسية")}
         </Link>
 
         <div className="nf-suggestions">
-          {suggestions.map(({ to, label, text, icon: Icon }) => (
+          {suggestions.map(pick).map(({ to, label, text, icon: Icon }) => (
             <Link key={to} to={to} className="nf-card">
               <span className="nf-card-icon">
                 <Icon />
@@ -71,7 +76,7 @@ function NotFound() {
           ))}
         </div>
 
-        <p className="nf-hint">Still lost? Ask the AI assistant in the corner 🤖</p>
+        <p className="nf-hint">{t("Still lost? Ask the AI assistant in the corner 🤖", "لسه تايه؟ اسأل المساعد الذكي اللي في الركن 🤖")}</p>
       </div>
     </main>
   );

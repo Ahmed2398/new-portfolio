@@ -1,0 +1,110 @@
+/* ============================================ */
+/* RIGHT-TO-LEFT (Arabic) ADJUSTMENTS           */
+/* ============================================ */
+
+/* Code, terminals and the illustration always read left-to-right */
+html[dir="rtl"] .hc,
+html[dir="rtl"] .hc-code,
+html[dir="rtl"] .nf-terminal,
+html[dir="rtl"] .motto-code,
+html[dir="rtl"] .workspace,
+html[dir="rtl"] .ct-email,
+html[dir="rtl"] input[type="email"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Arrow icons point the other way in Arabic */
+html[dir="rtl"] .rtl-flip,
+html[dir="rtl"] .hx-btn-primary svg,
+html[dir="rtl"] .pp-link-btn svg,
+html[dir="rtl"] .pp-primary-btn svg,
+html[dir="rtl"] .sv-card-link svg,
+html[dir="rtl"] .sv-btn-primary svg,
+html[dir="rtl"] .ab-btn-ghost svg:last-child,
+html[dir="rtl"] .jr-btn-primary svg,
+html[dir="rtl"] .ai-cta svg,
+html[dir="rtl"] .nf-card-arrow,
+html[dir="rtl"] .nav-chevron,
+html[dir="rtl"] .ft-more svg,
+html[dir="rtl"] .ft-cta svg,
+html[dir="rtl"] .ct-channel-arrow {
+  transform: scaleX(-1);
+}
+
+/* Experience timeline: line and dots move to the right side */
+html[dir="rtl"] .timeline {
+  padding: 0 32px 0 0;
+}
+
+html[dir="rtl"] .timeline::before {
+  left: auto;
+  right: 7px;
+}
+
+html[dir="rtl"] .timeline-dot {
+  left: auto;
+  right: -32px;
+}
+
+html[dir="rtl"] .timeline-points {
+  padding-left: 0;
+  padding-right: 18px;
+}
+
+/* Lists with custom left padding */
+html[dir="rtl"] .principles li,
+html[dir="rtl"] .pp-feature-highlights li {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+html[dir="rtl"] .principles li::before,
+html[dir="rtl"] .pp-feature-highlights li::before {
+  left: auto;
+  right: 0;
+}
+
+/* Example boxes & accent borders */
+html[dir="rtl"] .jr-example,
+html[dir="rtl"] .jr-ai-rules {
+  border-left: none;
+  border-right: 3px solid #8b5cf6;
+}
+
+html[dir="rtl"] .jr-ai-num {
+  right: auto;
+  left: 16px;
+}
+
+/* Hero stats dividers */
+html[dir="rtl"] .hx-stats div {
+  border-left: none;
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+html[dir="rtl"] .hx-stats div:first-child {
+  padding-right: 0;
+  padding-left: 28px;
+  border-right: none;
+}
+
+/* Arabic reads better with a little more line height */
+html[lang="ar"] p,
+html[lang="ar"] li {
+  line-height: 1.85;
+}
+
+@media (max-width: 767px) {
+  html[dir="rtl"] .timeline {
+    padding-right: 24px;
+  }
+
+  html[dir="rtl"] .timeline::before {
+    right: 5px;
+  }
+
+  html[dir="rtl"] .timeline-dot {
+    right: -24px;
+  }
+}

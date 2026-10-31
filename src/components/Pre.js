@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useLang } from "../i18n/LanguageContext";
 import "./Pre.css";
 
 // Branded preloader: the "AA" mark draws itself, then the screen fades out
 // once `load` turns false. Stays mounted for the exit transition only.
 function Pre({ load }) {
   const [visible, setVisible] = useState(true);
+  const { t } = useLang();
 
   useEffect(() => {
     if (load) return undefined;
@@ -39,14 +41,14 @@ function Pre({ load }) {
         </div>
 
         <p className="pl-name">
-          Ahmed <span>Ashraf</span>
+          {t("Ahmed", "أحمد")} <span>{t("Ashraf", "أشرف")}</span>
         </p>
-        <p className="pl-role">Software Engineer</p>
+        <p className="pl-role">{t("Software Engineer", "مهندس برمجيات")}</p>
 
         <div className="pl-progress" aria-hidden="true">
           <span />
         </div>
-        <span className="sr-only">Loading…</span>
+        <span className="sr-only">{t("Loading…", "جاري التحميل…")}</span>
       </div>
     </div>
   );

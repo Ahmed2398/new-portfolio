@@ -4,16 +4,17 @@ import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiArrowUp, FiArrowUpRight } fro
 import { FaWhatsapp } from "react-icons/fa";
 import Logo from "./Logo";
 import { servicesData } from "./Services/servicesData";
+import { useLang } from "../i18n/LanguageContext";
 import "./Footer.css";
 
 const pages = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/project", label: "Projects" },
-  { to: "/services", label: "Services" },
-  { to: "/journey", label: "Journey" },
-  { to: "/resume", label: "Resume" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", ar: "الرئيسية" },
+  { to: "/about", label: "About", ar: "عني" },
+  { to: "/project", label: "Projects", ar: "المشاريع" },
+  { to: "/services", label: "Services", ar: "الخدمات" },
+  { to: "/journey", label: "Journey", ar: "رحلتي" },
+  { to: "/resume", label: "Resume", ar: "السيرة الذاتية" },
+  { to: "/contact", label: "Contact", ar: "تواصل" },
 ];
 
 const socials = [
@@ -24,6 +25,7 @@ const socials = [
 ];
 
 function Footer() {
+  const { t, pick } = useLang();
   const year = new Date().getFullYear();
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -37,20 +39,23 @@ function Footer() {
               <Logo />
             </Link>
             <p className="ft-tagline">
-              Building fast, reliable web platforms for FinTech, RegTech and SaaS — from architecture to production.
+              {t(
+                "Building fast, reliable web platforms for FinTech, RegTech and SaaS — from architecture to production.",
+                "ببني منصات ويب سريعة وموثوقة للتقنية المالية والامتثال والـ SaaS — من المعمارية لحد الإنتاج."
+              )}
             </p>
             <span className="ft-available">
-              <span className="ft-dot" /> Open to new opportunities
+              <span className="ft-dot" /> {t("Open to new opportunities", "متاح لفرص جديدة")}
             </span>
           </div>
 
           {/* Pages */}
           <nav className="ft-col" aria-label="Footer pages">
-            <h3>Pages</h3>
+            <h3>{t("Pages", "الصفحات")}</h3>
             <ul>
               {pages.map((page) => (
                 <li key={page.to}>
-                  <Link to={page.to}>{page.label}</Link>
+                  <Link to={page.to}>{t(page.label, page.ar)}</Link>
                 </li>
               ))}
             </ul>
@@ -58,16 +63,16 @@ function Footer() {
 
           {/* Services */}
           <nav className="ft-col" aria-label="Footer services">
-            <h3>Services</h3>
+            <h3>{t("Services", "الخدمات")}</h3>
             <ul>
               {servicesData.slice(0, 5).map((service) => (
                 <li key={service.id}>
-                  <Link to="/services">{service.title}</Link>
+                  <Link to="/services">{pick(service).title}</Link>
                 </li>
               ))}
               <li>
                 <Link to="/services" className="ft-more">
-                  All services <FiArrowUpRight />
+                  {t("All services", "كل الخدمات")} <FiArrowUpRight />
                 </Link>
               </li>
             </ul>
@@ -75,7 +80,7 @@ function Footer() {
 
           {/* Contact */}
           <div className="ft-col">
-            <h3>Get in touch</h3>
+            <h3>{t("Get in touch", "تواصل معايا")}</h3>
             <ul className="ft-contact">
               <li>
                 <FiMail />
@@ -89,18 +94,18 @@ function Footer() {
               </li>
               <li>
                 <FiMapPin />
-                <span>Cairo, Egypt · Remote</span>
+                <span>{t("Cairo, Egypt · Remote", "القاهرة، مصر · عن بعد")}</span>
               </li>
             </ul>
             <Link to="/contact" className="ft-cta">
-              Start a conversation <FiArrowUpRight />
+              {t("Start a conversation", "ابدأ محادثة")} <FiArrowUpRight />
             </Link>
           </div>
         </div>
 
         <div className="ft-bottom">
           <p>
-            © {year} Ahmed Ashraf. Designed &amp; built by me.
+            © {year} {t("Ahmed Ashraf. Designed & built by me.", "أحمد أشرف. تصميم وتطوير بنفسي.")}
           </p>
 
           <div className="ft-bottom-right">
@@ -117,7 +122,7 @@ function Footer() {
                 </a>
               ))}
             </div>
-            <button type="button" className="ft-top" onClick={scrollToTop} aria-label="Back to top">
+            <button type="button" className="ft-top" onClick={scrollToTop} aria-label={t("Back to top", "لفوق")}>
               <FiArrowUp />
             </button>
           </div>

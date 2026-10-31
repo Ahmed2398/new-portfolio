@@ -13,6 +13,7 @@ import {
   techSkills,
   softSkills,
 } from "./journeyData";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Journey.css";
 
 function SectionHead({ eyebrow, title, text }) {
@@ -26,45 +27,52 @@ function SectionHead({ eyebrow, title, text }) {
 }
 
 function Journey() {
+  const { t, pick } = useLang();
   return (
     <Container fluid className="journey-section">
       <Particle />
       <Container fluid className="jr">
         {/* Hero */}
         <header className="jr-hero">
-          <span className="jr-eyebrow">My journey</span>
+          <span className="jr-eyebrow">{t("My journey", "رحلتي")}</span>
           <h1 className="jr-title">
-            How I work — <span className="purple">the story behind every project</span>
+            {t("How I work — ", "طريقة شغلي — ")}
+            <span className="purple">{t("the story behind every project", "الحكاية ورا كل مشروع")}</span>
           </h1>
           <p className="jr-lead">
-            Great products aren't built by code alone. They're built by understanding people, asking the right
-            questions, and leading a team that trusts each other. Here's how I do it — with real examples.
+            {t(
+              "Great products aren't built by code alone. They're built by understanding people, asking the right questions, and leading a team that trusts each other. Here's how I do it — with real examples.",
+              "المنتجات العظيمة مش بتتبني بالكود بس. بتتبني بفهم الناس، والأسئلة الصح، وقيادة فريق واثق في بعضه. وده إزاي بعملها — بأمثلة حقيقية."
+            )}
           </p>
-          <nav className="jr-toc" aria-label="On this page">
-            <a href="#jr-story">The story</a>
-            <a href="#jr-process">My process</a>
-            <a href="#jr-ai">Working with AI</a>
-            <a href="#jr-teams">Working with teams</a>
-            <a href="#jr-lead">Leading</a>
-            <a href="#jr-skills">Skills</a>
+          <nav className="jr-toc" aria-label={t("On this page", "في الصفحة دي")}>
+            <a href="#jr-story">{t("The story", "الحكاية")}</a>
+            <a href="#jr-process">{t("My process", "خطوات شغلي")}</a>
+            <a href="#jr-ai">{t("Working with AI", "الشغل بالذكاء الاصطناعي")}</a>
+            <a href="#jr-teams">{t("Working with teams", "الشغل مع الفرق")}</a>
+            <a href="#jr-lead">{t("Leading", "القيادة")}</a>
+            <a href="#jr-skills">{t("Skills", "المهارات")}</a>
           </nav>
         </header>
 
         {/* 1. Story chapters */}
         <section id="jr-story" className="jr-block">
           <SectionHead
-            eyebrow="Chapter by chapter"
-            title="From intern to team lead"
-            text="Every step taught me something that still shapes how I work today."
+            eyebrow={t("Chapter by chapter", "فصل ورا فصل")}
+            title={t("From intern to team lead", "من متدرب لقائد فريق")}
+            text={t(
+              "Every step taught me something that still shapes how I work today.",
+              "كل خطوة علمتني حاجة لسه بتشكّل طريقة شغلي لحد النهارده."
+            )}
           />
           <ol className="jr-chapters">
-            {chapters.map((chapter, index) => (
+            {chapters.map(pick).map((chapter, index) => (
               <li key={chapter.year} className="jr-chapter">
                 <div className="jr-chapter-year">
                   <span>{chapter.year}</span>
                 </div>
                 <div className="jr-chapter-card">
-                  <small className="jr-chapter-label">Chapter {index + 1}</small>
+                  <small className="jr-chapter-label">{t(`Chapter ${index + 1}`, `الفصل ${index + 1}`)}</small>
                   <h3>{chapter.title}</h3>
                   <span className="jr-chapter-place">{chapter.place}</span>
                   <p>{chapter.story}</p>
@@ -81,12 +89,15 @@ function Journey() {
         {/* 2. Process */}
         <section id="jr-process" className="jr-block">
           <SectionHead
-            eyebrow="My process"
-            title="From a first conversation to production"
-            text="The same six steps I follow on every project — each one with a real example."
+            eyebrow={t("My process", "خطوات شغلي")}
+            title={t("From a first conversation to production", "من أول كلام لحد الإنتاج")}
+            text={t(
+              "The same six steps I follow on every project — each one with a real example.",
+              "نفس الست خطوات اللي بمشي بيها في كل مشروع — وكل خطوة معاها مثال حقيقي."
+            )}
           />
           <ol className="jr-process">
-            {processSteps.map(({ icon: Icon, title, text, example }, index) => (
+            {processSteps.map(pick).map(({ icon: Icon, title, text, example }, index) => (
               <li key={title} className="jr-step">
                 <div className="jr-step-rail" aria-hidden="true">
                   <span className="jr-step-num">{String(index + 1).padStart(2, "0")}</span>
@@ -100,7 +111,7 @@ function Journey() {
                   </div>
                   <p>{text}</p>
                   <div className="jr-example">
-                    <span className="jr-example-label">Real example</span>
+                    <span className="jr-example-label">{t("Real example", "مثال حقيقي")}</span>
                     <p>{example}</p>
                   </div>
                 </div>
@@ -112,9 +123,12 @@ function Journey() {
         {/* AI in the process */}
         <section id="jr-ai" className="jr-block">
           <SectionHead
-            eyebrow="AI-assisted engineering"
-            title="How I work with AI"
-            text="AI is part of every step of my process. It makes me faster and more thorough — but the decisions, the architecture and the quality stay mine."
+            eyebrow={t("AI-assisted engineering", "البرمجة بمساعدة الذكاء الاصطناعي")}
+            title={t("How I work with AI", "إزاي بشتغل بالذكاء الاصطناعي")}
+            text={t(
+              "AI is part of every step of my process. It makes me faster and more thorough — but the decisions, the architecture and the quality stay mine.",
+              "الذكاء الاصطناعي جزء من كل خطوة في شغلي. بيخليني أسرع وأدق — بس القرارات والمعمارية والجودة بتفضل مسؤوليتي."
+            )}
           />
 
           <div className="jr-ai-tools">
@@ -124,7 +138,7 @@ function Journey() {
           </div>
 
           <div className="jr-ai-grid">
-            {aiWorkflow.map(({ icon: Icon, title, text }, index) => (
+            {aiWorkflow.map(pick).map(({ icon: Icon, title, text }, index) => (
               <article key={title} className="jr-ai-step">
                 <span className="jr-ai-num">{String(index + 1).padStart(2, "0")}</span>
                 <span className="jr-icon">
@@ -137,9 +151,9 @@ function Journey() {
           </div>
 
           <div className="jr-ai-rules">
-            <span className="jr-example-label">How I use it responsibly</span>
+            <span className="jr-example-label">{t("How I use it responsibly", "إزاي بستخدمه بمسؤولية")}</span>
             <ul>
-              {aiPrinciples.map(({ icon: Icon, text }) => (
+              {aiPrinciples.map(pick).map(({ icon: Icon, text }) => (
                 <li key={text}>
                   <Icon aria-hidden="true" />
                   {text}
@@ -152,12 +166,15 @@ function Journey() {
         {/* 3. Departments */}
         <section id="jr-teams" className="jr-block">
           <SectionHead
-            eyebrow="Collaboration"
-            title="Working with every department"
-            text="Products succeed when every team pulls in the same direction. These are the people I work with — and how."
+            eyebrow={t("Collaboration", "التعاون")}
+            title={t("Working with every department", "الشغل مع كل الأقسام")}
+            text={t(
+              "Products succeed when every team pulls in the same direction. These are the people I work with — and how.",
+              "المنتجات بتنجح لما كل الفرق تشد في نفس الاتجاه. دول الناس اللي بشتغل معاهم — وإزاي."
+            )}
           />
           <div className="jr-depts">
-            {departments.map(({ icon: Icon, team, how, example }) => (
+            {departments.map(pick).map(({ icon: Icon, team, how, example }) => (
               <article key={team} className="jr-dept">
                 <span className="jr-icon">
                   <Icon />
@@ -174,25 +191,28 @@ function Journey() {
         <section id="jr-lead" className="jr-block jr-lead-block">
           <div className="jr-lead-intro">
             <SectionHead
-              eyebrow="Leadership"
-              title="How I lead a team"
-              text="My goal is simple: make every person on the team faster, more confident and proud of what we ship."
+              eyebrow={t("Leadership", "القيادة")}
+              title={t("How I lead a team", "إزاي بقود فريق")}
+              text={t(
+                "My goal is simple: make every person on the team faster, more confident and proud of what we ship.",
+                "هدفي بسيط: إن كل واحد في الفريق يبقى أسرع وأثق في نفسه وفخور باللي بنسلّمه."
+              )}
             />
             <div className="jr-lead-stats">
               <div>
-                <span className="jr-lead-label">Currently leading</span>
-                <strong>KYC360 frontend team</strong>
-                <span>EON Tech · RegTech platform</span>
+                <span className="jr-lead-label">{t("Currently leading", "بقود حالياً")}</span>
+                <strong>{t("KYC360 frontend team", "فريق واجهات KYC360")}</strong>
+                <span>{t("EON Tech · RegTech platform", "EON Tech · منصة امتثال")}</span>
               </div>
               <div>
-                <span className="jr-lead-label">Previously led</span>
-                <strong>ARAM HR team</strong>
-                <span>Nuwas · HR management system</span>
+                <span className="jr-lead-label">{t("Previously led", "قدت قبل كده")}</span>
+                <strong>{t("ARAM HR team", "فريق ARAM HR")}</strong>
+                <span>{t("Nuwas · HR management system", "Nuwas · نظام موارد بشرية")}</span>
               </div>
             </div>
           </div>
           <div className="jr-lead-grid">
-            {leadership.map(({ icon: Icon, title, text }) => (
+            {leadership.map(pick).map(({ icon: Icon, title, text }) => (
               <article key={title} className="jr-lead-card">
                 <span className="jr-icon">
                   <Icon />
@@ -207,14 +227,17 @@ function Journey() {
         {/* 5. Skills */}
         <section id="jr-skills" className="jr-block">
           <SectionHead
-            eyebrow="Skills"
-            title="Technical skills meet soft skills"
-            text="Strong code gets a product built. Strong communication gets the right product built."
+            eyebrow={t("Skills", "المهارات")}
+            title={t("Technical skills meet soft skills", "المهارات التقنية مع المهارات الشخصية")}
+            text={t(
+              "Strong code gets a product built. Strong communication gets the right product built.",
+              "الكود القوي بيبني المنتج. والتواصل القوي بيبني المنتج الصح."
+            )}
           />
           <div className="jr-skills">
             <div className="jr-skills-col">
-              <h3 className="jr-skills-title">Technical skills</h3>
-              {techSkills.map((group) => (
+              <h3 className="jr-skills-title">{t("Technical skills", "المهارات التقنية")}</h3>
+              {techSkills.map(pick).map((group) => (
                 <div key={group.title} className="jr-tech-group">
                   <span>{group.title}</span>
                   <div className="jr-chips">
@@ -227,9 +250,9 @@ function Journey() {
             </div>
 
             <div className="jr-skills-col">
-              <h3 className="jr-skills-title">Soft skills</h3>
+              <h3 className="jr-skills-title">{t("Soft skills", "المهارات الشخصية")}</h3>
               <div className="jr-soft-grid">
-                {softSkills.map(({ icon: Icon, title, text }) => (
+                {softSkills.map(pick).map(({ icon: Icon, title, text }) => (
                   <div key={title} className="jr-soft">
                     <Icon aria-hidden="true" />
                     <div>
@@ -246,15 +269,20 @@ function Journey() {
         {/* CTA */}
         <section className="jr-cta">
           <div>
-            <h2>Want this process on your next project?</h2>
-            <p>Let's talk about your product, your team and what you need to ship.</p>
+            <h2>{t("Want this process on your next project?", "عايز الطريقة دي في مشروعك الجاي؟")}</h2>
+            <p>
+              {t(
+                "Let's talk about your product, your team and what you need to ship.",
+                "يلا نتكلم عن منتجك وفريقك واللي محتاج تسلّمه."
+              )}
+            </p>
           </div>
           <div className="jr-cta-actions">
             <Link to="/contact" className="jr-btn-primary">
-              Let's talk <FiArrowRight />
+              {t("Let's talk", "يلا نتكلم")} <FiArrowRight />
             </Link>
             <Link to="/project" className="jr-btn-ghost">
-              See the projects
+              {t("See the projects", "شوف المشاريع")}
             </Link>
           </div>
         </section>

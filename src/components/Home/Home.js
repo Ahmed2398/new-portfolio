@@ -13,17 +13,19 @@ import AIShowcase from "./AIShowcase";
 import ServicesTeaser from "../Services/ServicesTeaser";
 import { projectsData } from "../Projects/ProjectsData";
 import cv from "../../Assets/Ahmed_Ashraf_Ramadan.pdf";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Hero.css";
 
 const heroStats = [
-  { value: "5+", label: "Years" },
-  { value: String(projectsData.length), label: "Projects" },
-  { value: "4", label: "Countries" },
+  { value: "5+", label: "Years", ar: "سنين خبرة" },
+  { value: String(projectsData.length), label: "Projects", ar: "مشروع" },
+  { value: "4", label: "Countries", ar: "دول" },
 ];
 
 const companies = ["EON Tech", "Nuwas", "Key Frame", "Macber"];
 
 function Home() {
+  const { t } = useLang();
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -33,34 +35,37 @@ function Home() {
             <Col lg={6} md={12} className="hero-left">
               <div className="hx">
                 <span className="hx-badge">
-                  <span className="hx-badge-dot" /> Available for new projects &amp; roles
+                  <span className="hx-badge-dot" /> {t("Available for new projects & roles", "متاح لمشاريع ووظايف جديدة")}
                 </span>
 
                 <p className="hx-hello">
-                  <span className="hx-wave" aria-hidden="true">👋</span> Hi, I'm <strong>Ahmed Ashraf</strong> —
-                  Senior Software Engineer
+                  <span className="hx-wave" aria-hidden="true">👋</span> {t("Hi, I'm", "أهلاً، أنا")}{" "}
+                  <strong>{t("Ahmed Ashraf", "أحمد أشرف")}</strong> — Senior Software Engineer
                 </p>
 
                 <h1 className="hx-title">
-                  I build web platforms that <span className="hx-gradient">scale</span>.
+                  {t("I build web platforms that ", "ببني منصات ويب ")}
+                  <span className="hx-gradient">{t("scale", "بتكبر معاك")}</span>.
                 </h1>
 
                 <div className="hx-typed">
-                  <span className="hx-typed-label">Specialized in</span>
+                  <span className="hx-typed-label">{t("Specialized in", "متخصص في")}</span>
                   <Type />
                 </div>
 
                 <p className="hx-lead">
-                  From architecture and APIs to real-time, data-intensive interfaces — I design, build and lead
-                  products for FinTech, RegTech and SaaS teams.
+                  {t(
+                    "From architecture and APIs to real-time, data-intensive interfaces — I design, build and lead products for FinTech, RegTech and SaaS teams.",
+                    "من المعمارية والـ APIs لحد الواجهات اللحظية المليانة بيانات — بصمم وببني وبقود منتجات لفرق التقنية المالية والامتثال والـ SaaS."
+                  )}
                 </p>
 
                 <div className="hx-actions">
                   <Link to="/project" className="hx-btn-primary">
-                    View my work <BsArrowRight />
+                    {t("View my work", "شوف شغلي")} <BsArrowRight />
                   </Link>
                   <a href={cv} download="Ahmed_Ashraf_Ramadan_CV.pdf" className="hx-btn-ghost">
-                    <AiOutlineDownload /> Download CV
+                    <AiOutlineDownload /> {t("Download CV", "تحميل الـ CV")}
                   </a>
                 </div>
 
@@ -68,13 +73,13 @@ function Home() {
                   {heroStats.map((stat) => (
                     <div key={stat.label}>
                       <dt>{stat.value}</dt>
-                      <dd>{stat.label}</dd>
+                      <dd>{t(stat.label, stat.ar)}</dd>
                     </div>
                   ))}
                 </dl>
 
                 <div className="hx-companies">
-                  <span>Worked with</span>
+                  <span>{t("Worked with", "اشتغلت مع")}</span>
                   <ul>
                     {companies.map((company) => (
                       <li key={company}>{company}</li>

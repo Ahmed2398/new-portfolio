@@ -17,22 +17,24 @@ import {
 } from "react-icons/fi";
 import Logo from "./Logo";
 import pdf from "../Assets/Ahmed_Ashraf_Ramadan.pdf";
+import { useLang } from "../i18n/LanguageContext";
 import "./Navbar.css";
 
 const links = [
-  { to: "/", label: "Home", icon: FiHome, end: true },
-  { to: "/about", label: "About", icon: FiUser },
-  { to: "/project", label: "Projects", icon: FiFolder },
-  { to: "/services", label: "Services", icon: FiLayers },
-  { to: "/journey", label: "Journey", icon: FiMap },
-  { to: "/resume", label: "Resume", icon: FiFileText },
-  { to: "/contact", label: "Contact", icon: FiMail },
+  { to: "/", label: "Home", ar: "الرئيسية", icon: FiHome, end: true },
+  { to: "/about", label: "About", ar: "عني", icon: FiUser },
+  { to: "/project", label: "Projects", ar: "المشاريع", icon: FiFolder },
+  { to: "/services", label: "Services", ar: "الخدمات", icon: FiLayers },
+  { to: "/journey", label: "Journey", ar: "رحلتي", icon: FiMap },
+  { to: "/resume", label: "Resume", ar: "السيرة الذاتية", icon: FiFileText },
+  { to: "/contact", label: "Contact", ar: "تواصل", icon: FiMail },
 ];
 
 function NavBar() {
   const [expanded, setExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t, toggle: toggleLang, isAr } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY >= 20);
@@ -58,11 +60,23 @@ function NavBar() {
       className={`navbar ${scrolled || expanded ? "is-scrolled" : ""} ${expanded ? "is-open" : ""}`}
     >
       <Container fluid>
-        <Navbar.Brand as={Link} to="/" onClick={close} aria-label="Ahmed Ashraf — home">
+        <Navbar.Brand as={Link} to="/" onClick={close} aria-label={t("Ahmed Ashraf — home", "أحمد أشرف — الرئيسية")}>
           <Logo />
         </Navbar.Brand>
 
-        <Navbar.Toggle aria-controls="site-nav-menu" label={expanded ? "Close menu" : "Open menu"}>
+        <div className="nav-tools">
+          <button
+            type="button"
+            className="nav-tool nav-lang"
+            onClick={toggleLang}
+            aria-label={isAr ? "Switch to English" : "التحويل للعربية"}
+            title={isAr ? "English" : "العربية"}
+          >
+            {isAr ? "EN" : "ع"}
+          </button>
+        </div>
+
+        <Navbar.Toggle aria-controls="site-nav-menu" label={expanded ? t("Close menu", "قفل القايمة") : t("Open menu", "فتح القايمة")}>
           <span />
           <span />
           <span />
@@ -70,7 +84,7 @@ function NavBar() {
 
         <Navbar.Collapse id="site-nav-menu">
           <ul className="nav-links">
-            {links.map(({ to, label, icon: Icon, end }) => (
+            {links.map(({ to, label, ar, icon: Icon, end }) => (
               <li key={to}>
                 <NavLink
                   to={to}
@@ -81,7 +95,7 @@ function NavBar() {
                   <span className="nav-icon">
                     <Icon />
                   </span>
-                  <span className="nav-label">{label}</span>
+                  <span className="nav-label">{t(label, ar)}</span>
                   <FiChevronRight className="nav-chevron" aria-hidden="true" />
                 </NavLink>
               </li>
@@ -104,7 +118,7 @@ function NavBar() {
             </div>
             <a href={pdf} download="Ahmed_Ashraf_Ramadan_CV.pdf" className="nav-cv" onClick={close}>
               <FiDownload />
-              <span>Download CV</span>
+              <span>{t("Download CV", "تحميل الـ CV")}</span>
             </a>
           </div>
         </Navbar.Collapse>

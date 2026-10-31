@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiVolume2, FiSquare, FiX } from "react-icons/fi";
 import { LogoMark } from "./Logo";
+import { useLang } from "../i18n/LanguageContext";
 import "./WelcomeAudio.css";
 
 // Browsers block sound until the visitor interacts with the page, so the
@@ -11,7 +12,10 @@ import "./WelcomeAudio.css";
 // change it. If it is null, the browser's speech voice reads WELCOME_TEXT.
 // (Kept in public/ rather than imported: the dev server's in-memory file system
 // crashes on Node 25 when streaming audio.)
-const WELCOME_AUDIO = `${process.env.PUBLIC_URL}/audio/welcome-guy.mp3`;
+const WELCOME_AUDIO = {
+  en: `${process.env.PUBLIC_URL}/audio/welcome-guy.mp3`,
+  ar: `${process.env.PUBLIC_URL}/audio/welcome-ar.mp3`, // Egyptian Arabic voice
+};
 const WELCOME_TEXT =
   "Hi, I'm Ahmed Ashraf, a senior software engineer. Welcome to my portfolio! " +
   "Take a look around my projects and services, and feel free to reach out — I'd love to hear about what you're building.";
@@ -46,6 +50,7 @@ function pickVoice() {
 }
 
 function WelcomeAudio({ ready }) {
+  const { t, lang } = useLang();
   const [visible, setVisible] = useState(false);
   const [playing, setPlaying] = useState(false);
   const audioRef = useRef(null);
@@ -77,7 +82,7 @@ function WelcomeAudio({ ready }) {
     setPlaying(true);
 
     if (WELCOME_AUDIO) {
-      const audio = new Audio(WELCOME_AUDIO);
+      const audio = new Audio(WELCOME_AUDIO[lang] || WELCOME_AUDIO.en);
       audioRef.current = audio;
       audio.onended = finish;
       audio.onerror = () => setPlaying(false);
@@ -112,7 +117,7 @@ function WelcomeAudio({ ready }) {
   if (!visible) return null;
 
   return (
-    <div className={`welcome-card ${playing ? "is-playing" : ""}`} role="dialog" aria-label="Welcome message">
+    <div className={`welcome-card ${playing ? "is-playing" : ""}`} role="dialog" aria-label={t("Welcome message", "رسالة ترحيب")}>
       <div className="wc-avatar">
         <LogoMark size={44} />
         {playing && <span className="wc-pulse" aria-hidden="true" />}
@@ -120,7 +125,7 @@ function WelcomeAudio({ ready }) {
 
       <div className="wc-body">
         <p className="wc-title">
-          {playing ? "Playing welcome…" : <>Welcome! <span aria-hidden="true">👋</span></>}
+          {playing ? t("Playing welcome…", "بيشتغل الترحيب…") : <>{t("Welcome!", "أهلاً بيك!")} <span aria-hidden="true">👋</span></>}
         </p>
         {playing ? (
           <div className="wc-bars" aria-hidden="true">
@@ -130,22 +135,22 @@ function WelcomeAudio({ ready }) {
           </div>
         ) : (
           <p className="wc-text">
-            Hear a quick hello <span className="wc-tag">AI voice</span>
+            {t("Hear a quick hello", "اسمع ترحيب سريع")} <span className="wc-tag">{t("AI voice", "صوت ذكاء اصطناعي")}</span>
           </p>
         )}
       </div>
 
       {playing ? (
-        <button type="button" className="wc-play" onClick={stop} aria-label="Stop welcome message">
+        <button type="button" className="wc-play" onClick={stop} aria-label={t("Stop welcome message", "إيقاف الترحيب")}>
           <FiSquare />
         </button>
       ) : (
-        <button type="button" className="wc-play" onClick={play} aria-label="Play welcome message">
+        <button type="button" className="wc-play" onClick={play} aria-label={t("Play welcome message", "تشغيل الترحيب")}>
           <FiVolume2 />
         </button>
       )}
 
-      <button type="button" className="wc-close" onClick={close} aria-label="Dismiss">
+      <button type="button" className="wc-close" onClick={close} aria-label={t("Dismiss", "إخفاء")}>
         <FiX />
       </button>
     </div>

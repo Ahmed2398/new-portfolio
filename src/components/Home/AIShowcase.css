@@ -16,7 +16,7 @@
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--container-gutter);
-  text-align: left;
+  text-align: start;
 }
 
 .ai-head {

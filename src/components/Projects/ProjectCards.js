@@ -1,19 +1,22 @@
 import React from "react";
 import { BsArrowRight, BsBoxArrowUpRight } from "react-icons/bs";
 import ProjectImage from "./ProjectImage";
+import { categoryAr } from "./ProjectsData.ar";
+import { useLang } from "../../i18n/LanguageContext";
 
 const MAX_TAGS = 4;
 
 function ProjectCards({ project, onOpen }) {
-  const { title, description, techStack = [], demoLink, category, imgPath } = project;
+  const { t, pick } = useLang();
+  const { title, description, techStack = [], demoLink, category, imgPath } = pick(project);
   const visibleTags = techStack.slice(0, MAX_TAGS);
   const hiddenCount = techStack.length - visibleTags.length;
 
   return (
     <article className="pp-card">
-      <button type="button" className="pp-card-media" onClick={onOpen} aria-label={`Open ${title} details`}>
+      <button type="button" className="pp-card-media" onClick={onOpen} aria-label={t(`Open ${title} details`, `افتح تفاصيل ${title}`)}>
         <ProjectImage src={imgPath} title={title} />
-        <span className="pp-card-category">{category}</span>
+        <span className="pp-card-category">{t(category, categoryAr[category])}</span>
       </button>
 
       <div className="pp-card-body">
@@ -35,11 +38,11 @@ function ProjectCards({ project, onOpen }) {
 
         <div className="pp-card-actions">
           <button type="button" className="pp-link-btn" onClick={onOpen}>
-            Case study <BsArrowRight />
+            {t("Case study", "التفاصيل")} <BsArrowRight />
           </button>
           {demoLink && (
             <a href={demoLink} target="_blank" rel="noopener noreferrer" className="pp-live-btn">
-              Live site <BsBoxArrowUpRight />
+              {t("Live site", "الموقع")} <BsBoxArrowUpRight />
             </a>
           )}
         </div>

@@ -1758,7 +1758,7 @@ button:focus {
   font-size: 0.95em !important;
   color: #cbd5e1 !important;
   line-height: 1.6 !important;
-  text-align: left !important;
+  text-align: start !important;
   margin-bottom: 20px !important;
   flex: 1 !important;
 
@@ -2562,7 +2562,7 @@ button:focus {
 
 .about-activity {
   list-style: none !important;
-  text-align: left !important;
+  text-align: start !important;
   padding-left: 1px !important;
 }
 
@@ -2575,7 +2575,7 @@ button:focus {
   margin-bottom: 25px;
   position: relative;
   /* display: inline-block; */
-  text-align: left;
+  text-align: start;
 }
 
 .tech-skills-heading::after {
@@ -2600,7 +2600,7 @@ button:focus {
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  text-align: left;
+  text-align: start;
 }
 
 .skill-items {
@@ -3098,7 +3098,7 @@ button:focus {
   font-size: 12px;
   color: #94a3b8;
   flex: 1;
-  text-align: left;
+  text-align: start;
 }
 
 .calendar-grid {
@@ -3608,7 +3608,7 @@ button:focus {
 
 .info-content {
   flex: 1;
-  text-align: left;
+  text-align: start;
 }
 
 .info-content h3 {
@@ -3835,7 +3835,7 @@ button:focus {
   }
 
   .info-content {
-    text-align: left;
+    text-align: start;
     max-width: 100%;
     overflow: hidden;
   }

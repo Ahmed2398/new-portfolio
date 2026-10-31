@@ -1,4 +1,5 @@
 import React from "react";
+import { useLang } from "../i18n/LanguageContext";
 
 // Brand mark: two interlocking "A" strokes (Ahmed Ashraf) sharing one crossbar,
 // on a blue→violet badge. The same shape is used for the favicon (public/logo.svg).
@@ -34,14 +35,15 @@ export function LogoMark({ size = 40, className = "" }) {
 }
 
 function Logo() {
+  const { t } = useLang();
   return (
     <span className="brand">
       <LogoMark className="brand-mark" />
       <span className="brand-text">
         <span className="brand-name">
-          Ahmed <span className="brand-name-accent">Ashraf</span>
+          {t("Ahmed", "أحمد")} <span className="brand-name-accent">{t("Ashraf", "أشرف")}</span>
         </span>
-        <span className="brand-role">Software Engineer</span>
+        <span className="brand-role">{t("Software Engineer", "مهندس برمجيات")}</span>
       </span>
     </span>
   );

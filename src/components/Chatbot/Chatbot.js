@@ -13,6 +13,7 @@ import {
   createRateLimiter,
 } from "./chatSecurity";
 import cv from "../../Assets/Ahmed_Ashraf_Ramadan.pdf";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Chatbot.css";
 
 const STORAGE_KEY = "site-chat-history";
@@ -51,8 +52,9 @@ function RichText({ text }) {
 }
 
 function Chatbot() {
+  const { lang: siteLang } = useLang();
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState(() => loadHistory() || [{ from: "bot", ...getGreeting("en") }]);
+  const [messages, setMessages] = useState(() => loadHistory() || [{ from: "bot", ...getGreeting(siteLang) }]);
   const [input, setInput] = useState("");
   const [typing, setTyping] = useState(false);
   const [notice, setNotice] = useState("");
@@ -61,7 +63,16 @@ function Chatbot() {
   const limiterRef = useRef(createRateLimiter());
   const navigate = useNavigate();
 
-  const lastLang = [...messages].reverse().find((m) => m.lang)?.lang || "en";
+  const lastLang = [...messages].reverse().find((m) => m.lang)?.lang || siteLang;
+
+  // Follow the site language switch while the visitor hasn't started chatting
+  useEffect(() => {
+    setMessages((prev) =>
+      prev.length === 1 && prev[0].from === "bot" && prev[0].lang !== siteLang
+        ? [{ from: "bot", ...getGreeting(siteLang) }]
+        : prev
+    );
+  }, [siteLang]);
   const strings = ui[lastLang] || ui.en;
 
   useEffect(() => saveHistory(messages), [messages]);

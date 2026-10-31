@@ -10,7 +10,7 @@
 .pp {
   position: relative;
   z-index: 1;
-  text-align: left;
+  text-align: start;
   color: #e2e8f0;
 }
 
@@ -525,7 +525,7 @@
   border: none;
   background: none;
   color: #ffffff;
-  text-align: left;
+  text-align: start;
   font: inherit;
   cursor: pointer;
 }
@@ -639,7 +639,7 @@
 
 .pp-modal-body {
   padding: 24px 28px !important;
-  text-align: left;
+  text-align: start;
 }
 
 .pp-modal-title {
@@ -797,4 +797,24 @@
   .pp-modal-title {
     font-size: 1.3rem;
   }
+}
+
+/* Arabic mode: translated summary above the English case study */
+.pp-modal-summary {
+  margin: 18px 0 6px;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #e2e8f0;
+}
+
+.pp-modal-en-note {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #a78bfa;
+}
+
+.pp-modal-desc[dir="ltr"] {
+  text-align: left;
 }

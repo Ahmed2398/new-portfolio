@@ -1,11 +1,22 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Experience.css";
 
 export const experienceData = [
   {
     role: "Senior Software Engineer",
     company: "EON Tech",
+    ar: {
+      period: "أكتوبر 2025 – حتى الآن",
+      location: "جدة، السعودية · عن بعد",
+      points: [
+        "بقود فريق من 6 مهندسين على KYC360، منصة للتحقق من الهوية والامتثال (KYC/KYB) — مسؤول عن المعمارية ونظام تصميم مشترك بين تطبيقات الأدمن والعملاء والمستثمرين.",
+        "بطوّر منصة المستثمرين لـ Tarh: لوحة بيانات لحظية وموقع عام بالـ SSR مع ربط APIs آمن.",
+        "بصمم معمارية منصة SaaS طبية لإدارة المرضى وسير العمل الإكلينيكي.",
+        "ببني مكونات مشتركة ووحدات لوحات تحكم بتتستخدم في أكتر من منتج، مع إرشادات موثّقة.",
+      ],
+    },
     period: "Oct 2025 – Present",
     location: "Jeddah, KSA · Remote",
     current: true,
@@ -20,6 +31,16 @@ export const experienceData = [
   {
     role: "Senior Software Engineer · Part-Time",
     company: "Key Frame",
+    ar: {
+      role: "Senior Software Engineer · دوام جزئي",
+      period: "يوليو 2025 – مارس 2026",
+      location: "القاهرة، مصر · عن بعد",
+      points: [
+        "صممت منشئ نماذج وصفحات بالـ Schema (16 نوع حقل) علشان المستخدمين غير التقنيين يعملوا صفحات ونماذج من غير كود.",
+        "ربطت بوابة دفع KNET آمنة في منصة التبرعات الخاصة ببنك الطعام الكويتي.",
+        "فعّلت Google Analytics على الموقع العام علشان الإدارة تتابع الزيارات والتفاعل.",
+      ],
+    },
     period: "Jul 2025 – Mar 2026",
     location: "Cairo, Egypt · Remote",
     points: [
@@ -32,6 +53,16 @@ export const experienceData = [
   {
     role: "Senior Software Engineer",
     company: "Nuwas",
+    ar: {
+      period: "سبتمبر 2023 – سبتمبر 2025",
+      location: "جدة، السعودية",
+      points: [
+        "كنت مسؤول عن معمارية Kwealth، منصة تداول مالية — لوحات سوق لحظية، فلترة أسهم، رسوم بيانية، تنبيهات ومحاكي تداول.",
+        "قدت فريق من 3 على ARAM HR: 12 وحدة React (الرواتب، الحضور، التوظيف…) ومنشئ سير عمل بالسحب والإفلات.",
+        "بنيت مكتبة مكونات اتستخدمت في 4 منتجات، وقللت وقت تطوير الخصائص بحوالي 40–50%.",
+        "حسّنت أداء عرض البيانات الضخمة والمتغيرة باستمرار بالـ memoization والـ lazy loading وإدارة حالة منظمة.",
+      ],
+    },
     period: "Sep 2023 – Sep 2025",
     location: "Jeddah, KSA",
     points: [
@@ -45,6 +76,15 @@ export const experienceData = [
   {
     role: "Software Engineer",
     company: "Macber",
+    ar: {
+      period: "سبتمبر 2020 – سبتمبر 2023",
+      location: "القاهرة، مصر",
+      points: [
+        "بنيت وطوّرت تطبيقات React في 8 مشاريع تجارة إلكترونية ومؤسسات بمكونات قابلة لإعادة الاستخدام.",
+        "اشتغلت مع المصممين والمهندسين على معمارية التطبيقات وربط الـ APIs وإدارة الحالة.",
+        "سلّمت واجهات متجاوبة شغالة على كل المتصفحات وسهلة الاستخدام.",
+      ],
+    },
     period: "Sep 2020 – Sep 2023",
     location: "Cairo, Egypt",
     points: [
@@ -57,6 +97,14 @@ export const experienceData = [
   {
     role: "Software Engineer Intern",
     company: "Altsolutions",
+    ar: {
+      period: "يونيو 2019 – سبتمبر 2019",
+      location: "القاهرة، مصر",
+      points: [
+        "بنيت مكونات واجهات متجاوبة لتطبيقات العملاء، وحوّلت تصميمات UI/UX لكود قابل لإعادة الاستخدام.",
+        "اشتغلت في فريق Agile — تخطيط السبرنت، الاجتماعات اليومية ومراجعة الكود.",
+      ],
+    },
     period: "Jun 2019 – Sep 2019",
     location: "Cairo, Egypt",
     points: [
@@ -68,20 +116,25 @@ export const experienceData = [
 ];
 
 function Experience() {
+  const { t, pick } = useLang();
   return (
     <Container fluid className="experience-section" id="experience">
       <div className="experience-inner">
         <div className="experience-header">
           <h2 className="impact-heading">
-            Work <span className="purple">Experience</span>
+            {t("Work ", "الخبرة ")}
+            <span className="purple">{t("Experience", "العملية")}</span>
           </h2>
           <p className="impact-subtitle">
-            From building reusable components to leading engineering teams and owning architecture.
+            {t(
+              "From building reusable components to leading engineering teams and owning architecture.",
+              "من بناء مكونات قابلة لإعادة الاستخدام لحد قيادة فرق هندسية والمسؤولية عن المعمارية."
+            )}
           </p>
         </div>
 
         <ol className="timeline">
-          {experienceData.map((job) => (
+          {experienceData.map(pick).map((job) => (
             <li className="timeline-item" key={`${job.company}-${job.period}`}>
               <span className={`timeline-dot ${job.current ? "current" : ""}`} aria-hidden="true" />
               <article className="timeline-card">

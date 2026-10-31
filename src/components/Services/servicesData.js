@@ -8,6 +8,7 @@ import {
   FiCompass,
 } from "react-icons/fi";
 import { FaWordpress, FaShopify } from "react-icons/fa";
+import { servicesAr, processStepsAr, engagementModelsAr, faqsAr } from "./servicesData.ar";
 
 // Each service: card summary (pitch + deliverables) and the details modal
 // content (overview, included, idealFor, outcomes).
@@ -399,7 +400,7 @@ export const faqs = [
   },
   {
     q: "Do you work remotely?",
-    a: "Yes. I'm based in Cairo (GMT+2) and have worked remotely with teams in Saudi Arabia and Kuwait, with good overlap for Gulf and European time zones.",
+    a: "Yes. I'm based in Cairo (GMT+2) and have worked remotely with teams in Saudi Arabia, the UAE and Kuwait, with good overlap for Gulf and European time zones.",
   },
   {
     q: "Can you take over an existing project?",
@@ -414,3 +415,17 @@ export const faqs = [
     a: "Whatever fits your product and team best. My main tools are React, Next.js, Node.js and Laravel, and I'm comfortable with Angular, Vue and WordPress.",
   },
 ];
+
+// Attach the Arabic copy (see servicesData.ar.js); components read it via `pick()`
+servicesData.forEach((service) => {
+  service.ar = servicesAr[service.id];
+});
+processSteps.forEach((step, i) => {
+  step.ar = processStepsAr[i];
+});
+engagementModels.forEach((model, i) => {
+  model.ar = engagementModelsAr[i];
+});
+faqs.forEach((item, i) => {
+  item.ar = faqsAr[i];
+});

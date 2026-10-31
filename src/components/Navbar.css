@@ -243,7 +243,7 @@
   #site-nav .nav-label {
     flex: 1;
     margin-left: 4px;
-    text-align: left;
+    text-align: start;
   }
 
   #site-nav .nav-chevron {
@@ -328,5 +328,56 @@
 @media (prefers-reduced-motion: reduce) {
   #site-nav.is-open .nav-links li {
     animation: none;
+  }
+}
+
+/* ---------- Language / theme tools ---------- */
+#site-nav .nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-inline-start: auto;
+  margin-inline-end: 10px;
+}
+
+#site-nav .nav-tool {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+  color: #e2e8f0;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+#site-nav .nav-tool:hover {
+  color: #ffffff;
+  border-color: #60a5fa;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+#site-nav .nav-lang {
+  font-family: "Cairo", "Raleway", sans-serif;
+}
+
+@media (min-width: 1200px) {
+  /* Desktop: tools sit after the CV button */
+  #site-nav .nav-tools {
+    order: 3;
+    margin: 0 0 0 12px;
+  }
+
+  #site-nav .navbar-collapse {
+    order: 2;
+  }
+
+  html[dir="rtl"] #site-nav .nav-tools {
+    margin: 0 12px 0 0;
   }
 }

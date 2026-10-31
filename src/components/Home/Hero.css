@@ -3,7 +3,7 @@
 /* ============================================ */
 
 .hx {
-  text-align: left;
+  text-align: start;
   animation: fadeInUp 0.7s ease-out both;
 }
 

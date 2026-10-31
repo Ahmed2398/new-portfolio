@@ -131,6 +131,8 @@ function scoreIntents(text) {
 }
 
 const t = (lang, en, ar) => (lang === "ar" ? ar : en);
+// Use an item's Arabic copy (attached by the data files) when replying in Arabic
+const loc = (lang, item) => (lang === "ar" && item && item.ar ? { ...item, ...item.ar } : item);
 
 // ---------------------------------------------------------------------------
 // Answers
@@ -173,7 +175,7 @@ const answers = {
       `Yes! **${service.title}** — ${service.pitch}`,
       `أكيد! **${serviceNamesAr[service.id] || service.title}** — من الخدمات اللي أحمد بيقدمها. تقدر تشوف التفاصيل الكاملة في صفحة الخدمات.`
     ),
-    list: lang === "en" ? service.deliverables.slice(0, 4) : null,
+    list: loc(lang, service).deliverables.slice(0, 4),
     links: [
       page("/services", "What's included", "الخدمة بتشمل إيه", "service", service.id),
       page(`/contact?service=${encodeURIComponent(service.title)}`, "Discuss this service", "اطلب الخدمة دي"),
@@ -188,7 +190,7 @@ const answers = {
         `Ahmed has delivered ${projectsData.length} projects across FinTech, RegTech, HR, healthcare and e-commerce. Highlights:`,
         `أحمد نفّذ ${projectsData.length} مشروع في مجالات التقنية المالية، الامتثال، الموارد البشرية، الصحة والتجارة الإلكترونية. أبرزها:`
       ),
-      list: featured.map((p) => p.title),
+      list: featured.map((p) => loc(lang, p).title),
       links: [page("/project", "More about these projects", "تفاصيل المشاريع", "projects")],
     };
   },
@@ -362,28 +364,31 @@ const more = (lang, pageEn, pageAr) =>
 const details = {
   experience: (lang) => ({
     text: t(lang, "Here's a quick look at Ahmed's career:", "دي نظرة سريعة على مسيرة أحمد المهنية:"),
-    list: experienceData.map((job) => `${job.role} — ${job.company} (${job.period})`),
+    list: experienceData.map((raw) => {
+      const job = loc(lang, raw);
+      return `${job.role} — ${job.company} (${job.period})`;
+    }),
     note: more(lang, "About", "عن أحمد"),
     links: [page("/about", "Open About page", "افتح صفحة عن أحمد")],
   }),
 
   journey: (lang) => ({
     text: t(lang, "Ahmed follows the same steps on every project:", "أحمد بيمشي بنفس الخطوات في كل مشروع:"),
-    list: processSteps.map((step) => step.title),
+    list: processSteps.map((step) => loc(lang, step).title),
     note: more(lang, "Journey", "الرحلة"),
     links: [page("/journey", "Open Journey page", "افتح صفحة الرحلة")],
   }),
 
   softskills: (lang) => ({
     text: t(lang, "Besides the tech, Ahmed brings these soft skills:", "غير المهارات التقنية، أحمد عنده المهارات الشخصية دي:"),
-    list: softSkills.map((skill) => skill.title),
+    list: softSkills.map((skill) => loc(lang, skill).title),
     note: more(lang, "Journey", "الرحلة"),
     links: [page("/journey", "Open Journey page", "افتح صفحة الرحلة")],
   }),
 
   projects: (lang) => ({
     text: t(lang, "A few highlights:", "شوية من أبرز المشاريع:"),
-    list: projectsData.filter((p) => p.featured).map((p) => `${p.title} · ${p.category}`),
+    list: projectsData.filter((p) => p.featured).map((p) => `${loc(lang, p).title} · ${p.category}`),
     note: t(
       lang,
       `There are ${projectsData.length} projects in total, with filters and case studies on the Projects page 👇`,
@@ -407,7 +412,7 @@ const details = {
     const service = servicesData.find((s) => s.id === serviceId) || servicesData[0];
     return {
       text: t(lang, `**${service.title}** includes:`, `**${serviceNamesAr[service.id] || service.title}** بتشمل:`),
-      list: service.included.slice(0, 5),
+      list: loc(lang, service).included.slice(0, 5),
       note: more(lang, "Services", "الخدمات"),
       links: [
         page("/services", "Open Services page", "افتح صفحة الخدمات"),

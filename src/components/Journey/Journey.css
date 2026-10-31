@@ -20,7 +20,7 @@
 .jr {
   position: relative;
   z-index: 1;
-  text-align: left;
+  text-align: start;
   color: #e2e8f0;
 }
 

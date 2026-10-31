@@ -15,6 +15,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa";
 import Particle from "../Particle";
 import { servicesData } from "../Services/servicesData";
+import { useLang } from "../../i18n/LanguageContext";
 import "./Contact.css";
 
 const EMAIL = "ahmedashraf2398@gmail.com";
@@ -46,10 +47,20 @@ const channels = [
   },
 ];
 
+const channelAr = { WhatsApp: "واتساب", LinkedIn: "لينكدإن", GitHub: "جيت هب" };
+
 const nextSteps = [
-  { title: "I reply", text: "Usually within one business day." },
-  { title: "We talk", text: "A short call to understand your goals and constraints." },
-  { title: "You get a plan", text: "Scope, approach and timeline — clear and in writing." },
+  { title: "I reply", text: "Usually within one business day.", ar: { title: "برد عليك", text: "عادةً خلال يوم عمل." } },
+  {
+    title: "We talk",
+    text: "A short call to understand your goals and constraints.",
+    ar: { title: "نتكلم", text: "مكالمة قصيرة علشان أفهم أهدافك والقيود." },
+  },
+  {
+    title: "You get a plan",
+    text: "Scope, approach and timeline — clear and in writing.",
+    ar: { title: "تستلم خطة", text: "النطاق والطريقة والجدول الزمني — واضحين ومكتوبين." },
+  },
 ];
 
 const emptyForm = { name: "", email: "", topic: "", message: "" };
@@ -82,7 +93,15 @@ function markSent() {
   }
 }
 
+// Topic values stay in English (they're the email subject); labels are translated
+const topicLabelsAr = {
+  ...Object.fromEntries(servicesData.map((s) => [s.title, s.ar ? s.ar.title : s.title])),
+  "Full-time / lead role": "وظيفة دوام كامل / قيادة",
+  "Something else": "حاجة تانية",
+};
+
 function Contact() {
+  const { t, pick, isAr } = useLang();
   const [searchParams] = useSearchParams();
   const requestedService = searchParams.get("service");
   const [form, setForm] = useState(emptyForm);
@@ -121,7 +140,7 @@ function Contact() {
 
     // Bots fill the hidden honeypot — pretend success and send nothing
     if (event.target.botcheck && event.target.botcheck.checked) {
-      setStatus({ type: "success", text: "Message sent! I'll get back to you soon." });
+      setStatus({ type: "success", text: t("Message sent! I'll get back to you soon.", "الرسالة اتبعتت! هرد عليك قريب.") });
       setForm(emptyForm);
       return;
     }
@@ -132,18 +151,25 @@ function Contact() {
     const topic = topics.includes(form.topic) ? form.topic : "Something else";
 
     if (!name || !EMAIL_RE.test(email)) {
-      setStatus({ type: "error", text: "Please enter your name and a valid email address." });
+      setStatus({ type: "error", text: t("Please enter your name and a valid email address.", "اكتب اسمك وإيميل صحيح من فضلك.") });
       return;
     }
     if (message.length < MIN_MESSAGE) {
-      setStatus({ type: "error", text: `Please write a little more (at least ${MIN_MESSAGE} characters).` });
+      setStatus({ type: "error", text: t(
+          `Please write a little more (at least ${MIN_MESSAGE} characters).`,
+          `اكتب تفاصيل أكتر شوية (على الأقل ${MIN_MESSAGE} حروف).`
+        ),
+      });
       return;
     }
     const wait = cooldownLeft();
     if (wait > 0) {
       setStatus({
         type: "error",
-        text: `You just sent a message — please wait ${Math.ceil(wait / 1000)}s before sending another.`,
+        text: t(
+          `You just sent a message — please wait ${Math.ceil(wait / 1000)}s before sending another.`,
+          `لسه باعت رسالة — استنى ${Math.ceil(wait / 1000)} ثانية قبل ما تبعت تاني.`
+        ),
       });
       return;
     }
@@ -165,13 +191,21 @@ function Contact() {
       const data = await response.json();
       if (data.success) {
         markSent();
-        setStatus({ type: "success", text: "Message sent! I'll get back to you soon." });
+        setStatus({ type: "success", text: t("Message sent! I'll get back to you soon.", "الرسالة اتبعتت! هرد عليك قريب.") });
         setForm(emptyForm);
       } else {
-        setStatus({ type: "error", text: `Couldn't send the message. Please try again or email ${EMAIL}.` });
+        setStatus({ type: "error", text: t(
+          `Couldn't send the message. Please try again or email ${EMAIL}.`,
+          `الرسالة مااتبعتتش. جرب تاني أو ابعتلي على ${EMAIL}.`
+        ),
+      });
       }
     } catch (error) {
-      setStatus({ type: "error", text: `Couldn't send the message. Please try again or email ${EMAIL}.` });
+      setStatus({ type: "error", text: t(
+          `Couldn't send the message. Please try again or email ${EMAIL}.`,
+          `الرسالة مااتبعتتش. جرب تاني أو ابعتلي على ${EMAIL}.`
+        ),
+      });
     } finally {
       setSending(false);
     }
@@ -183,16 +217,19 @@ function Contact() {
       <Container fluid className="ct">
         {/* Header */}
         <header className="ct-header">
-          <span className="ct-eyebrow">Contact</span>
+          <span className="ct-eyebrow">{t("Contact", "تواصل")}</span>
           <h1 className="ct-title">
-            Let's build something <span className="purple">great together</span>
+            {t("Let's build something ", "يلا نبني حاجة ")}
+            <span className="purple">{t("great together", "عظيمة مع بعض")}</span>
           </h1>
           <p className="ct-lead">
-            Have a product idea, a project that needs a senior engineer, or a role to fill? Tell me a little about it
-            and I'll get back to you.
+            {t(
+              "Have a product idea, a project that needs a senior engineer, or a role to fill? Tell me a little about it and I'll get back to you.",
+              "عندك فكرة منتج، أو مشروع محتاج مهندس سينيور، أو وظيفة عايز تملاها؟ احكيلي شوية عنها وهرد عليك."
+            )}
           </p>
           <span className="ct-available">
-            <span className="ct-dot" /> Available for freelance projects and full-time roles
+            <span className="ct-dot" /> {t("Available for freelance projects and full-time roles", "متاح لمشاريع فريلانس ووظايف دوام كامل")}
           </span>
         </header>
 
@@ -204,14 +241,14 @@ function Contact() {
                 <FiMail />
               </span>
               <div className="ct-email-body">
-                <span className="ct-label">Email me directly</span>
+                <span className="ct-label">{t("Email me directly", "ابعتلي إيميل مباشرة")}</span>
                 <a href={`mailto:${EMAIL}`} className="ct-email">
                   {EMAIL}
                 </a>
               </div>
-              <button type="button" className="ct-copy" onClick={copyEmail} aria-label="Copy email address">
+              <button type="button" className="ct-copy" onClick={copyEmail} aria-label={t("Copy email address", "نسخ الإيميل")}>
                 {copied ? <FiCheck /> : <FiCopy />}
-                <span>{copied ? "Copied" : "Copy"}</span>
+                <span>{copied ? t("Copied", "اتنسخ") : t("Copy", "نسخ")}</span>
               </button>
             </div>
 
@@ -222,7 +259,7 @@ function Contact() {
                     <Icon />
                   </span>
                   <span className="ct-channel-text">
-                    <strong>{label}</strong>
+                    <strong>{t(label, channelAr[label])}</strong>
                     <span>{value}</span>
                   </span>
                   <FiArrowUpRight className="ct-channel-arrow" aria-hidden="true" />
@@ -232,17 +269,17 @@ function Contact() {
 
             <div className="ct-meta">
               <span>
-                <FiMapPin /> Cairo, Egypt · works remotely
+                <FiMapPin /> {t("Cairo, Egypt · works remotely", "القاهرة، مصر · بشتغل عن بعد")}
               </span>
               <span>
-                <FiClock /> GMT+2 · overlaps with Gulf & Europe
+                <FiClock /> {t("GMT+2 · overlaps with Gulf & Europe", "GMT+2 · مناسب لتوقيت الخليج وأوروبا")}
               </span>
             </div>
 
             <div className="ct-steps">
-              <span className="ct-label">What happens next</span>
+              <span className="ct-label">{t("What happens next", "إيه اللي هيحصل بعد كده")}</span>
               <ol>
-                {nextSteps.map((step, index) => (
+                {nextSteps.map(pick).map((step, index) => (
                   <li key={step.title}>
                     <span className="ct-step-num">{index + 1}</span>
                     <div>
@@ -257,24 +294,24 @@ function Contact() {
 
           {/* Right: form */}
           <form className="ct-form" onSubmit={handleSubmit}>
-            <h2 className="ct-form-title">Send a message</h2>
-            <p className="ct-form-sub">All fields are required.</p>
+            <h2 className="ct-form-title">{t("Send a message", "ابعت رسالة")}</h2>
+            <p className="ct-form-sub">{t("All fields are required.", "كل الخانات مطلوبة.")}</p>
 
             <div className="ct-row">
               <label className="ct-field">
-                <span>Your name</span>
+                <span>{t("Your name", "اسمك")}</span>
                 <input
                   name="name"
                   value={form.name}
                   onChange={update}
-                  placeholder="Jane Doe"
+                  placeholder={t("Jane Doe", "محمد أحمد")}
                   maxLength={LIMITS.name}
                   autoComplete="name"
                   required
                 />
               </label>
               <label className="ct-field">
-                <span>Email</span>
+                <span>{t("Email", "الإيميل")}</span>
                 <input
                   type="email"
                   name="email"
@@ -289,27 +326,27 @@ function Contact() {
             </div>
 
             <label className="ct-field">
-              <span>What can I help with?</span>
+              <span>{t("What can I help with?", "أقدر أساعدك في إيه؟")}</span>
               <select name="topic" value={form.topic} onChange={update} required>
                 <option value="" disabled>
-                  Choose a topic
+                  {t("Choose a topic", "اختار الموضوع")}
                 </option>
                 {topics.map((topic) => (
                   <option key={topic} value={topic}>
-                    {topic}
+                    {isAr ? topicLabelsAr[topic] || topic : topic}
                   </option>
                 ))}
               </select>
             </label>
 
             <label className="ct-field">
-              <span>Message</span>
+              <span>{t("Message", "الرسالة")}</span>
               <textarea
                 name="message"
                 rows={6}
                 value={form.message}
                 onChange={update}
-                placeholder="A few lines about your product, goals and timeline…"
+                placeholder={t("A few lines about your product, goals and timeline…", "كام سطر عن منتجك وأهدافك والوقت المتاح…")}
                 maxLength={LIMITS.message}
                 minLength={MIN_MESSAGE}
                 required
@@ -320,7 +357,7 @@ function Contact() {
             <input type="checkbox" name="botcheck" className="ct-honeypot" tabIndex="-1" autoComplete="off" />
 
             <button type="submit" className="ct-submit" disabled={sending}>
-              {sending ? "Sending…" : "Send message"}
+              {sending ? t("Sending…", "بيتبعت…") : t("Send message", "ابعت الرسالة")}
               {!sending && <FiSend />}
             </button>
 

@@ -7,6 +7,7 @@ import medicalsass from "../../Assets/Projects/medicalsass.png";
 import foodbank from "../../Assets/Projects/foodbank.png";
 import rinku from "../../Assets/Projects/rinku.png";
 import kyc360 from "../../Assets/Projects/kyc360.webp";
+import { projectsAr } from "./ProjectsData.ar";
 
 // Screenshot API Configuration
 // Get your FREE API key from: https://screenshotone.com/
@@ -31,7 +32,7 @@ const getMobileScreenshot = (url) => {
 
 export const projectsData = [
   {
-    id: 26,
+    id: 27,
     imgPath: kyc360,
     title: "KYC360 – Unified Verification & Compliance Platform",
     featured: true,
@@ -312,3 +313,8 @@ export const projectsData = [
     category: "Frontend"
   }
 ];
+
+// Attach the Arabic card copy (see ProjectsData.ar.js); components read it via `pick()`
+projectsData.forEach((project) => {
+  if (projectsAr[project.id]) project.ar = projectsAr[project.id];
+});

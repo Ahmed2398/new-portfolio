@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useSearchParams } from "react-router-dom";
+import { useLang } from "../../i18n/LanguageContext";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
@@ -13,6 +14,7 @@ function ContactForm() {
     message: ""
   });
 
+  const { t } = useLang();
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchParams] = useSearchParams();
@@ -52,7 +54,7 @@ function ContactForm() {
       const data = await response.json();
 
       if (data.success) {
-        setStatus("✓ Message sent successfully! I'll get back to you soon.");
+        setStatus(t("✓ Message sent successfully! I'll get back to you soon.", "✓ الرسالة اتبعتت! هرد عليك قريب."));
         event.target.reset();
         setFormData({
           name: "",
@@ -62,11 +64,11 @@ function ContactForm() {
         });
       } else {
         console.log("Form error:", data);
-        setStatus("✗ Failed to send message. Please try again or email me directly.");
+        setStatus(t("✗ Failed to send message. Please try again or email me directly.", "✗ الرسالة مااتبعتتش. جرب تاني أو ابعتلي إيميل مباشرة."));
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setStatus("✗ Failed to send message. Please try again or email me directly at ahmedashraf2398@gmail.com");
+      setStatus(t("✗ Failed to send message. Please try again or email me directly at ahmedashraf2398@gmail.com", "✗ الرسالة مااتبعتتش. جرب تاني أو ابعتلي على ahmedashraf2398@gmail.com"));
     } finally {
       setIsSubmitting(false);
     }
@@ -78,11 +80,14 @@ function ContactForm() {
         <Row>
           <Col md={12} className="contact-header">
             <h1 className="contact-heading-gradient">
-              Get In <span className="gradient-text">Touch</span>
+              {t("Get In ", "خلينا ")}
+              <span className="gradient-text">{t("Touch", "نتكلم")}</span>
             </h1>
             <p className="contact-description">
-              I'm always interested in hearing about new projects and opportunities.
-              Feel free to reach out if you'd like to discuss how we can work together.
+              {t(
+                "I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to discuss how we can work together.",
+                "دايماً مهتم أسمع عن مشاريع وفرص جديدة. ابعتلي لو حابب نتكلم إزاي نشتغل مع بعض."
+              )}
             </p>
           </Col>
         </Row>
@@ -97,7 +102,7 @@ function ContactForm() {
                 </svg>
               </div>
               <div className="info-content">
-                <h3>Email</h3>
+                <h3>{t("Email", "الإيميل")}</h3>
                 <p>ahmedashraf2398@gmail.com</p>
               </div>
             </div>
@@ -109,7 +114,7 @@ function ContactForm() {
                 </svg>
               </div>
               <div className="info-content">
-                <h3>Phone</h3>
+                <h3>{t("Phone", "التليفون")}</h3>
                 <p>+20 1147266169</p>
               </div>
             </div>
@@ -122,8 +127,8 @@ function ContactForm() {
                 </svg>
               </div>
               <div className="info-content">
-                <h3>Location</h3>
-                <p>Cairo, Egypt</p>
+                <h3>{t("Location", "المكان")}</h3>
+                <p>{t("Cairo, Egypt", "القاهرة، مصر")}</p>
               </div>
             </div>
 
@@ -135,7 +140,7 @@ function ContactForm() {
                 </svg>
               </div>
               <div className="info-content">
-                <h3>Timezone</h3>
+                <h3>{t("Timezone", "التوقيت")}</h3>
                 <p>GMT+2 (EET)</p>
               </div>
             </div>
@@ -148,10 +153,10 @@ function ContactForm() {
                 </svg>
               </div>
               <div className="info-content">
-                <h3>Availability</h3>
+                <h3>{t("Availability", "الإتاحة")}</h3>
                 <p className="availability-status">
                   <span className="status-dot"></span>
-                  Open to opportunities
+                  {t("Open to opportunities", "متاح لفرص جديدة")}
                 </p>
                 <div className="social-links-inline">
                   <a href="https://github.com/Ahmed2398" target="_blank" rel="noreferrer" className="social-link-mini">
@@ -172,7 +177,7 @@ function ContactForm() {
                   type="text"
                   name="name"
                   maxLength={80}
-                  placeholder="Your Name"
+                  placeholder={t("Your Name", "اسمك")}
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -185,7 +190,7 @@ function ContactForm() {
                   type="email"
                   name="email"
                   maxLength={254}
-                  placeholder="Your Email"
+                  placeholder={t("Your Email", "إيميلك")}
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -198,7 +203,7 @@ function ContactForm() {
                   type="text"
                   name="subject"
                   maxLength={150}
-                  placeholder="Subject"
+                  placeholder={t("Subject", "الموضوع")}
                   value={formData.subject}
                   onChange={handleChange}
                   required
@@ -212,7 +217,7 @@ function ContactForm() {
                   name="message"
                   maxLength={3000}
                   rows={5}
-                  placeholder="Your Message"
+                  placeholder={t("Your Message", "رسالتك")}
                   value={formData.message}
                   onChange={handleChange}
                   required
@@ -235,7 +240,7 @@ function ContactForm() {
                 className="submit-btn-modern"
                 disabled={isSubmitting}
               >
-                <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                <span>{isSubmitting ? t("Sending...", "بيتبعت...") : t("Send Message", "ابعت الرسالة")}</span>
                 {!isSubmitting && <BsArrowRight className="btn-arrow" />}
               </Button>
 
