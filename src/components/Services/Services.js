@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { BsArrowRight, BsCheck2 } from "react-icons/bs";
 import { FiPlus, FiMinus, FiX, FiUsers, FiTrendingUp, FiStar } from "react-icons/fi";
 import Particle from "../Particle";
+import BookCallButton from "../BookCall/BookCall";
 import { servicesData, processSteps, engagementModels, faqs } from "./servicesData";
 import { useLang } from "../../i18n/LanguageContext";
 import "./Services.css";
@@ -171,6 +172,7 @@ function Services() {
             <Link to="/contact" className="sv-btn-primary">
               {t("Start a project", "ابدأ مشروعك")} <BsArrowRight />
             </Link>
+            <BookCallButton />
             <Link to="/project" className="sv-btn-ghost">
               {t("See my work", "شوف شغلي")}
             </Link>

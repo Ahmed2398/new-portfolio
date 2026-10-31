@@ -14,6 +14,7 @@ import {
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import Particle from "../Particle";
+import BookCallButton from "../BookCall/BookCall";
 import { servicesData } from "../Services/servicesData";
 import { useLang } from "../../i18n/LanguageContext";
 import "./Contact.css";
@@ -228,9 +229,12 @@ function Contact() {
               "عندك فكرة منتج، أو مشروع محتاج مهندس سينيور، أو وظيفة عايز تملاها؟ احكيلي شوية عنها وهرد عليك."
             )}
           </p>
-          <span className="ct-available">
-            <span className="ct-dot" /> {t("Available for freelance projects and full-time roles", "متاح لمشاريع فريلانس ووظايف دوام كامل")}
-          </span>
+          <div className="ct-header-row">
+            <span className="ct-available">
+              <span className="ct-dot" /> {t("Available for freelance projects and full-time roles", "متاح لمشاريع فريلانس ووظايف دوام كامل")}
+            </span>
+            <BookCallButton />
+          </div>
         </header>
 
         <div className="ct-grid">

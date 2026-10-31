@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiArrowUp, FiArrowUpRight } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import Logo from "./Logo";
+import BookCallButton from "./BookCall/BookCall";
 import { servicesData } from "./Services/servicesData";
 import { useLang } from "../i18n/LanguageContext";
 import "./Footer.css";
@@ -97,9 +98,12 @@ function Footer() {
                 <span>{t("Cairo, Egypt · Remote", "القاهرة، مصر · عن بعد")}</span>
               </li>
             </ul>
-            <Link to="/contact" className="ft-cta">
-              {t("Start a conversation", "ابدأ محادثة")} <FiArrowUpRight />
-            </Link>
+            <div className="ft-cta-row">
+              <Link to="/contact" className="ft-cta">
+                {t("Start a conversation", "ابدأ محادثة")} <FiArrowUpRight />
+              </Link>
+              <BookCallButton className="ft-book" />
+            </div>
           </div>
         </div>
 

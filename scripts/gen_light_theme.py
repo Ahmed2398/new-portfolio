@@ -217,6 +217,11 @@ def process(css):
                 # Re-state white text on accent buttons at light-theme specificity,
                 # so broader light rules (e.g. ".footer a") can't override it
                 out.append("  {}: {}".format(prop, value.strip()))
+        # Re-stating a `background` shorthand resets background-clip, which breaks
+        # gradient text — carry the clip declarations over too
+        clip = [d for d in decls if d.split(":", 1)[0].strip().lower() in ("-webkit-background-clip", "background-clip")]
+        if out and clip and any(o.strip().startswith("background") for o in out):
+            out.extend("  " + d for d in clip)
         if out:
             sels = ",\n".join(prefix_selector(s) for s in selector.split(","))
             rules.append((media, sels + " {\n" + ";\n".join(out) + ";\n}"))

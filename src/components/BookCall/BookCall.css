@@ -1,0 +1,209 @@
+/* ============================================ */
+/* BOOK A CALL                                  */
+/* ============================================ */
+
+.bc-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  border: 1px solid rgba(16, 185, 129, 0.55);
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(6, 182, 212, 0.2));
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.bc-trigger:hover {
+  transform: translateY(-2px);
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(6, 182, 212, 0.3));
+}
+
+.bc-trigger svg {
+  color: #6ee7b7;
+}
+
+/* ---------- Modal ---------- */
+.bc-modal .modal-content {
+  overflow: hidden;
+  text-align: start;
+  color: #e2e8f0;
+  background: #0f172a;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  border-radius: 18px;
+}
+
+.bc-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 60px 18px 22px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.22) 0%, transparent 60%),
+    rgba(30, 41, 59, 0.6);
+  border-bottom: 1px solid rgba(96, 165, 250, 0.15);
+}
+
+html[dir="rtl"] .bc-head {
+  padding: 20px 22px 18px 60px;
+}
+
+.bc-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.3rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #10b981, #06b6d4);
+}
+
+.bc-head h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.bc-head p {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.bc-close {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.85);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.bc-body {
+  padding: 0 !important;
+}
+
+.bc-frame {
+  display: block;
+  width: 100%;
+  height: min(680px, 75vh);
+  border: 0;
+  background: #0f172a;
+}
+
+.bc-fallback {
+  padding: 22px;
+}
+
+.bc-perks {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bc-perks li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #e2e8f0;
+}
+
+.bc-perks svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  color: #10b981;
+}
+
+.bc-note {
+  margin: 0 0 16px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.bc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bc-btn {
+  flex: 1 1 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.bc-btn.whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.bc-btn:hover {
+  color: #ffffff;
+  filter: brightness(1.08);
+}
+
+/* ---------- Light theme ---------- */
+html[data-theme="light"] .bc-modal .modal-content {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+html[data-theme="light"] .bc-head {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 60%),
+    #f1f5f9;
+}
+
+html[data-theme="light"] .bc-head h2,
+html[data-theme="light"] .bc-perks li {
+  color: #0f172a;
+}
+
+html[data-theme="light"] .bc-head p,
+html[data-theme="light"] .bc-note {
+  color: #475569;
+}
+
+html[data-theme="light"] .bc-close {
+  color: #0f172a;
+  background: #ffffff;
+}
+
+html[data-theme="light"] .bc-trigger {
+  color: #065f46;
+}
+
+html[data-theme="light"] .bc-trigger svg {
+  color: #059669;
+}

@@ -214,6 +214,8 @@ html[data-theme="light"] .stat-card:hover {
 
 html[data-theme="light"] .stat-number {
   background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .stat-label {
@@ -586,6 +588,8 @@ html[data-theme="light"] .contact-heading-gradient {
 
 html[data-theme="light"] .gradient-text {
   background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .contact-description {
@@ -683,10 +687,14 @@ html[data-theme="light"] .hire-me-card p {
 
 html[data-theme="light"] .expertise-card .card-icon {
   background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .impact-card .card-icon {
   background: linear-gradient(135deg, #34d399 0%, #6ee7b7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .stat-item {
@@ -696,6 +704,8 @@ html[data-theme="light"] .stat-item {
 html[data-theme="light"] .stat-number {
   color: #0761d0;
   background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .stat-label {
@@ -754,6 +764,8 @@ html[data-theme="light"] .brand-name {
 
 html[data-theme="light"] .brand-name-accent {
   background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .brand-role {
@@ -968,6 +980,8 @@ html[data-theme="light"] .hx-title {
 
 html[data-theme="light"] .hx-gradient {
   background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .hx-gradient::after {
@@ -1307,6 +1321,8 @@ html[data-theme="light"] .ab-stat + .ab-stat {
 
 html[data-theme="light"] .ab-stat-value {
   background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .ab-stat-label {
@@ -1800,6 +1816,8 @@ html[data-theme="light"] .sv-step {
 
 html[data-theme="light"] .sv-step-num {
   background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .sv-step h3 {
@@ -2435,10 +2453,14 @@ html[data-theme="light"] .nf-cursor {
 
 html[data-theme="light"] .nf-code {
   background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 55%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .nf-code span {
   background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 html[data-theme="light"] .nf-title {

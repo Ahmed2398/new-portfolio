@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiStar } from "react-icons/fi";
 import Particle from "../Particle";
+import BookCallButton from "../BookCall/BookCall";
 import { AIToolCard } from "../Home/AIShowcase";
 import { aiTools, aiWorkflow, aiPrinciples } from "../../data/aiTools";
 import {
@@ -281,9 +282,7 @@ function Journey() {
             <Link to="/contact" className="jr-btn-primary">
               {t("Let's talk", "يلا نتكلم")} <FiArrowRight />
             </Link>
-            <Link to="/project" className="jr-btn-ghost">
-              {t("See the projects", "شوف المشاريع")}
-            </Link>
+            <BookCallButton />
           </div>
         </section>
       </Container>
