@@ -159,26 +159,64 @@ def parse_blocks(css):
         i = k
 
 
+def is_accent_value(value):
+    """Gradient with brand colours, or any saturated mid-tone colour (e.g. #2563eb)."""
+    if GRADIENT_ACCENT.search(value):
+        return True
+    for m in list(RGBA.finditer(value)) + list(HEX.finditer(value)):
+        parsed = to_rgb(m.group(0))
+        if not parsed:
+            continue
+        r, g, b, a = parsed
+        if a is not None and float(a) < 0.6:
+            continue
+        h, l, s = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+        if s > 0.5 and 0.3 < l < 0.7:
+            return True
+    return False
+
+
+STATE = re.compile(r":(hover|focus|active|focus-visible|focus-within)\b")
+
+
+def base_selectors(selector):
+    return {STATE.sub("", s).strip() for s in selector.split(",")}
+
+
 def process(css):
+    # Pass 1: selectors whose own background is an accent colour (buttons, badges)
+    accent_bases = set()
+    for _, selector, body in parse_blocks(css):
+        for d in body.split(";"):
+            if ":" in d and d.split(":", 1)[0].strip().lower().startswith("background") and is_accent_value(d):
+                accent_bases |= base_selectors(selector)
+
     rules = []
     for media, selector, body in parse_blocks(css):
         if KEEP_DARK.search(selector):
             continue
         decls = [d.strip() for d in body.split(";") if ":" in d]
         has_accent_bg = any(
-            d.split(":", 1)[0].strip().startswith("background") and GRADIENT_ACCENT.search(d) for d in decls
-        )
+            d.split(":", 1)[0].strip().startswith("background") and is_accent_value(d) for d in decls
+        ) or bool(base_selectors(selector) & accent_bases)
         out = []
         for d in decls:
             prop, value = d.split(":", 1)
             prop = prop.strip().lower()
             if prop not in COLOR_PROPS:
                 continue
-            if prop.startswith("background") and GRADIENT_ACCENT.search(value):
-                continue  # keep accent gradients (buttons, badges)
+            if prop.startswith("background") and is_accent_value(value):
+                # keep accent backgrounds (buttons, badges, active pills), re-stated at
+                # light-theme specificity so broader light rules can't override them
+                out.append("  {}: {}".format(prop, value.strip()))
+                continue
             new = convert_value(value, prop, has_accent_bg)
             if new != value:
                 out.append("  {}: {}".format(prop, new.strip()))
+            elif prop == "color" and has_accent_bg:
+                # Re-state white text on accent buttons at light-theme specificity,
+                # so broader light rules (e.g. ".footer a") can't override it
+                out.append("  {}: {}".format(prop, value.strip()))
         if out:
             sels = ",\n".join(prefix_selector(s) for s in selector.split(","))
             rules.append((media, sels + " {\n" + ";\n".join(out) + ";\n}"))

@@ -161,3 +161,23 @@ html[data-theme="light"] .sv-modal .modal-content {
 html[data-theme="light"] .react-activity-calendar rect[fill="#1e293b"] {
   fill: #e2e8f0;
 }
+
+/* Readable status colours on light backgrounds */
+html[data-theme="light"] .hx-badge,
+html[data-theme="light"] .ft-available,
+html[data-theme="light"] .ct-available,
+html[data-theme="light"] .ab-facts li.accent,
+html[data-theme="light"] .now-card .side-label,
+html[data-theme="light"] .ws-live,
+html[data-theme="light"] .hc-status {
+  color: #047857 !important;
+}
+
+html[data-theme="light"] .pp-role {
+  color: #b45309;
+}
+
+html[data-theme="light"] .pp-filter.active .pp-filter-count {
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.25);
+}
