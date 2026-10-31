@@ -24,6 +24,8 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./responsive.css";
 import "./rtl.css";
+import "./theme-light.css";
+import "./theme-light-fixes.css";
 
 
 function App() {

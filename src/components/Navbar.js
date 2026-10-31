@@ -14,10 +14,13 @@ import {
   FiGithub,
   FiLinkedin,
   FiMap,
+  FiSun,
+  FiMoon,
 } from "react-icons/fi";
 import Logo from "./Logo";
 import pdf from "../Assets/Ahmed_Ashraf_Ramadan.pdf";
 import { useLang } from "../i18n/LanguageContext";
+import { useTheme } from "../theme/ThemeContext";
 import "./Navbar.css";
 
 const links = [
@@ -35,6 +38,7 @@ function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { t, toggle: toggleLang, isAr } = useLang();
+  const { isLight, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY >= 20);
@@ -65,6 +69,15 @@ function NavBar() {
         </Navbar.Brand>
 
         <div className="nav-tools">
+          <button
+            type="button"
+            className="nav-tool nav-theme"
+            onClick={toggleTheme}
+            aria-label={isLight ? t("Switch to dark mode", "الوضع الداكن") : t("Switch to light mode", "الوضع الفاتح")}
+            title={isLight ? t("Dark mode", "الوضع الداكن") : t("Light mode", "الوضع الفاتح")}
+          >
+            {isLight ? <FiMoon /> : <FiSun />}
+          </button>
           <button
             type="button"
             className="nav-tool nav-lang"
