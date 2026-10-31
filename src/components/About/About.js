@@ -251,7 +251,7 @@ function About() {
               {"\n"}
               {"  "}<span className="tk-f">ship</span>();
               {"\n"}
-              {"}"} <span className="tk-c">// running since 2019 — no break; in sight</span>
+              {"}"} <span className="tk-c">{"// running since 2019 — no break; in sight"}</span>
             </pre>
             <figcaption className="motto-text">
               {t(
